@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T23:13:00Z",
+  "generated_at": "2026-07-31T23:15:30Z",
   "pipelines": {
     "content_engine": {
       "runs": 4,
@@ -31,8 +31,8 @@
     },
     "kanban": {
       "completed": 21,
-      "blocked": 2,
-      "in_progress": 1
+      "blocked": 3,
+      "in_progress": 0
     }
   },
   "case_studies": [
