@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-07-31T23:13:00Z",
+  "pipelines": {
+    "content_engine": {
+      "runs": 4,
+      "briefs_published": 4,
+      "topics_covered": 4,
+      "sources_verified": 12,
+      "engagement_total": 0
+    },
+    "rewards": {
+      "cycles_run": 11,
+      "status": "degraded",
+      "last_success": "2026-06-11"
+    },
+    "outreach": {
+      "targets_researched": 72,
+      "drafts_created": 33,
+      "replies_received": 3,
+      "csv_rows": 531
+    },
+    "analytics": {
+      "servers_tracked": 2,
+      "members_total": 20409,
+      "weekly_reports": 10,
+      "last_run": "2026-07-28"
+    },
+    "support": {
+      "inquiries_resolved": 1000,
+      "source": "manual"
+    },
+    "kanban": {
+      "completed": 21,
+      "blocked": 2,
+      "in_progress": 1
+    }
+  },
+  "case_studies": [
+    {
+      "id": "support",
+      "stat": "1,000+",
+      "unit": "inquiries resolved",
+      "context": "solo Zendesk ops, no dedicated team"
+    },
+    {
+      "id": "pipelines",
+      "stat": "6+",
+      "unit": "recurring automation pipelines",
+      "context": "replaced weekly manual ops"
+    },
+    {
+      "id": "growth",
+      "stat": "25,000+",
+      "unit": "Discord members",
+      "context": "375go app launch: 250K+ downloads"
+    },
+    {
+      "id": "content",
+      "stat": "4",
+      "unit": "weekly source-verified briefs",
+      "context": "12-week Physical AI curriculum"
+    },
+    {
+      "id": "radio",
+      "stat": "500",
+      "unit": "avg live listeners",
+      "context": "2 seasons, X Spaces"
+    },
+    {
+      "id": "nametag",
+      "stat": "$1.1M+",
+      "unit": "product sold",
+      "context": "0 \u2192 60,000+ users, 6 products shipped"
+    },
+    {
+      "id": "ibm",
+      "stat": "$2.5M",
+      "unit": "deals closed",
+      "context": "$1.4M above quota, Fortune 20"
+    }
+  ]
+}
