@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christian Vazquez — AI-Native Generalist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f6f6;
+    --card: #e9e9e9;
+    --ink: #0a0a0a;
+    --gray: #9e9ea3;
+    --gray-light: #c4c4c9;
+    --white: #ffffff;
+    --edit: #c0392b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Suisse Intl", "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .edit-me { color: var(--edit); }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 42% 58%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Left identity column ---------- */
+  .identity {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 48px 0 72px;
+  }
+  .identity h1 {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+  .identity .role {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--gray-light);
+    line-height: 1.15;
+  }
+  .icon-row { display: flex; gap: 10px; margin-top: 56px; }
+  .icon-btn {
+    width: 54px; height: 54px;
+    background: var(--white);
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+    transition: transform .2s ease;
+    color: var(--ink);
+  }
+  .icon-btn:hover { transform: translateY(-2px); }
+  .icon-btn svg { width: 18px; height: 18px; }
+  .identity .hint {
+    margin-top: 48px;
+    font-size: 13px;
+    color: var(--gray-light);
+  }
+
+  /* ---------- Right scroll column ---------- */
+  .content {
+    padding: 18vh 72px 20vh 48px;
+    max-width: 720px;
+  }
+
+  /* Highlight prose: black phrases on gray body */
+  .prose {
+    font-size: 26px;
+    line-height: 1.35;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--gray-light);
+    margin-bottom: 36px;
+  }
+  .prose b, .prose strong { color: var(--ink); font-weight: 600; }
+
+  .list-block {
+    font-size: 26px;
+    line-height: 1.5;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--gray-light);
+    margin-bottom: 36px;
+  }
+  .list-block .label { color: var(--ink); }
+  .list-block ul { list-style: none; }
+  .list-block li { color: var(--ink); }
+  .list-block li span.count { color: var(--gray-light); }
+
+  /* Section label */
+  .kicker {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin: 96px 0 28px;
+  }
+
+  /* Project cards */
+  .card {
+    background: var(--card);
+    border-radius: 28px;
+    padding: 40px 40px 32px;
+    margin-bottom: 28px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.07);
+  }
+  .card .body {
+    font-size: 19px;
+    line-height: 1.45;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--gray);
+  }
+  .card .body b { color: var(--ink); font-weight: 600; }
+  .card .body ul { list-style: none; margin-top: 14px; }
+  .card .body li { margin-bottom: 8px; }
+  .card .title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 36px;
+  }
+  .card .name {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .card .meta {
+    font-size: 13px;
+    color: var(--gray);
+  }
+  .card.small { min-height: 220px; }
+
+  /* Link pills */
+  .links { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+  .link-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+    transition: transform .2s ease;
+  }
+  .link-pill:hover { transform: translateY(-2px); }
+  .link-pill svg { width: 13px; height: 13px; }
+
+  footer {
+    margin-top: 96px;
+    font-size: 14px;
+    color: var(--gray);
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .identity {
+      position: static;
+      height: auto;
+      padding: 96px 28px 0;
+    }
+    .content { padding: 64px 28px 96px; }
+    .prose, .list-block { font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- LEFT: fixed identity -->
+  <aside class="identity">
+    <h1>Christian Vazquez</h1>
+    <div class="role">AI-Native Generalist</div>
+    <div class="icon-row">
+      <a class="icon-btn" href="mailto:cquez221@gmail.com" title="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      </a>
+      <a class="icon-btn" href="#" title="X — add link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L1.6 2H8l4.4 5.9L18.9 2Zm-1.1 18.1h1.7L7.1 3.8H5.3l12.5 16.3Z"/></svg>
+      </a>
+      <a class="icon-btn" href="#" title="LinkedIn — add link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.2 8.2h4.6V23H.2V8.2Zm7.6 0h4.4v2h.1c.6-1.2 2.1-2.4 4.4-2.4 4.7 0 5.6 3.1 5.6 7.1V23h-4.6v-7.2c0-1.7 0-4-2.4-4s-2.8 1.9-2.8 3.9V23H7.8V8.2Z"/></svg>
+      </a>
+    </div>
+    <div class="hint">Fort Lauderdale, FL · English/Spanish · <span class="edit-me">[add X + LinkedIn links]</span></div>
+  </aside>
+
+  <!-- RIGHT: scrolling content -->
+  <main class="content">
+
+    <p class="prose">
+      <b>AI-Native Generalist</b> with a <b>Software Engineering foundation</b> and range
+      across <b>Sales, Growth, and Creative</b> — an excellent communicator, extremely
+      personable, and technically deep enough to go beyond the surface.
+    </p>
+
+    <p class="prose">
+      From a <b>Fortune 20 company</b> to a <b>started-in-a-garage startup</b>. I shine in
+      client-facing roles, build relationships I can lean on wherever I go, and actively
+      seek out challenges that force me to improve.
+    </p>
+
+    <p class="prose">
+      I build the full loop: <b>analytics that surface trends</b>, honest evaluation of
+      outcomes, and <b>automations that act on those insights</b> to drive the result.
+    </p>
+
+    <div class="list-block">
+      <span class="label">Numbers:</span>
+      <ul>
+        <li>App downloads driven <span class="count">(250K+)</span></li>
+        <li>Discord members <span class="count">(25,000+)</span></li>
+        <li>Support inquiries automated <span class="count">(1,000+)</span></li>
+        <li>AI pipelines in production <span class="count">(6+)</span></li>
+        <li>Technical sales closed <span class="count">($3.6M+)</span></li>
+        <li>Avg live radio listeners <span class="count">(500)</span></li>
+      </ul>
+    </div>
+
+    <div class="kicker">Selected Work — 375ai (2024–Present)</div>
+
+    <div class="card">
+      <div class="body">
+        Set up, managed, and automated 375ai's <b>entire customer support operation
+        alone</b> — Zendesk pipelines built with native tooling for 375go, the company's
+        public-facing mobile app. <b>1,000+ inquiries resolved</b> since implementation,
+        with no dedicated support team.
+      </div>
+      <div class="title-row"><span class="name">Support &amp; Customer Success, Built Solo</span><span class="meta">Zendesk · Automation</span></div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        <b>6+ recurring automation pipelines</b> that replaced weekly manual ops:
+        <ul>
+          <li><b>Discord analytics</b> — weekly + quarterly reports across 2 servers (20K members), tracking trends and flagging what to act on</li>
+          <li><b>Token payouts</b> — $EAT rewards computed from raw scan data, finance-ready every cycle</li>
+          <li><b>Content research engine</b> — automated topic scrapers feeding source-verified weekly briefs and posts</li>
+          <li><b>Outreach pipeline</b> — scheduled target research and drafts for growth</li>
+        </ul>
+      </div>
+      <div class="title-row"><span class="name">AI Automation Pipelines</span><span class="meta">Claude Code · Cowork · MCP</span></div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        Partnered with the Head of Marketing to grow the Discord to <b>25,000+ members</b>
+        and drive <b>250K+ downloads</b> for the 375go app launch. Ran the beta feedback
+        loop — insights from tester feedback drove <b>expanded shelf-scan photo submission
+        acceptance</b>, a <b>robust referral program</b>, and a <b>transparent rewards-earning
+        breakdown page</b>.
+      </div>
+      <div class="title-row"><span class="name">Community Growth &amp; 375go Launch</span><span class="meta">Discord · Growth · Product feedback</span></div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        An AI-powered content engine producing <b>source-verified weekly posts</b> for Discord
+        and X/LinkedIn, plus a <b>12-week Physical AI education curriculum</b> and a content
+        co-creation tool adopted by the marketing team.
+      </div>
+      <div class="title-row"><span class="name">Content Engine &amp; Curriculum</span><span class="meta">Physical AI · DePIN · Edge AI</span></div>
+    </div>
+
+    <div class="card">
+      <div class="body">
+        Creative production end-to-end: <b>explainer videos, product demos, and SME
+        reference videos</b> — scripted, storyboarded, and produced. Proficient with
+        <b>Descript, Higgsfield, and Reve</b>.
+        <div class="links">
+          <a class="link-pill" href="https://x.com/375ai_/status/2074927736498577524?s=20" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg> Watch on X
+          </a>
+          <a class="link-pill" href="https://www.youtube.com/watch?v=vP-JFfU_jHc" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg> Watch on YouTube
+          </a>
+        </div>
+      </div>
+      <div class="title-row"><span class="name">Creative Video &amp; Production</span><span class="meta">Descript · Higgsfield · Reve</span></div>
+    </div>
+
+    <div class="card small">
+      <div class="body">
+        Hosted <b>2 seasons</b> of live radio shows averaging <b>500 listeners</b>,
+        interviewing guests across Web3 and AI.
+        <div class="links">
+          <a class="link-pill" href="https://x.com/i/spaces/1nAKEpMlQgvxL?s=20" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0V7a4 4 0 0 0-4-4Zm-7 9a7 7 0 0 0 14 0h-2a5 5 0 0 1-10 0H5Zm6 9h2v-2h-2v2Z"/></svg> Listen — a favorite episode
+          </a>
+        </div>
+      </div>
+      <div class="title-row"><span class="name">Live Radio &amp; Interviews</span><span class="meta">X Spaces</span></div>
+    </div>
+
+    <div class="kicker">Earlier Track Record</div>
+
+    <div class="card small">
+      <div class="body">
+        Sold <b>$1.1M+</b> of product, grew the user base <b>0 → 60,000+</b>, and shipped
+        <b>6 products/tools</b> from concept to public release at a startup.
+      </div>
+      <div class="title-row"><span class="name">Nametag</span><span class="meta">Sales Engineer · PM · 2021–2023</span></div>
+    </div>
+
+    <div class="card small">
+      <div class="body">
+        Closed <b>$2.5M in deals</b> — <b>$1.4M above yearly quota</b> — delivering Cloud Pak
+        for Integration POCs to C-suite and technical leaders at a Fortune 20 company. Led
+        the Global IBM Gaming &amp; Esports Initiative.
+      </div>
+      <div class="title-row"><span class="name">IBM</span><span class="meta">Solutions Engineer · 2019–2022</span></div>
+    </div>
+
+    <p class="prose" style="margin-top: 96px;">
+      Now looking for a <b>Forward Deployed Engineer</b> seat — embedding with customers,
+      translating messy real-world problems into <b>working AI systems</b>, and owning the
+      outcome end to end.
+    </p>
+
+    <footer>
+      Christian "Quez" Vazquez — cquez221@gmail.com · (239) 206-0552<br>
+      <span class="edit-me">Still needed: X + LinkedIn profile links.</span>
+    </footer>
+
+  </main>
+</div>
+</body>
+</html>
