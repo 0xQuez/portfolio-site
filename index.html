@@ -173,6 +173,97 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .stat-src.is-manual{color:#8a8a8a;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.12)}
 .stats-updated{margin-top:12px;font-size:11px;letter-spacing:.18em;color:rgba(0,0,0,.45);text-transform:uppercase}
 
+/* ---------- work history screen ---------- */
+.work-scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;scrollbar-color:rgba(0,136,255,.55) rgba(0,136,255,.07)}
+.work-scroll::-webkit-scrollbar{width:10px}
+.work-scroll::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(0,255,255,.6),rgba(0,136,255,.7));border-radius:6px;border:2px solid #fff}
+.work-scroll::-webkit-scrollbar-track{background:rgba(0,136,255,.06)}
+.work-col{position:relative;z-index:3;min-height:100%;max-width:1180px;margin:0 auto;
+  padding:clamp(36px,6vh,72px) clamp(24px,5vw,64px) clamp(88px,11vh,120px)}
+.work-sub{font-family:'Cinzel',serif;font-size:clamp(12px,1.4vw,15px);font-weight:600;
+  letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-top:18px}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2vw,22px);
+  margin-top:clamp(28px,4.5vh,44px)}
+.work-card{position:relative;display:flex;flex-direction:column;
+  background:linear-gradient(135deg,rgba(255,255,255,.94),rgba(214,240,255,.62));
+  border:1px solid rgba(0,136,255,.38);border-radius:5px;box-shadow:0 10px 26px rgba(0,40,80,.12);
+  padding:22px 24px 20px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.work-card:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,40,80,.18);
+  border-color:rgba(0,136,255,.6)}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.card-kicker{display:block;font-family:'Cinzel',serif;font-size:10.5px;font-weight:600;
+  letter-spacing:.34em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.card-title{font-family:'Pirata One',serif;font-weight:400;font-size:clamp(24px,2.6vw,36px);
+  line-height:1.04;color:#d9d9d9;letter-spacing:.02em;
+  text-shadow:-1.5px -1.5px 0 #000,1.5px -1.5px 0 #000,-1.5px 1.5px 0 #000,1.5px 1.5px 0 #000,
+             0 0 2px #000,0 3px 0 #000,0 6px 9px rgba(0,0,0,.38)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .card-title{background:linear-gradient(180deg,#C0C0C0 0%,#FFFFFF 58%,#d4d4d4 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+}
+.card-stat{position:relative;flex:none;text-align:right;min-width:150px;padding-top:2px}
+.card-stat .stat-num{font-size:clamp(34px,3.4vw,48px)}
+.card-stat .stat-unit{margin-top:7px}
+.card-stat .stat-src{position:static;display:inline-block;margin-top:9px}
+.card-tags{margin-top:14px;font-family:'Cinzel',serif;font-size:11px;font-weight:600;
+  letter-spacing:.22em;color:#0b3a5c;text-transform:uppercase}
+.card-copy{margin-top:14px;font-size:14.5px;line-height:1.7;color:#3c3c3c}
+.card-meta{margin-top:16px;font-size:10.5px;letter-spacing:.22em;color:rgba(0,60,110,.62);
+  text-transform:uppercase}
+.card-wins{margin-top:10px;font-size:12.5px;line-height:1.6;color:#0b6e8c;font-weight:600}
+.card-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.card-pill{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 16px;
+  border:1px solid rgba(0,136,255,.55);border-radius:999px;font-family:'Cinzel',serif;font-size:11px;
+  font-weight:600;letter-spacing:.18em;color:#0b3a5c;text-transform:uppercase;
+  background:rgba(255,255,255,.55);transition:background .15s ease,color .15s ease,border-color .15s ease}
+.card-pill .arr{color:var(--gold);transition:color .15s ease}
+.card-pill:hover,.card-pill:focus-visible{background:var(--blue);border-color:var(--blue);color:#fff}
+.card-pill:hover .arr,.card-pill:focus-visible .arr{color:#fff}
+
+/* earlier track record */
+.track-block{margin-top:clamp(34px,5vh,52px);padding-top:clamp(26px,4vh,38px);
+  border-top:2px solid rgba(0,136,255,.35);position:relative}
+.track-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
+  background:linear-gradient(90deg,var(--gold),rgba(212,175,55,0))}
+.track-block .kicker{margin-bottom:14px}
+.track-title{font-family:'Pirata One',serif;font-weight:400;font-size:clamp(30px,3.8vw,52px);
+  line-height:.98;color:#d9d9d9;letter-spacing:.02em;
+  text-shadow:-1.5px -1.5px 0 #000,1.5px -1.5px 0 #000,-1.5px 1.5px 0 #000,1.5px 1.5px 0 #000,
+             0 0 2px #000,0 3px 0 #000,0 6px 9px rgba(0,0,0,.38)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .track-title{background:linear-gradient(180deg,#C0C0C0 0%,#FFFFFF 58%,#d4d4d4 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+}
+.track-sub{margin-top:14px;font-size:15px;line-height:1.7;color:#3c3c3c;max-width:56ch}
+.track-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2vw,22px);
+  margin-top:clamp(22px,3.5vh,32px)}
+.track-card{position:relative;padding:22px 24px 20px;
+  background:linear-gradient(135deg,rgba(255,255,255,.94),rgba(214,240,255,.62));
+  border:1px solid rgba(0,136,255,.38);border-radius:5px;box-shadow:0 10px 26px rgba(0,40,80,.12)}
+.track-head-line{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.track-name{font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:.3em;color:#1c1c1c}
+.track-years{font-family:'Cinzel',serif;font-size:10.5px;font-weight:600;letter-spacing:.24em;
+  color:rgba(0,60,110,.62);text-transform:uppercase}
+.track-stat{display:block;margin-top:16px;font-family:'Pirata One',serif;font-weight:400;
+  font-size:clamp(40px,4vw,54px);line-height:1;color:#d9d9d9;
+  text-shadow:-1.5px -1.5px 0 #000,1.5px -1.5px 0 #000,-1.5px 1.5px 0 #000,1.5px 1.5px 0 #000,
+             0 0 2px #000,0 3px 0 #000,0 6px 9px rgba(0,0,0,.38)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .track-stat{background:linear-gradient(180deg,#C0C0C0 0%,#FFFFFF 58%,#d4d4d4 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+}
+.track-copy{margin-top:12px;font-size:14.5px;line-height:1.7;color:#3c3c3c}
+
+/* scroll affordance */
+.scroll-hint{position:absolute;right:clamp(16px,3vw,36px);bottom:16px;z-index:5;
+  display:inline-flex;align-items:center;gap:9px;font-family:'Cinzel',serif;font-size:10px;
+  font-weight:600;letter-spacing:.3em;color:rgba(0,60,110,.6);text-transform:uppercase;
+  transition:opacity .3s ease;pointer-events:none}
+.scroll-hint svg{animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.9}50%{transform:translateY(4px);opacity:.45}}
+.scroll-hint.is-hidden{opacity:0}
+
 /* ---------- settings modal ---------- */
 .modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;
   background:rgba(15,35,50,.42);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
@@ -188,6 +279,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   #menu-cursor{transition:none}
   .menu-item{transition:none}
   .live-dot{animation:none}
+  .work-card,.card-pill,.card-pill .arr{transition:none}
+  .scroll-hint svg{animation:none}
 }
 
 @media (max-width:760px){
@@ -200,6 +293,11 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   #menu-cursor{left:4px}
   .about-col{margin-left:24px;width:calc(100vw - 48px)}
   .stats-grid{grid-template-columns:1fr}
+  .work-col{padding-left:24px;padding-right:24px}
+  .work-grid{grid-template-columns:1fr}
+  .track-grid{grid-template-columns:1fr}
+  .card-head{flex-direction:column}
+  .card-stat{text-align:left;min-width:0}
 }
 </style>
 </head>
@@ -317,12 +415,151 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
 <section id="screen-work" class="screen" role="region" aria-labelledby="work-title" hidden>
   <div class="water" aria-hidden="true"></div>
-  <div class="content-inner">
-    <p class="kicker">CASE STUDIES / 02</p>
-    <h2 id="work-title" class="screen-heading" tabindex="-1" data-focus>WORK HISTORY</h2>
-    <p class="screen-body">Six case studies and the earlier track record land here in a later build.</p>
-    <button type="button" class="back-btn" data-back><span class="dot" aria-hidden="true"></span>BACK</button>
+  <div class="work-scroll" id="work-scroll">
+    <div class="work-col">
+      <p class="kicker">CASE STUDIES / 02</p>
+      <h2 id="work-title" class="screen-heading" tabindex="-1" data-focus>WORK HISTORY</h2>
+      <p class="work-sub">Selected Work — 375ai (2024–Present)</p>
+
+      <div class="work-grid">
+        <article class="work-card" data-work="support" aria-labelledby="cs1-title">
+          <div class="card-head">
+            <div>
+              <span class="card-kicker">Case 01 · 375ai</span>
+              <h3 class="card-title" id="cs1-title">SUPPORT &amp; CUSTOMER SUCCESS,<br>BUILT SOLO</h3>
+            </div>
+            <div class="card-stat">
+              <span class="stat-num" data-work-stat>1,000+</span>
+              <span class="stat-unit">Inquiries Resolved</span>
+              <span class="stat-src" data-work-chip></span>
+            </div>
+          </div>
+          <p class="card-tags">Zendesk · Automation · Customer success</p>
+          <p class="card-copy">Set up, managed, and automated the entire customer support operation for 375go. Native Zendesk pipelines resolved more than a thousand inquiries without a dedicated support team.</p>
+          <p class="card-meta">From intake to resolution · operational ownership</p>
+        </article>
+
+        <article class="work-card" data-work="pipelines" aria-labelledby="cs2-title">
+          <div class="card-head">
+            <div>
+              <span class="card-kicker">Case 02 · Systems</span>
+              <h3 class="card-title" id="cs2-title">AI AUTOMATION PIPELINES</h3>
+            </div>
+            <div class="card-stat">
+              <span class="stat-num" data-work-stat>6+</span>
+              <span class="stat-unit">Recurring Pipelines</span>
+              <span class="stat-src" data-work-chip></span>
+            </div>
+          </div>
+          <p class="card-tags">Claude Code · Cowork · MCP</p>
+          <p class="card-copy">Recurring automation pipelines for Discord analytics, token payouts, content research, and growth outreach. Weekly work became repeatable systems that surface what to act on.</p>
+          <p class="card-meta">Analytics · rewards · research · outreach</p>
+        </article>
+
+        <article class="work-card" data-work="growth" aria-labelledby="cs3-title">
+          <div class="card-head">
+            <div>
+              <span class="card-kicker">Case 03 · Growth</span>
+              <h3 class="card-title" id="cs3-title">COMMUNITY GROWTH &amp; 375GO LAUNCH</h3>
+            </div>
+            <div class="card-stat">
+              <span class="stat-num" data-work-stat>25,000+</span>
+              <span class="stat-unit">Discord Members</span>
+              <span class="stat-src" data-work-chip></span>
+            </div>
+          </div>
+          <p class="card-tags">Discord · Product feedback · Launch</p>
+          <p class="card-copy">Partnered with the Head of Marketing to grow the Discord and drive 250K+ 375go app downloads. Beta feedback directly shaped photo submissions, referrals, and rewards UX.</p>
+          <p class="card-meta">375go launch · 250K+ downloads</p>
+          <p class="card-wins">Beta feedback wins: expanded shelf-scan acceptance · referral program · rewards breakdown page</p>
+        </article>
+
+        <article class="work-card" data-work="content" aria-labelledby="cs4-title">
+          <div class="card-head">
+            <div>
+              <span class="card-kicker">Case 04 · Content</span>
+              <h3 class="card-title" id="cs4-title">CONTENT ENGINE &amp; CURRICULUM</h3>
+            </div>
+            <div class="card-stat">
+              <span class="stat-num" data-work-stat>4</span>
+              <span class="stat-unit">Weekly Source-Verified Briefs</span>
+              <span class="stat-src" data-work-chip></span>
+            </div>
+          </div>
+          <p class="card-tags">Physical AI · DePIN · Edge AI</p>
+          <p class="card-copy">Built an AI-powered content engine producing source-verified posts for Discord, X, and LinkedIn — plus a 12-week Physical AI curriculum and co-creation tool adopted by marketing.</p>
+          <p class="card-meta">Source verification · editorial systems · curriculum</p>
+        </article>
+
+        <article class="work-card" aria-labelledby="cs5-title">
+          <div class="card-head">
+            <div>
+              <span class="card-kicker">Case 05 · Creative</span>
+              <h3 class="card-title" id="cs5-title">CREATIVE VIDEO &amp; PRODUCTION</h3>
+            </div>
+            <div class="card-stat">
+              <span class="stat-num">E2E</span>
+              <span class="stat-unit">Script to Ship</span>
+            </div>
+          </div>
+          <p class="card-tags">Descript · Higgsfield · Reve</p>
+          <p class="card-copy">Explainer videos, product demos, and SME reference videos — scripted, storyboarded, and produced end to end.</p>
+          <div class="card-links">
+            <a class="card-pill" href="https://x.com/375ai_/status/2074927736498577524" target="_blank" rel="noopener">Watch on X <span class="arr" aria-hidden="true">↗</span></a>
+            <a class="card-pill" href="https://www.youtube.com/watch?v=vP-JFfU_jHc" target="_blank" rel="noopener">Watch on YouTube <span class="arr" aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+
+        <article class="work-card" data-work="radio" aria-labelledby="cs6-title">
+          <div class="card-head">
+            <div>
+              <span class="card-kicker">Case 06 · Radio</span>
+              <h3 class="card-title" id="cs6-title">LIVE RADIO &amp; INTERVIEWS</h3>
+            </div>
+            <div class="card-stat">
+              <span class="stat-num" data-work-stat>500</span>
+              <span class="stat-unit">Avg Live Listeners</span>
+              <span class="stat-src" data-work-chip></span>
+            </div>
+          </div>
+          <p class="card-tags">X Spaces · Web3 · AI</p>
+          <p class="card-copy">Hosted two seasons of live radio shows averaging 500 listeners, interviewing guests across Web3 and AI and making technical ideas accessible in real time.</p>
+          <div class="card-links">
+            <a class="card-pill" href="https://x.com/i/spaces/1nAKEpMlQgvxL" target="_blank" rel="noopener">Listen to an episode <span class="arr" aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="track-block">
+        <p class="kicker">EARLIER TRACK RECORD</p>
+        <h3 class="track-title">RANGE IS THE ADVANTAGE.</h3>
+        <p class="track-sub">Before the AI-native chapter: startup ownership and enterprise technical sales.</p>
+        <div class="track-grid">
+          <article class="track-card">
+            <div class="track-head-line">
+              <span class="track-name">NAMETAG</span>
+              <span class="track-years">Sales Engineer · PM · 2021–2023</span>
+            </div>
+            <span class="track-stat">$1.1M+</span>
+            <p class="track-copy">Sold product, grew users from 0 → 60,000+, and shipped 6 products/tools from concept to public release. Sales Engineer · PM.</p>
+          </article>
+          <article class="track-card">
+            <div class="track-head-line">
+              <span class="track-name">IBM</span>
+              <span class="track-years">Solutions Engineer · 2019–2022</span>
+            </div>
+            <span class="track-stat">$2.5M</span>
+            <p class="track-copy">Closed deals, $1.4M above quota, delivering Cloud Pak for Integration POCs to Fortune 20 executives. Led the Global IBM Gaming &amp; Esports Initiative.</p>
+          </article>
+        </div>
+      </div>
+
+      <button type="button" class="back-btn" data-back><span class="dot" aria-hidden="true"></span>BACK</button>
+    </div>
   </div>
+  <span class="scroll-hint" aria-hidden="true">SCROLL
+    <svg width="10" height="14" viewBox="0 0 10 14" fill="none"><path d="M1 4.5 5 9l4-4.5" stroke="#0088FF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </span>
 </section>
 
 <section id="screen-contact" class="screen" role="region" aria-labelledby="contact-title" hidden>
@@ -560,6 +797,88 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
     })
     .catch(function(){
       TILES.forEach(function(t){ markSource(t.key, false); });
+    });
+})();
+</script>
+<script>
+/* WORK HISTORY screen: live stat wiring from stats.json (same pattern as ABOUT) */
+(function(){
+  'use strict';
+  var scroll = document.getElementById('work-scroll');
+  var hint = document.querySelector('#screen-work .scroll-hint');
+  if (!scroll) return;
+
+  /* scroll affordance: hidden entirely when content fits, faded once scrolled */
+  function updateHint(){
+    if (!hint) return;
+    if (scroll.scrollHeight <= scroll.clientHeight + 2){ hint.hidden = true; return; }
+    hint.hidden = false;
+    hint.classList.toggle('is-hidden', scroll.scrollTop > 48);
+  }
+  scroll.addEventListener('scroll', updateHint, {passive:true});
+  window.addEventListener('resize', updateHint);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(updateHint);
+  /* screen is display:none at load — evaluate once it becomes visible (threshold 0) */
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting) updateHint(); });
+    }, {threshold: 0}).observe(scroll);
+  } else {
+    updateHint();
+  }
+
+  /* case-study cards that can draw a live value from stats.json */
+  var CARDS = [
+    {key:'support',   chip:true, path:['pipelines','support','inquiries_resolved'], plus:'+'},
+    {key:'pipelines', chip:true, count:true, plus:'+'},
+    {key:'growth',    chip:true, path:['pipelines','analytics','members_total'],    plus:'+'},
+    {key:'content',   chip:true, path:['pipelines','content_engine','briefs_published'], plus:''},
+    {key:'radio',     chip:true}
+  ];
+
+  function getPath(obj, path){
+    for (var i = 0; i < path.length; i++){
+      if (obj == null || typeof obj !== 'object') return null;
+      obj = obj[path[i]];
+    }
+    return obj;
+  }
+  function fmtInt(v){ return Math.round(v).toLocaleString('en-US'); }
+
+  var cards = {};
+  CARDS.forEach(function(c){
+    var el = document.querySelector('#screen-work .work-card[data-work="' + c.key + '"]');
+    cards[c.key] = {el: el, num: el ? el.querySelector('[data-work-stat]') : null,
+                    chip: el ? el.querySelector('[data-work-chip]') : null};
+  });
+
+  function mark(key, live){
+    var s = cards[key];
+    if (!s || !s.chip) return;
+    s.chip.textContent = live ? 'LIVE' : 'MANUAL';
+    s.chip.className = 'stat-src ' + (live ? 'is-live' : 'is-manual');
+  }
+
+  function applyStats(data){
+    CARDS.forEach(function(c){
+      var liveVal = null;
+      if (c.count){ if (data && data.pipelines) liveVal = Object.keys(data.pipelines).length; }
+      else if (c.path) liveVal = getPath(data, c.path);
+      /* support inquiries are manually entered in stats.json — real but not pipeline-derived */
+      var manual = (c.path && c.path[1] === 'support' && data && data.pipelines &&
+                    data.pipelines.support && data.pipelines.support.source === 'manual');
+      var valid = (typeof liveVal === 'number' && isFinite(liveVal) && liveVal > 0);
+      var s = cards[c.key];
+      if (valid && s && s.num) s.num.textContent = fmtInt(liveVal) + c.plus;
+      mark(c.key, valid && !manual);
+    });
+  }
+
+  fetch('stats.json', {cache: 'no-store'})
+    .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(applyStats)
+    .catch(function(){
+      CARDS.forEach(function(c){ mark(c.key, false); });
     });
 })();
 </script>
