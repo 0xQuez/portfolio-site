@@ -71,14 +71,15 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
 /* photo slot — right zone */
 .photo-slot{position:absolute;right:clamp(16px,4vw,64px);bottom:calc(var(--bar-h) + 10px);
-  width:min(34vw,380px);height:min(56vh,560px);z-index:2}
-.silhouette{position:relative;width:100%;height:100%}
-.silhouette::before{content:"";position:absolute;top:2%;left:50%;transform:translateX(-50%);
-  width:34%;aspect-ratio:1;border-radius:50%;
-  background:linear-gradient(180deg,#c6d3de,#9db1c2);opacity:.9}
-.silhouette::after{content:"";position:absolute;top:31%;left:50%;transform:translateX(-50%);
-  width:76%;height:70%;border-radius:48% 48% 0 0 / 42% 42% 0 0;
-  background:linear-gradient(180deg,#a9bfd0,#7f9ab1);opacity:.85}
+  width:min(34vw,380px);height:min(56vh,560px);z-index:2;
+  background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(214,240,255,.30) 75%,rgba(0,255,255,.16) 100%)}
+.photo{position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  height:min(74vh,720px);width:auto;max-width:110%;
+  opacity:.62;filter:saturate(.86) contrast(.97);
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.55) 0%,#000 8%,#000 74%,rgba(0,0,0,0) 98%),linear-gradient(90deg,rgba(0,0,0,0) 0%,#000 14%,#000 86%,rgba(0,0,0,0) 100%);
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.55) 0%,#000 8%,#000 74%,rgba(0,0,0,0) 98%),linear-gradient(90deg,rgba(0,0,0,0) 0%,#000 14%,#000 86%,rgba(0,0,0,0) 100%);
+  -webkit-mask-composite:source-in;mask-composite:intersect;
+  pointer-events:none}
 .photo-slot .reflection{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);
   width:66%;height:20px;border-radius:50%;
   background:radial-gradient(50% 50% at 50% 50%,rgba(0,136,255,.30),rgba(0,255,255,.10) 60%,transparent 78%);
@@ -218,7 +219,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
 @media (max-width:760px){
   .title-block{max-width:78vw}
-  .photo-slot{opacity:.3;transform:scale(.85);transform-origin:bottom right}
+  .photo-slot{transform:scale(.88);transform-origin:bottom right}
+  .photo{opacity:.55;max-width:92%;height:min(52vh,420px)}
   .ghost-heart{display:none}
   .bar-hint{display:none}
   .content-inner{left:24px;right:24px;max-width:none}
@@ -257,9 +259,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
   <p class="credits"><small>DEVELOPED BY</small><strong>QUEZ</strong></p>
 
-  <!-- QUEZ PHOTO SLOT: replace with /photo.png (right zone, ~50-60% width) -->
-  <figure class="photo-slot" aria-label="Quez photo placeholder">
-    <div class="silhouette" aria-hidden="true"></div>
+  <!-- QUEZ PHOTO: /photo.webp (faded KH-style portrait, right zone) -->
+  <figure class="photo-slot" aria-label="Quez standing between two Porsche 911s">
+    <img class="photo" src="/photo.webp" alt="Quez standing between two Porsche 911s"
+      width="800" height="2720" decoding="async" draggable="false">
     <div class="reflection" aria-hidden="true"></div>
   </figure>
 
