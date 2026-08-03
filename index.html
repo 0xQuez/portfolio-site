@@ -1,72 +1,368 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Christian Vazquez — Forward Deployed Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QUEZ — AI-Native Generalist</title>
+<meta name="description" content="Christian “Quez” Vazquez — AI-native generalist and forward deployed engineer. Portfolio, remade as a Kingdom Hearts II-style title screen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Pirata+One&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f4f4f1;--ink:#11110f;--muted:#787874;--line:#d9d9d3;--card:#fff;--accent:#c9ff55;--max:1280px}*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}body{overflow:hidden}.bend-stage{position:relative;height:100svh}.bend-source{position:absolute;inset:0;width:100%;height:100%;display:block}.bend-output{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.bend-fallback{position:relative;height:100svh}a{color:inherit;text-decoration:none}.gallery{height:100svh;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth}.section{min-height:92svh;scroll-snap-align:start;display:flex;align-items:center;padding:clamp(28px,6vw,88px);position:relative;border-bottom:1px solid var(--line)}.inner{width:min(100%,var(--max));margin:auto}.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:28px}.eyebrow:before{content:'↳';color:var(--ink);margin-right:10px}.nav{position:absolute;top:28px;left:clamp(28px,6vw,88px);right:clamp(28px,6vw,88px);display:flex;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:.06em}.nav span{color:var(--muted)}.hero h1{font-size:clamp(58px,12vw,172px);line-height:.88;letter-spacing:-.09em;max-width:1000px;margin:0 0 42px;font-weight:800}.hero h1 em{font-style:normal;color:var(--muted)}.lede{font-size:clamp(18px,2.2vw,28px);line-height:1.3;max-width:720px;letter-spacing:-.03em}.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:42px}.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 17px;border:1px solid var(--ink);border-radius:999px;font-size:12px;font-weight:700;transition:.2s ease}.pill:hover,.pill:focus-visible{background:var(--ink);color:#fff;transform:translateY(-2px)}.pill.invert{background:var(--ink);color:#fff}.pill.invert:hover{background:var(--accent);color:var(--ink)}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px}.section-head h2{font-size:clamp(38px,6vw,82px);line-height:.95;letter-spacing:-.07em;margin:0;max-width:760px}.section-head p{max-width:300px;color:var(--muted);font-size:14px;line-height:1.5}.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.impact{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;min-height:180px;display:flex;flex-direction:column;justify-content:space-between}.impact strong{font-size:clamp(38px,5vw,68px);letter-spacing:-.08em;line-height:1}.impact span{font-size:13px;color:var(--muted);line-height:1.35}.live-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.tile{border:1px solid var(--line);border-radius:18px;padding:22px;background:rgba(255,255,255,.45)}.tile small{color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:700}.tile b{display:block;font-size:34px;letter-spacing:-.06em;margin:18px 0 5px}.tile p{font-size:12px;color:var(--muted);margin:0}.updated{font-size:11px;color:var(--muted);margin-top:18px}.study{background:var(--ink);color:#f5f5f0}.study .eyebrow,.study .section-head p{color:#999993}.study .eyebrow:before{color:var(--accent)}.study .section-head h2{max-width:900px}.study .stat{font-size:clamp(74px,15vw,210px);letter-spacing:-.11em;line-height:.78;color:var(--accent);font-weight:800;margin:28px 0 36px}.study .copy{max-width:690px;font-size:clamp(18px,2vw,26px);line-height:1.35;letter-spacing:-.035em}.study .meta{margin-top:30px;color:#999993;font-size:12px}.study .pill{border-color:#666;color:#fff}.study .pill:hover{border-color:var(--accent);background:var(--accent);color:var(--ink)}.earlier .split{display:grid;grid-template-columns:1fr 1fr;gap:12px}.history{background:var(--card);border:1px solid var(--line);padding:30px;border-radius:20px;min-height:280px}.history b{font-size:clamp(48px,7vw,92px);letter-spacing:-.1em;display:block;margin:22px 0}.history p{font-size:15px;line-height:1.45;color:var(--muted);max-width:430px}.closing h2{font-size:clamp(48px,9vw,128px);line-height:.88;letter-spacing:-.09em;max-width:900px;margin:0 0 34px}.closing footer{border-top:1px solid var(--line);margin-top:80px;padding-top:20px;display:flex;justify-content:space-between;gap:16px;color:var(--muted);font-size:12px}.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}.visible .reveal{opacity:1;transform:none}.visible .reveal:nth-child(2){transition-delay:.08s}.visible .reveal:nth-child(3){transition-delay:.16s}.visible .reveal:nth-child(4){transition-delay:.24s}.counter{font-variant-numeric:tabular-nums} @media(max-width:767px){body{overflow:auto}.gallery{height:auto;overflow:visible;scroll-snap-type:none}.section{min-height:100svh;padding:72px 22px}.nav{top:20px;left:22px;right:22px}.impact-grid,.live-grid{grid-template-columns:1fr 1fr}.section-head{display:block}.section-head p{margin-top:20px}.study .stat{font-size:clamp(72px,23vw,140px)}.earlier .split{grid-template-columns:1fr}.closing footer{display:block}.closing footer div+div{margin-top:12px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important}.gallery{scroll-behavior:auto}.reveal{opacity:1;transform:none}}
-</style></head>
-<body>
-<div class="bend-stage" id="bend-stage"><canvas class="bend-source" id="bend-source" layoutsubtree="true"><main class="gallery" id="gallery">
-<section class="section hero" id="hero"><div class="nav"><strong>CV / 2026</strong><span>AI · SYSTEMS · OUTCOMES</span></div><div class="inner"><div class="eyebrow reveal">Identity / 00</div><h1 class="reveal">Christian<br><em>Vazquez.</em></h1><p class="lede reveal">AI-native generalist and forward deployed engineer. I turn messy customer problems into working systems — then own the outcome.</p><div class="links reveal"><a class="pill invert" href="mailto:cquez221@gmail.com">Get in touch ↗</a><a class="pill" href="https://x.com/0xquez" target="_blank" rel="noopener">X / @0xquez</a><a class="pill" href="https://www.linkedin.com/in/christianqvazquez" target="_blank" rel="noopener">LinkedIn</a></div></div></section>
-<section class="section" id="numbers"><div class="inner"><div class="section-head"><div><div class="eyebrow reveal">Selected impact / 01</div><h2 class="reveal">Proof beats<br>promise.</h2></div><p class="reveal">A range across engineering, sales, growth, and creative — measured in shipped work.</p></div><div class="impact-grid"><div class="impact reveal"><strong class="counter" data-value="250000" data-display="250K+">0</strong><span>app downloads driven</span></div><div class="impact reveal"><strong class="counter" data-value="25000" data-display="25K+">0</strong><span>Discord members grown</span></div><div class="impact reveal"><strong class="counter" data-value="1000" data-display="1,000+">0</strong><span>support inquiries resolved solo</span></div><div class="impact reveal"><strong class="counter" data-value="6" data-display="6+">0</strong><span>AI pipelines in production</span></div><div class="impact reveal"><strong class="counter" data-value="3600000" data-display="$3.6M+">0</strong><span>technical sales closed</span></div><div class="impact reveal"><strong class="counter" data-value="500" data-display="500">0</strong><span>average live radio listeners</span></div></div></div></section>
-<section class="section" id="live"><div class="inner"><div class="section-head"><div><div class="eyebrow reveal">Operations / 02</div><h2 class="reveal">The work<br>is still running.</h2></div><p class="reveal">Runtime signals from the systems behind the work. Values refresh from stats.json when available.</p></div><div class="live-grid" id="live-grid"><div class="tile reveal"><small>Content engine</small><b data-live="content_engine.briefs_published">—</b><p>briefs published</p></div><div class="tile reveal"><small>Rewards</small><b data-live="rewards.cycles_run">—</b><p>cycles run</p></div><div class="tile reveal"><small>Outreach</small><b data-live="outreach.targets_researched">—</b><p>targets researched</p></div><div class="tile reveal"><small>Analytics</small><b data-live="analytics.members_total">—</b><p>members tracked</p></div><div class="tile reveal"><small>Support</small><b data-live="support.inquiries_resolved">—</b><p>inquiries resolved</p></div><div class="tile reveal"><small>Kanban</small><b data-live="kanban.completed">—</b><p>tasks completed</p></div></div><div class="updated" id="updated">LIVE · loading runtime data</div></div></section>
-<section class="section study" id="support"><div class="inner"><div class="eyebrow reveal">Case study / 03 · 375ai</div><div class="section-head"><h2 class="reveal">Support, built solo.</h2><p class="reveal">Zendesk · Automation · Customer success</p></div><div class="stat reveal">1,000+</div><p class="copy reveal">Set up, managed, and automated the entire customer support operation for 375go. Native Zendesk pipelines resolved more than a thousand inquiries without a dedicated support team.</p><div class="meta reveal">From intake to resolution · operational ownership</div></div></section>
-<section class="section study" id="pipelines"><div class="inner"><div class="eyebrow reveal">Case study / 04 · Systems</div><div class="section-head"><h2 class="reveal">Manual ops,<br>replaced.</h2><p class="reveal">Claude Code · Cowork · MCP</p></div><div class="stat reveal">6+</div><p class="copy reveal">Recurring automation pipelines for Discord analytics, token payouts, content research, and growth outreach. Weekly work became repeatable systems that surface what to act on.</p><div class="meta reveal">Analytics · rewards · research · outreach</div></div></section>
-<section class="section study" id="growth"><div class="inner"><div class="eyebrow reveal">Case study / 05 · Growth</div><div class="section-head"><h2 class="reveal">Community<br>with momentum.</h2><p class="reveal">Discord · Product feedback · Launch</p></div><div class="stat reveal">25K+</div><p class="copy reveal">Partnered with the Head of Marketing to grow the Discord and drive 250K+ 375go app downloads. Beta feedback directly shaped photo submissions, referrals, and rewards UX.</p><div class="meta reveal">375go launch · 250K+ downloads</div></div></section>
-<section class="section study" id="content"><div class="inner"><div class="eyebrow reveal">Case study / 06 · Content</div><div class="section-head"><h2 class="reveal">Research that<br>ships.</h2><p class="reveal">Physical AI · DePIN · Edge AI</p></div><div class="stat reveal">12 wks</div><p class="copy reveal">Built an AI-powered content engine producing source-verified posts for Discord, X, and LinkedIn — plus a 12-week Physical AI curriculum and co-creation tool adopted by marketing.</p><div class="meta reveal">Source verification · editorial systems · curriculum</div></div></section>
-<section class="section study" id="creative"><div class="inner"><div class="eyebrow reveal">Case study / 07 · Creative</div><div class="section-head"><h2 class="reveal">Make the<br>complex clear.</h2><p class="reveal">Descript · Higgsfield · Reve</p></div><div class="stat reveal">E2E</div><p class="copy reveal">Explainer videos, product demos, and SME reference videos — scripted, storyboarded, and produced end to end.</p><div class="links reveal"><a class="pill" href="https://x.com/375ai_/status/2074927736498577524?s=20" target="_blank" rel="noopener">Watch on X ↗</a><a class="pill" href="https://www.youtube.com/watch?v=vP-JFfU_jHc" target="_blank" rel="noopener">Watch on YouTube ↗</a></div></div></section>
-<section class="section study" id="radio"><div class="inner"><div class="eyebrow reveal">Case study / 08 · Radio</div><div class="section-head"><h2 class="reveal">Conversations<br>with reach.</h2><p class="reveal">X Spaces · Web3 · AI</p></div><div class="stat reveal">500</div><p class="copy reveal">Hosted two seasons of live radio shows averaging 500 listeners, interviewing guests across Web3 and AI and making technical ideas accessible in real time.</p><div class="links reveal"><a class="pill" href="https://x.com/i/spaces/1nAKEpMlQgvxL?s=20" target="_blank" rel="noopener">Listen to an episode ↗</a></div></div></section>
-<section class="section earlier" id="earlier"><div class="inner"><div class="section-head"><div><div class="eyebrow reveal">Earlier track record / 09</div><h2 class="reveal">Range is<br>the advantage.</h2></div><p class="reveal">Before the AI-native chapter: startup ownership and enterprise technical sales.</p></div><div class="split"><article class="history reveal"><small>NAMETAG · 2021–2023</small><b>$1.1M+</b><p>Sold product, grew users from 0 → 60,000+, and shipped 6 products/tools from concept to public release. Sales Engineer · PM.</p></article><article class="history reveal"><small>IBM · 2019–2022</small><b>$2.5M</b><p>Closed deals, $1.4M above quota, delivering Cloud Pak for Integration POCs to Fortune 20 executives. Led the Global IBM Gaming &amp; Esports Initiative.</p></article></div></div></section>
-<section class="section closing" id="closing"><div class="inner"><div class="eyebrow reveal">Next / 10</div><h2 class="reveal">Put me close to the problem.</h2><p class="lede reveal">Looking for a Forward Deployed Engineer seat — embedding with customers, translating messy real-world problems into working AI systems, and owning the outcome end to end.</p><div class="links reveal"><a class="pill invert" href="mailto:cquez221@gmail.com">Start a conversation ↗</a><a class="pill" href="https://www.linkedin.com/in/christianqvazquez" target="_blank" rel="noopener">LinkedIn ↗</a><a class="pill" href="https://x.com/0xquez" target="_blank" rel="noopener">X ↗</a></div><footer><div>Christian “Quez” Vazquez · Fort Lauderdale, FL</div><div>cquez221@gmail.com · (239) 206-0552</div></footer></div></section>
-</main></canvas><canvas class="bend-output" id="bend-output" aria-hidden="true"></canvas><div class="bend-fallback" id="bend-fallback"></div></div>
-<script>
-const fallback={generated_at:null,pipelines:{content_engine:{briefs_published:12},rewards:{cycles_run:24},outreach:{targets_researched:86},analytics:{members_total:25000},support:{inquiries_resolved:1000},kanban:{completed:42}}};
-const gallery=document.querySelector('.gallery');
-function format(v){return typeof v==='number'?v.toLocaleString():v||'—'}
-function get(obj,path){return path.split('.').reduce((a,k)=>a&&a[k],obj)}
-function setLive(data){document.querySelectorAll('[data-live]').forEach(el=>el.textContent=format(get(data,'pipelines.'+el.dataset.live)));const stamp=data.generated_at?new Date(data.generated_at).toLocaleString(): 'fallback values';document.querySelector('#updated').textContent='LIVE · updated '+stamp}
-fetch('stats.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('stats unavailable');return r.json()}).then(setLive).catch(()=>setLive(fallback));
-function animateCounter(el){if(el.dataset.done)return;el.dataset.done='1';const target=Number(el.dataset.value), display=el.dataset.display, start=performance.now();function tick(now){const p=Math.min((now-start)/1200,1), eased=1-Math.pow(1-p,3);el.textContent=p===1?display:Math.round(target*eased).toLocaleString();if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)}
-const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');e.target.querySelectorAll('.counter').forEach(animateCounter)}}),{root:gallery,threshold:.25});document.querySelectorAll('.section').forEach(s=>io.observe(s));
-</script>
-<script type="module">
-import { createBend, supportsHtmlInCanvas } from "./components/canvasui/bend.js";
-
-const source = document.querySelector("#bend-source");
-const content = document.querySelector("#gallery");
-const output = document.querySelector("#bend-output");
-const fallback = document.querySelector("#bend-fallback");
-const bendSupported = supportsHtmlInCanvas();
-
-if (bendSupported) {
-  const bend = createBend(
-    { source, content, output },
-    {
-      zone: 240,
-      angle: 80,
-      rounding: 150,
-      perspective: 700,
-      ease: 240,
-      smoothing: 0.1,
-      tumble: 0.5,
-      tilt: 0.5,
-      direction: "in",
-      top: true,
-      bottom: true,
-    },
-  );
-  if (!bend) {
-    fallback.append(content);
-    source.remove();
-    output.remove();
-  }
-} else {
-  // Progressive enhancement: unwrap the gallery when html-in-canvas is unavailable.
-  fallback.append(content);
-  source.remove();
-  output.remove();
+:root{
+  --cyan:#00FFFF; --blue:#0088FF; --gold:#D4AF37; --grey:#808080; --orange:#FFA500;
+  --bar-h:clamp(132px,18vh,170px);
 }
-</script></body></html>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:#FFFFFF; color:#111; overflow:hidden;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+[hidden]{display:none !important}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* ---------- screens ---------- */
+.screen{position:fixed;inset:0;overflow:hidden;background:#FFFFFF}
+.screen:not([hidden]){animation:screen-in .38s ease}
+@keyframes screen-in{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+
+/* water gradient, bottom-right corner (reflection feel) */
+.water{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(115% 88% at 100% 100%,
+    rgba(0,255,255,.52) 0%, rgba(0,136,255,.36) 34%, rgba(0,136,255,.12) 56%, rgba(255,255,255,0) 76%);
+}
+.water::after{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(180deg,
+    rgba(255,255,255,0) 0 24px, rgba(255,255,255,.30) 25px 27px,
+    rgba(0,136,255,.10) 28px 30px, rgba(255,255,255,0) 31px 46px);
+  -webkit-mask-image:radial-gradient(85% 65% at 100% 100%,#000 0%,transparent 72%);
+  mask-image:radial-gradient(85% 65% at 100% 100%,#000 0%,transparent 72%);
+  opacity:.5;
+}
+
+/* faint ghost shapes behind the title (homage to the KH2 ghost II + heart) */
+.ghost-q{position:absolute;left:-4vw;top:4%;font-family:'Pirata One',serif;
+  font-size:46vw;line-height:1;color:rgba(0,136,255,.045);pointer-events:none;user-select:none}
+.ghost-heart{position:absolute;left:16%;bottom:calc(var(--bar-h) + 4vh);width:30vw;max-width:380px;
+  opacity:.05;pointer-events:none;fill:none;stroke:#0088FF;stroke-width:2}
+
+/* ---------- title screen ---------- */
+.mark-row{position:absolute;top:22px;left:clamp(20px,3.5vw,40px);display:flex;gap:22px;z-index:3}
+.mark{font-family:'Cinzel',serif;font-weight:700;font-size:13px;letter-spacing:.38em;color:#1a1a1a}
+.mark-row .sep{width:1px;background:rgba(0,0,0,.25)}
+
+.title-block{position:absolute;top:9%;left:clamp(20px,3.5vw,40px);z-index:3;max-width:52vw}
+.main-title{font-family:'Pirata One',serif;font-weight:400;
+  font-size:clamp(64px,10.5vw,148px);line-height:.95;letter-spacing:.02em;
+  color:#d9d9d9;
+  text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000,
+             0 0 3px #000,0 4px 0 #000,0 9px 14px rgba(0,0,0,.45);
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .main-title{
+    background:linear-gradient(180deg,#C0C0C0 0%,#FFFFFF 58%,#d4d4d4 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+}
+.subtitle-row{display:flex;align-items:center;gap:14px;margin-top:20px}
+.subtitle-row .line{height:1px;flex:1;min-width:26px;background:linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.25))}
+.subtitle-row .line.r{background:linear-gradient(90deg,rgba(0,0,0,.25),rgba(0,0,0,.65))}
+.subtitle{font-family:'Cinzel',serif;font-weight:600;color:var(--gold);
+  font-size:clamp(12px,1.5vw,18px);letter-spacing:.34em;white-space:nowrap}
+.diamond{width:8px;height:8px;background:var(--gold);transform:rotate(45deg);flex:none}
+
+.credits{position:absolute;left:clamp(20px,3.5vw,40px);top:45%;z-index:3}
+.credits small{display:block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.42em;color:#8f8f8f}
+.credits strong{display:block;font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(18px,2.4vw,30px);letter-spacing:.3em;color:#1c1c1c;margin-top:6px}
+
+/* photo slot — right zone */
+.photo-slot{position:absolute;right:clamp(16px,4vw,64px);bottom:calc(var(--bar-h) + 10px);
+  width:min(34vw,380px);height:min(56vh,560px);z-index:2}
+.silhouette{position:relative;width:100%;height:100%}
+.silhouette::before{content:"";position:absolute;top:2%;left:50%;transform:translateX(-50%);
+  width:34%;aspect-ratio:1;border-radius:50%;
+  background:linear-gradient(180deg,#c6d3de,#9db1c2);opacity:.9}
+.silhouette::after{content:"";position:absolute;top:31%;left:50%;transform:translateX(-50%);
+  width:76%;height:70%;border-radius:48% 48% 0 0 / 42% 42% 0 0;
+  background:linear-gradient(180deg,#a9bfd0,#7f9ab1);opacity:.85}
+.photo-slot .reflection{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);
+  width:66%;height:20px;border-radius:50%;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(0,136,255,.30),rgba(0,255,255,.10) 60%,transparent 78%);
+  filter:blur(2px)}
+
+/* game settings — top right */
+.settings-btn{position:absolute;top:20px;right:clamp(16px,3vw,36px);z-index:4;
+  display:flex;align-items:center;gap:9px;
+  font-size:12px;font-weight:600;letter-spacing:.2em;color:#4a4a4a;text-transform:uppercase}
+.settings-icon{width:19px;height:19px;border-radius:4px;background:#a7a7a7;flex:none;
+  display:inline-flex;align-items:center;justify-content:center}
+.settings-icon svg{width:13px;height:13px;fill:#fff}
+.settings-btn:hover .settings-icon{background:var(--blue)}
+.settings-btn:hover{color:#0b3a5c}
+
+/* bottom bar + menu */
+.menu-bar{position:absolute;left:0;right:0;bottom:0;height:var(--bar-h);z-index:3;
+  background:linear-gradient(90deg,rgba(255,255,255,.88) 0%,rgba(214,240,255,.72) 100%);
+  -webkit-backdrop-filter:blur(8px) saturate(1.2);backdrop-filter:blur(8px) saturate(1.2);
+  border-top:1px solid rgba(0,136,255,.28)}
+.menu{position:absolute;left:clamp(24px,5vw,64px);top:50%;transform:translateY(-50%);
+  list-style:none;margin:0;padding:0}
+.menu-item{position:relative;display:block;padding:9px 18px 9px 44px;
+  font-size:clamp(17px,2.1vw,26px);font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--grey);transition:color .15s ease;white-space:nowrap}
+.menu-item.is-active{color:#fff;font-weight:700;
+  text-shadow:0 0 5px rgba(0,0,0,.55),0 2px 3px rgba(0,0,0,.5)}
+#menu-cursor{position:absolute;left:6px;top:0;width:16px;height:16px;
+  background:var(--orange);box-shadow:0 2px 6px rgba(0,0,0,.28);z-index:2;
+  transition:top .18s ease;pointer-events:none}
+#menu-cursor::after{content:"";position:absolute;inset:0;margin:auto;
+  width:5px;height:5px;border-radius:50%;background:#fff}
+.bar-hint{position:absolute;right:clamp(16px,3vw,36px);top:50%;transform:translateY(-50%);
+  font-size:11px;letter-spacing:.22em;color:rgba(0,0,0,.42);text-transform:uppercase}
+.bar-hint b{display:inline-flex;align-items:center;justify-content:center;
+  width:17px;height:17px;border:1px solid rgba(0,0,0,.4);border-radius:3px;margin-right:7px;font-size:11px}
+
+/* ---------- content screens (stubs) ---------- */
+.content-inner{position:absolute;left:clamp(28px,7vw,96px);top:50%;transform:translateY(-50%);
+  max-width:680px;z-index:3}
+.kicker{font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:.42em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:18px}
+.screen-heading{font-family:'Pirata One',serif;font-weight:400;
+  font-size:clamp(46px,7vw,88px);line-height:.95;color:#d9d9d9;
+  text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000,0 0 3px #000,0 4px 0 #000,0 8px 12px rgba(0,0,0,.4)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .screen-heading{background:linear-gradient(180deg,#C0C0C0 0%,#FFFFFF 58%,#d4d4d4 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+}
+.screen-body{margin-top:22px;font-size:16px;line-height:1.75;color:#3c3c3c;max-width:54ch}
+.screen-body em{font-style:normal;color:#0b3a5c;font-weight:600}
+.back-btn{margin-top:38px;display:inline-flex;align-items:center;gap:10px;
+  padding:13px 28px;font-size:13px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;
+  color:#0b3a5c;border:1px solid rgba(0,136,255,.55);border-radius:3px;
+  background:rgba(255,255,255,.55);transition:background .15s ease,color .15s ease}
+.back-btn:hover,.back-btn:focus-visible{background:var(--blue);color:#fff}
+.back-btn .dot{width:9px;height:9px;background:var(--orange);transform:rotate(45deg);flex:none}
+
+/* ---------- settings modal ---------- */
+.modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;
+  background:rgba(15,35,50,.42);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.modal-panel{width:min(460px,90vw);background:#f7fbff;border:1px solid var(--blue);
+  border-radius:4px;box-shadow:0 24px 60px rgba(0,40,80,.35);padding:34px 36px 30px}
+.modal-panel h2{font-family:'Pirata One',serif;font-weight:400;font-size:30px;color:#111;
+  letter-spacing:.04em;margin-bottom:16px}
+.modal-panel p{font-size:14px;line-height:1.7;color:#444;margin-bottom:10px}
+.modal-panel .back-btn{margin-top:22px}
+
+@media (prefers-reduced-motion: reduce){
+  .screen:not([hidden]){animation:none}
+  #menu-cursor{transition:none}
+  .menu-item{transition:none}
+}
+
+@media (max-width:760px){
+  .title-block{max-width:78vw}
+  .photo-slot{opacity:.3;transform:scale(.85);transform-origin:bottom right}
+  .ghost-heart{display:none}
+  .bar-hint{display:none}
+  .content-inner{left:24px;right:24px;max-width:none}
+  .menu-item{padding-left:40px}
+  #menu-cursor{left:4px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= TITLE SCREEN ================= -->
+<div id="screen-title" class="screen" role="group" aria-label="Title screen">
+  <div class="water" aria-hidden="true"></div>
+  <span class="ghost-q" aria-hidden="true">Q</span>
+  <svg class="ghost-heart" viewBox="0 0 100 88" aria-hidden="true">
+    <path d="M50 84 C12 54 0 36 0 22 A21 21 0 0 1 34 10 A21 21 0 0 1 50 26 A21 21 0 0 1 66 10 A21 21 0 0 1 100 22 C100 36 88 54 50 84 Z"/>
+  </svg>
+
+  <div class="mark-row" aria-label="375ai and Quez">
+    <span class="mark">375AI</span><span class="sep" aria-hidden="true"></span><span class="mark">QUEZ</span>
+  </div>
+
+  <header class="title-block">
+    <h1 class="main-title">QUEZ</h1>
+    <div class="subtitle-row" role="doc-subtitle">
+      <span class="line" aria-hidden="true"></span><span class="diamond" aria-hidden="true"></span>
+      <span class="subtitle">AI-NATIVE GENERALIST</span>
+      <span class="diamond" aria-hidden="true"></span><span class="line r" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <p class="credits"><small>DEVELOPED BY</small><strong>QUEZ</strong></p>
+
+  <!-- QUEZ PHOTO SLOT: replace with /photo.png (right zone, ~50-60% width) -->
+  <figure class="photo-slot" aria-label="Quez photo placeholder">
+    <div class="silhouette" aria-hidden="true"></div>
+    <div class="reflection" aria-hidden="true"></div>
+  </figure>
+
+  <button type="button" id="btn-settings" class="settings-btn" aria-haspopup="dialog" aria-controls="settings-modal" aria-expanded="false">
+    <span class="settings-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M12 8.6A3.4 3.4 0 1 0 12 15.4 3.4 3.4 0 0 0 12 8.6Zm9.2 5.9-1.9 1.1-.3 2.2a.9.9 0 0 1-.7.7l-2.2.3-1.1 1.9a.9.9 0 0 1-1 .4l-2.1-.7-2.1.7a.9.9 0 0 1-1-.4l-1.1-1.9-2.2-.3a.9.9 0 0 1-.7-.7l-.3-2.2L1.8 14.5a.9.9 0 0 1-.4-1l.7-2.1-.7-2.1a.9.9 0 0 1 .4-1l1.9-1.1.3-2.2a.9.9 0 0 1 .7-.7l2.2-.3L8 2.1a.9.9 0 0 1 1-.4l2.1.7 2.1-.7a.9.9 0 0 1 1 .4l1.1 1.9 2.2.3a.9.9 0 0 1 .7.7l.3 2.2 1.9 1.1a.9.9 0 0 1 .4 1l-.7 2.1.7 2.1a.9.9 0 0 1-.4 1Z"/></svg>
+    </span>GAME SETTINGS
+  </button>
+
+  <nav class="menu-bar" aria-label="Main menu">
+    <ul id="title-menu" class="menu" role="menu" aria-label="Portfolio sections">
+      <li id="menu-cursor" aria-hidden="true"></li>
+      <li role="none"><button type="button" role="menuitem" class="menu-item is-active" id="menu-about" data-target="screen-about" tabindex="0" aria-current="true">ABOUT</button></li>
+      <li role="none"><button type="button" role="menuitem" class="menu-item" id="menu-work" data-target="screen-work" tabindex="-1" aria-current="false">WORK HISTORY</button></li>
+      <li role="none"><button type="button" role="menuitem" class="menu-item" id="menu-contact" data-target="screen-contact" tabindex="-1" aria-current="false">CONTACT INFO</button></li>
+    </ul>
+    <span class="bar-hint" aria-hidden="true"><b>1</b>ENTER · <b>ESC</b>BACK</span>
+  </nav>
+</div>
+
+<!-- ================= CONTENT SCREENS (stubs — filled by later tasks) ================= -->
+<section id="screen-about" class="screen" role="region" aria-labelledby="about-title" hidden>
+  <div class="water" aria-hidden="true"></div>
+  <div class="content-inner">
+    <p class="kicker">PROFILE / 01</p>
+    <h2 id="about-title" class="screen-heading" tabindex="-1" data-focus>ABOUT</h2>
+    <p class="screen-body">Identity copy and the six headline numbers land here in a later build.</p>
+    <button type="button" class="back-btn" data-back><span class="dot" aria-hidden="true"></span>BACK</button>
+  </div>
+</section>
+
+<section id="screen-work" class="screen" role="region" aria-labelledby="work-title" hidden>
+  <div class="water" aria-hidden="true"></div>
+  <div class="content-inner">
+    <p class="kicker">CASE STUDIES / 02</p>
+    <h2 id="work-title" class="screen-heading" tabindex="-1" data-focus>WORK HISTORY</h2>
+    <p class="screen-body">Six case studies and the earlier track record land here in a later build.</p>
+    <button type="button" class="back-btn" data-back><span class="dot" aria-hidden="true"></span>BACK</button>
+  </div>
+</section>
+
+<section id="screen-contact" class="screen" role="region" aria-labelledby="contact-title" hidden>
+  <div class="water" aria-hidden="true"></div>
+  <div class="content-inner">
+    <p class="kicker">REACH OUT / 03</p>
+    <h2 id="contact-title" class="screen-heading" tabindex="-1" data-focus>CONTACT INFO</h2>
+    <p class="screen-body">The forward-deployed ask and full contact details land here in a later build.</p>
+    <button type="button" class="back-btn" data-back><span class="dot" aria-hidden="true"></span>BACK</button>
+  </div>
+</section>
+
+<!-- ================= SETTINGS MODAL ================= -->
+<div id="settings-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="settings-title" hidden>
+  <div class="modal-panel">
+    <h2 id="settings-title">GAME SETTINGS</h2>
+    <p><strong>QUEZ</strong> — portfolio remade as a Kingdom Hearts II-style title screen.</p>
+    <p>Vanilla HTML · CSS · JS. No framework, no build step.</p>
+    <p>ARROWS + ENTER to navigate · ESC to go back.</p>
+    <button type="button" class="back-btn" id="btn-settings-close"><span class="dot" aria-hidden="true"></span>CLOSE</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var title   = document.getElementById('screen-title');
+  var menu    = document.getElementById('title-menu');
+  var items   = Array.prototype.slice.call(menu.querySelectorAll('.menu-item'));
+  var cursor  = document.getElementById('menu-cursor');
+  var screens = {
+    'screen-about':   document.getElementById('screen-about'),
+    'screen-work':    document.getElementById('screen-work'),
+    'screen-contact': document.getElementById('screen-contact')
+  };
+  var modal        = document.getElementById('settings-modal');
+  var settingsBtn  = document.getElementById('btn-settings');
+  var settingsClose= document.getElementById('btn-settings-close');
+  var activeIndex  = 0;
+
+  function moveCursor(i, doFocus){
+    activeIndex = (i + items.length) % items.length;
+    items.forEach(function(it, j){
+      var on = (j === activeIndex);
+      it.classList.toggle('is-active', on);
+      it.setAttribute('tabindex', on ? '0' : '-1');
+      it.setAttribute('aria-current', on ? 'true' : 'false');
+    });
+    var it = items[activeIndex];
+    cursor.style.top = (it.offsetTop + it.offsetHeight / 2 - cursor.offsetHeight / 2) + 'px';
+    if (doFocus) it.focus();
+  }
+
+  function openScreen(id){
+    title.hidden = true;
+    title.setAttribute('aria-hidden', 'true');
+    var scr = screens[id];
+    scr.hidden = false;
+    scr.removeAttribute('aria-hidden');
+    var head = scr.querySelector('[data-focus]');
+    if (head) head.focus();
+  }
+
+  function backToTitle(){
+    Object.keys(screens).forEach(function(k){ screens[k].hidden = true; });
+    title.hidden = false;
+    title.removeAttribute('aria-hidden');
+    items[activeIndex].focus();
+  }
+
+  function openModal(){
+    modal.hidden = false;
+    settingsBtn.setAttribute('aria-expanded', 'true');
+    settingsClose.focus();
+  }
+  function closeModal(){
+    modal.hidden = true;
+    settingsBtn.setAttribute('aria-expanded', 'false');
+    settingsBtn.focus();
+  }
+
+  /* keyboard: game-style menu */
+  menu.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowDown'){ e.preventDefault(); moveCursor(activeIndex + 1, true); }
+    else if (e.key === 'ArrowUp'){ e.preventDefault(); moveCursor(activeIndex - 1, true); }
+    else if (e.key === 'Home'){ e.preventDefault(); moveCursor(0, true); }
+    else if (e.key === 'End'){ e.preventDefault(); moveCursor(items.length - 1, true); }
+    else if (e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      openScreen(items[activeIndex].dataset.target);
+    }
+  });
+
+  /* mouse: hover moves the cursor, click selects */
+  items.forEach(function(it, j){
+    it.addEventListener('pointerenter', function(){ moveCursor(j, false); });
+    it.addEventListener('click', function(){
+      moveCursor(j, false);
+      openScreen(it.dataset.target);
+    });
+    it.addEventListener('focus', function(){ moveCursor(j, false); });
+  });
+
+  /* BACK buttons return to the title screen */
+  Array.prototype.slice.call(document.querySelectorAll('[data-back]')).forEach(function(b){
+    b.addEventListener('click', backToTitle);
+  });
+
+  /* ESC: close modal first, else go back to title */
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){
+      if (!modal.hidden){ closeModal(); return; }
+      if (title.hidden) backToTitle();
+    }
+  });
+
+  settingsBtn.addEventListener('click', openModal);
+  settingsClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+
+  moveCursor(0, false);
+})();
+</script>
+</body>
+</html>
