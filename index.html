@@ -147,6 +147,32 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .back-btn:hover,.back-btn:focus-visible{background:var(--blue);color:#fff}
 .back-btn .dot{width:9px;height:9px;background:var(--orange);transform:rotate(45deg);flex:none}
 
+/* ---------- about screen ---------- */
+#screen-about{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.about-scroll{position:relative;z-index:3;min-height:100%;display:flex;align-items:center;padding:clamp(36px,6vh,72px) 0}
+.about-col{width:min(780px,88vw);margin-left:clamp(28px,7vw,96px)}
+.about-name{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(15px,1.9vw,22px);letter-spacing:.28em;color:#1c1c1c;margin-top:26px}
+.about-col .subtitle-row{margin-top:14px;max-width:540px}
+.about-prose{margin-top:18px}
+.stats-block{margin-top:34px;padding-top:26px;border-top:1px solid rgba(0,136,255,.35)}
+.stats-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.stats-head .kicker{margin-bottom:0}
+.live-chip{display:inline-flex;align-items:center;gap:7px;font-family:'Cinzel',serif;font-size:10px;font-weight:600;letter-spacing:.3em;color:#0b6e8c;border:1px solid rgba(0,136,255,.5);border-radius:999px;padding:4px 11px;background:rgba(214,240,255,.55);text-transform:uppercase}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 6px var(--cyan);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+.stat-tile{position:relative;padding:18px 20px 15px;background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(214,240,255,.6));border:1px solid rgba(0,136,255,.35);border-radius:4px;box-shadow:0 6px 18px rgba(0,40,80,.10)}
+.stat-num{display:block;font-family:'Pirata One',serif;font-weight:400;font-size:clamp(38px,4.6vw,58px);line-height:1;color:#d9d9d9;
+  text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,0 2px 0 #000,0 5px 8px rgba(0,0,0,.35)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .stat-num{background:linear-gradient(180deg,#C0C0C0 0%,#FFFFFF 58%,#d4d4d4 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+}
+.stat-unit{display:block;margin-top:9px;font-family:'Cinzel',serif;font-size:10.5px;font-weight:600;letter-spacing:.24em;color:#0b3a5c;text-transform:uppercase}
+.stat-src{position:absolute;top:10px;right:12px;font-family:'Cinzel',serif;font-size:8.5px;font-weight:600;letter-spacing:.24em;padding:2px 6px;border-radius:2px;text-transform:uppercase}
+.stat-src.is-live{color:#0b6e8c;background:rgba(0,255,255,.18);border:1px solid rgba(0,136,255,.4)}
+.stat-src.is-manual{color:#8a8a8a;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.12)}
+.stats-updated{margin-top:12px;font-size:11px;letter-spacing:.18em;color:rgba(0,0,0,.45);text-transform:uppercase}
+
 /* ---------- settings modal ---------- */
 .modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;
   background:rgba(15,35,50,.42);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
@@ -161,6 +187,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   .screen:not([hidden]){animation:none}
   #menu-cursor{transition:none}
   .menu-item{transition:none}
+  .live-dot{animation:none}
 }
 
 @media (max-width:760px){
@@ -171,6 +198,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   .content-inner{left:24px;right:24px;max-width:none}
   .menu-item{padding-left:40px}
   #menu-cursor{left:4px}
+  .about-col{margin-left:24px;width:calc(100vw - 48px)}
+  .stats-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -225,11 +254,64 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 <!-- ================= CONTENT SCREENS (stubs — filled by later tasks) ================= -->
 <section id="screen-about" class="screen" role="region" aria-labelledby="about-title" hidden>
   <div class="water" aria-hidden="true"></div>
-  <div class="content-inner">
+  <div class="about-scroll">
+    <div class="about-col">
     <p class="kicker">PROFILE / 01</p>
     <h2 id="about-title" class="screen-heading" tabindex="-1" data-focus>ABOUT</h2>
-    <p class="screen-body">Identity copy and the six headline numbers land here in a later build.</p>
+
+    <p class="about-name">CHRISTIAN “QUEZ” VAZQUEZ</p>
+    <div class="subtitle-row" role="doc-subtitle">
+      <span class="line" aria-hidden="true"></span><span class="diamond" aria-hidden="true"></span>
+      <span class="subtitle">AI-NATIVE GENERALIST</span>
+      <span class="diamond" aria-hidden="true"></span><span class="line r" aria-hidden="true"></span>
+    </div>
+
+    <p class="screen-body about-prose">AI-native generalist with a <em>software engineering foundation</em> and range across sales, growth, and creative — an excellent communicator, extremely personable, and technically deep enough to go beyond the surface.</p>
+    <p class="screen-body about-prose">From a <em>Fortune 20 company</em> to a <em>started-in-a-garage startup</em>: I shine in client-facing roles, build relationships I can lean on wherever I go, and actively seek out challenges that force me to improve.</p>
+    <p class="screen-body about-prose">I build the full loop — <em>analytics that surface trends</em>, honest evaluation of outcomes, and <em>automations that act on those insights</em> to drive the result.</p>
+
+    <div class="stats-block">
+      <div class="stats-head">
+        <p class="kicker">HEADLINE NUMBERS</p>
+        <span class="live-chip" id="live-chip" hidden><span class="live-dot" aria-hidden="true"></span>LIVE</span>
+      </div>
+      <div class="stats-grid" id="stats-grid" role="list" aria-label="Headline numbers, live where available">
+        <div class="stat-tile" role="listitem" data-tile="downloads" aria-label="250,000+ app downloads">
+          <span class="stat-num" data-count aria-hidden="true">0</span>
+          <span class="stat-unit">App Downloads</span>
+          <span class="stat-src"></span>
+        </div>
+        <div class="stat-tile" role="listitem" data-tile="discord" aria-label="25,000+ Discord members">
+          <span class="stat-num" data-count aria-hidden="true">0</span>
+          <span class="stat-unit">Discord Members</span>
+          <span class="stat-src"></span>
+        </div>
+        <div class="stat-tile" role="listitem" data-tile="support" aria-label="1,000+ support inquiries automated">
+          <span class="stat-num" data-count aria-hidden="true">0</span>
+          <span class="stat-unit">Support Inquiries Automated</span>
+          <span class="stat-src"></span>
+        </div>
+        <div class="stat-tile" role="listitem" data-tile="pipelines" aria-label="6+ AI pipelines in production">
+          <span class="stat-num" data-count aria-hidden="true">0</span>
+          <span class="stat-unit">AI Pipelines in Production</span>
+          <span class="stat-src"></span>
+        </div>
+        <div class="stat-tile" role="listitem" data-tile="sales" aria-label="$3.6M+ technical sales closed">
+          <span class="stat-num" data-count aria-hidden="true">0</span>
+          <span class="stat-unit">Technical Sales Closed</span>
+          <span class="stat-src"></span>
+        </div>
+        <div class="stat-tile" role="listitem" data-tile="radio" aria-label="500 average live radio listeners">
+          <span class="stat-num" data-count aria-hidden="true">0</span>
+          <span class="stat-unit">Avg Live Radio Listeners</span>
+          <span class="stat-src"></span>
+        </div>
+      </div>
+      <p class="stats-updated" id="stats-updated" hidden></p>
+    </div>
+
     <button type="button" class="back-btn" data-back><span class="dot" aria-hidden="true"></span>BACK</button>
+    </div>
   </div>
 </section>
 
@@ -362,6 +444,123 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
 
   moveCursor(0, false);
+})();
+</script>
+<script>
+/* ABOUT screen: headline count-up counters + stats.json live wiring */
+(function(){
+  'use strict';
+  var screen = document.getElementById('screen-about');
+  var grid   = document.getElementById('stats-grid');
+  if (!screen || !grid) return;
+
+  var REDUCED = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var DURATION = 1200; /* ms, ease-out */
+  var EASE = function(t){ return 1 - Math.pow(1 - t, 3); };
+
+  function fmtInt(v){ return Math.round(v).toLocaleString('en-US'); }
+  function fmtK(v){ return Math.round(v / 1000) + 'K'; }
+  function fmtMoney(v){ return '$' + v.toFixed(1) + 'M'; }
+
+  var TILES = [
+    {key:'downloads', value:250000, fmt:fmtK,    plus:'+'},
+    {key:'discord',   value:25000,  fmt:fmtInt,  plus:'+', live:['pipelines','analytics','members_total']},
+    {key:'support',   value:1000,   fmt:fmtInt,  plus:'+', live:['pipelines','support','inquiries_resolved']},
+    {key:'pipelines', value:6,      fmt:fmtInt,  plus:'+', liveCount:true},
+    {key:'sales',     value:3.6,    fmt:fmtMoney,plus:'+'},
+    {key:'radio',     value:500,    fmt:fmtInt}
+  ];
+
+  var state = {};
+  TILES.forEach(function(t){
+    var tile = grid.querySelector('[data-tile="' + t.key + '"]');
+    state[t.key] = {tile: tile, num: tile ? tile.querySelector('[data-count]') : null, value: t.value};
+  });
+
+  function render(key, v){
+    var s = state[key];
+    if (!s || !s.num) return;
+    var t = null;
+    for (var i = 0; i < TILES.length; i++){ if (TILES[i].key === key){ t = TILES[i]; break; } }
+    s.num.textContent = t.fmt(v) + (t.plus || '');
+  }
+
+  function runCounters(){
+    if (REDUCED){ TILES.forEach(function(t){ render(t.key, state[t.key].value); }); return; }
+    TILES.forEach(function(t){
+      var start = null, target = state[t.key].value;
+      /* rAF timestamps are absolute (performance timeline) — let the first rAF
+         callback establish `start`; invoking with a literal 0 would make p>=1
+         whenever the animation starts more than DURATION ms after page load */
+      function frame(ts){
+        if (start === null) start = ts;
+        var p = Math.min((ts - start) / DURATION, 1);
+        render(t.key, EASE(p) * target);
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    });
+  }
+
+  /* re-animate every time the ABOUT screen becomes visible (threshold 0: fire on
+     first pixel — the stats grid may start below the fold on short viewports) */
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting) runCounters(); });
+  }, {threshold: 0}).observe(grid);
+
+  function getPath(obj, path){
+    for (var i = 0; i < path.length; i++){
+      if (obj == null || typeof obj !== 'object') return null;
+      obj = obj[path[i]];
+    }
+    return obj;
+  }
+
+  function markSource(key, live){
+    var s = state[key];
+    if (!s || !s.tile) return;
+    var tag = s.tile.querySelector('.stat-src');
+    if (!tag) return;
+    tag.textContent = live ? 'LIVE' : 'MANUAL';
+    tag.className = 'stat-src ' + (live ? 'is-live' : 'is-manual');
+  }
+
+  function applyStats(data){
+    TILES.forEach(function(t){
+      var liveVal = null;
+      if (t.live) liveVal = getPath(data, t.live);
+      else if (t.liveCount && data.pipelines) liveVal = Object.keys(data.pipelines).length;
+      /* support inquiries are manually entered in stats.json — value is real but not pipeline-derived */
+      var manual = (t.live && t.live[1] === 'support' && data.pipelines && data.pipelines.support && data.pipelines.support.source === 'manual');
+      var valid = (typeof liveVal === 'number' && isFinite(liveVal) && liveVal > 0);
+      if (valid) state[t.key].value = liveVal;
+      markSource(t.key, valid && !manual);
+    });
+  }
+
+  function showLive(generatedAt){
+    var chip = document.getElementById('live-chip');
+    if (chip) chip.hidden = false;
+    var updated = document.getElementById('stats-updated');
+    if (updated && generatedAt){
+      var d = new Date(generatedAt);
+      if (!isNaN(d.getTime())){
+        updated.textContent = 'UPDATED ' + d.toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
+        updated.hidden = false;
+      }
+    }
+  }
+
+  fetch('stats.json', {cache: 'no-store'})
+    .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function(data){
+      applyStats(data);
+      showLive(data.generated_at);
+      if (!screen.hidden) runCounters(); /* already open — animate to live values */
+    })
+    .catch(function(){
+      TILES.forEach(function(t){ markSource(t.key, false); });
+    });
 })();
 </script>
 </body>
