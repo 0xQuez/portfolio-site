@@ -90,18 +90,13 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .menu-item{position:relative;display:block;padding:9px 18px 9px 44px;
   font-size:clamp(17px,2.1vw,26px);font-weight:500;letter-spacing:.2em;text-transform:uppercase;
   color:var(--grey);transition:color .15s ease;white-space:nowrap}
-.menu-item.is-active{color:var(--red);font-weight:700;
-  text-shadow:0 1px 0 rgba(255,255,255,.6),0 0 5px rgba(255,255,255,.4)}
+.menu-item.is-active{color:var(--blue);font-weight:700;
+  text-shadow:0 1px 0 rgba(255,255,255,.6),0 0 5px rgba(255,255,255,.4)} /* v6.1: active menu text is RX-78 blue (red read like an error); red stays everywhere else */
 #menu-cursor{position:absolute;left:6px;top:0;width:16px;height:16px;
-  background:var(--red);box-shadow:0 2px 6px rgba(0,0,0,.28);z-index:2;
+  background:#fff867;box-shadow:0 2px 6px rgba(0,0,0,.28);z-index:2; /* v6.1: RX-78 yellow cursor */
   transition:top .18s ease;pointer-events:none}
 #menu-cursor::after{content:"";position:absolute;inset:0;margin:auto;
   width:5px;height:5px;border-radius:50%;background:#fff}
-.bar-hint{position:absolute;right:clamp(16px,3vw,36px);top:50%;transform:translateY(-50%);
-  font-size:11px;letter-spacing:.22em;color:rgba(0,0,0,.42);text-transform:uppercase}
-.bar-hint b{display:inline-flex;align-items:center;justify-content:center;
-  width:17px;height:17px;border:1px solid rgba(0,0,0,.4);border-radius:3px;margin-right:7px;font-size:11px}
-
 /* ---------- content screens (stubs) ---------- */
 .content-inner{position:absolute;left:clamp(28px,7vw,96px);top:50%;transform:translateY(-50%);
   max-width:680px;z-index:3}
@@ -116,6 +111,17 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   color:#1d3a75;border:1px solid rgba(44,82,179,.55);border-radius:var(--radius);
   background:rgba(255,255,255,.55);transition:background .15s ease,color .15s ease}
 .back-btn:hover,.back-btn:focus-visible{background:var(--blue);color:#fff}
+
+/* ---------- contact screen ---------- */
+.contact-list{list-style:none;margin:26px 0 0;padding:0;max-width:440px}
+.contact-row{display:flex;align-items:baseline;gap:18px;padding:13px 2px;
+  border-bottom:1px solid rgba(44,82,179,.18)}
+.contact-row:first-child{border-top:1px solid rgba(44,82,179,.18)}
+.contact-key{flex:none;width:110px;font-size:11px;font-weight:600;letter-spacing:.24em;
+  color:var(--grey);text-transform:uppercase}
+.contact-link{color:var(--blue);font-size:16px;font-weight:600;text-decoration:underline;
+  text-decoration-color:rgba(44,82,179,.4);text-underline-offset:3px}
+.contact-link:hover{color:var(--blue-deep);text-decoration-color:var(--blue-deep)}
 
 /* ---------- about screen ---------- */
 #screen-about{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
@@ -250,7 +256,6 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 @media (max-width:760px){
   .title-block{max-width:78vw}
   .photo{object-position:50% 55%}
-  .bar-hint{display:none}
   .content-inner{left:24px;right:24px;max-width:none}
   .menu-item{padding-left:40px}
   #menu-cursor{left:4px}
@@ -295,7 +300,6 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
       <li role="none"><button type="button" role="menuitem" class="menu-item" id="menu-work" data-target="screen-work" tabindex="-1" aria-current="false">WORK HISTORY</button></li>
       <li role="none"><button type="button" role="menuitem" class="menu-item" id="menu-contact" data-target="screen-contact" tabindex="-1" aria-current="false">CONTACT INFO</button></li>
     </ul>
-    <span class="bar-hint" aria-hidden="true"><b>1</b>ENTER · <b>ESC</b>BACK</span>
   </nav>
 </div>
 
@@ -495,7 +499,13 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
                   <div class="ach-head">
                     <h4 class="ach-title">Client POCs &amp; MVPs</h4>
                   </div>
-                  <p class="ach-copy">Built and delivered client-specific POCs and MVPs. Spearheaded installation and configuration of OpenShift clusters to support Cloud Pak for Integration deployments. Led the Global IBM Gaming &amp; Esports Initiative, presenting solutions across the IBM portfolio to game publishers, studios, and esports organizations.</p>
+                  <p class="ach-copy">Built and delivered client-specific POCs and MVPs. Spearheaded installation and configuration of OpenShift clusters to support Cloud Pak for Integration deployments.</p>
+                </li>
+                <li class="journal-achievement">
+                  <div class="ach-head">
+                    <h4 class="ach-title">Gaming &amp; Esports Initiative</h4>
+                  </div>
+                  <p class="ach-copy">Led the Global IBM Gaming &amp; Esports Initiative, presenting solutions across the IBM portfolio to game publishers, studios, and esports organizations.</p>
                 </li>
               </ul>
             </div>
@@ -512,7 +522,21 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   <div class="water" aria-hidden="true"></div>
   <div class="content-inner">
     <h2 id="contact-title" class="screen-heading" tabindex="-1" data-focus>CONTACT INFO</h2>
-    <p class="screen-body">The forward-deployed ask and full contact details land here in a later build.</p>
+    <p class="screen-body">Open to Forward Deployed Engineer roles. Pick a channel and say hi.</p>
+    <ul class="contact-list">
+      <li class="contact-row">
+        <span class="contact-key">EMAIL</span>
+        <a class="contact-link" href="mailto:cquez221@gmail.com">cquez221@gmail.com</a>
+      </li>
+      <li class="contact-row">
+        <span class="contact-key">X / TWITTER</span>
+        <a class="contact-link" href="https://x.com/0xQuez">@0xQuez</a>
+      </li>
+      <li class="contact-row">
+        <span class="contact-key">LINKEDIN</span>
+        <a class="contact-link" href="https://www.linkedin.com/in/christianqvazquez">LinkedIn</a>
+      </li>
+    </ul>
     <button type="button" class="back-btn" data-back>BACK</button>
   </div>
 </section>
@@ -520,10 +544,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 <!-- ================= SETTINGS MODAL ================= -->
 <div id="settings-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="settings-title" hidden>
   <div class="modal-panel">
-    <h2 id="settings-title">GAME SETTINGS</h2>
-    <p><strong>QUEZ</strong>: portfolio remade as a Kingdom Hearts II-style title screen.</p>
-    <p>Vanilla HTML, CSS, and JS. No framework, no build step.</p>
-    <p>ARROWS + ENTER to navigate · ESC to go back.</p>
+    <h2 id="settings-title">Easter Egg found!</h2>
+    <p>Site inspired by my love for video games, retro anime, and cars</p>
     <button type="button" class="back-btn" id="btn-settings-close">CLOSE</button>
   </div>
 </div>
