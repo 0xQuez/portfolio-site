@@ -120,34 +120,33 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
 /* ---------- about screen ---------- */
 #screen-about{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
-.about-scroll{position:relative;z-index:3;min-height:100%;display:flex;align-items:center;padding:clamp(36px,6vh,72px) 0}
+.about-scroll{position:relative;z-index:3;min-height:100%;display:flex;align-items:flex-start;padding:clamp(36px,6vh,72px) 0}
 .about-col{width:min(940px,92vw);margin-left:clamp(28px,7vw,96px)}
 .about-name{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(15px,1.9vw,22px);letter-spacing:.28em;color:#1c1c1c;margin-top:26px}
-.about-prose{margin-top:18px}
+/* PORTRAIT SLOT: swap the img src for a proper headshot later (v5 item 4). photo.webp for now. */
+.about-photo{width:min(300px,68vw);margin-top:clamp(20px,3vh,30px);border-radius:var(--radius);
+  overflow:hidden;border:1px solid rgba(0,136,255,.4);box-shadow:0 14px 34px rgba(0,40,80,.16);background:#fff}
+.about-photo img{display:block;width:100%;height:auto;
+  filter:saturate(.92) contrast(1.05) brightness(.97)}
+.about-prose{margin-top:clamp(32px,4.5vh,46px)}
+.about-prose + .about-prose{margin-top:18px}
 .stat-num{display:block;font-family:'Cinzel',serif;font-weight:700;font-size:clamp(36px,4.2vw,52px);line-height:1;color:var(--ink)}
 .stat-unit{display:block;margin-top:9px;font-family:'Cinzel',serif;font-size:10.5px;font-weight:600;letter-spacing:.24em;color:#0b3a5c;text-transform:uppercase}
 
-/* FIFA-style stats sheet: player card (left) + hex radar (right) */
+/* FIFA-style stats sheet: rating card (left) + hex radar (right) */
 .stats-sheet{display:grid;grid-template-columns:minmax(230px,300px) minmax(300px,1fr);
   gap:clamp(26px,3.4vw,48px);align-items:center;margin-top:clamp(30px,4.5vh,44px)}
-.player-card{position:relative;width:100%;max-width:300px;border-radius:var(--radius);
+.player-card{position:relative;width:100%;max-width:300px;min-height:300px;border-radius:var(--radius);
   background:linear-gradient(160deg,#ffffff 0%,#e0f3ff 55%,#c8ecff 100%);
-  border:1px solid rgba(0,136,255,.4);box-shadow:0 14px 34px rgba(0,40,80,.16);overflow:hidden}
-.pc-photo{position:relative;aspect-ratio:4/5;width:100%}
-.pc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  filter:saturate(.92) contrast(1.05) brightness(.97);
-  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0%,#000 15%,#000 72%,rgba(0,0,0,0) 95%);
-  mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0%,#000 15%,#000 72%,rgba(0,0,0,0) 95%)}
-.pc-top{position:absolute;top:14px;left:16px;z-index:2}
+  border:1px solid rgba(0,136,255,.4);box-shadow:0 14px 34px rgba(0,40,80,.16);overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:30px 20px;text-align:center}
 .pc-tier{display:block;font-family:'Cinzel',serif;font-size:11px;font-weight:600;
   letter-spacing:.34em;color:#0b3a5c}
-.pc-rating{display:block;margin-top:2px;font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(52px,6vw,72px);line-height:.95;color:var(--gold);
+.pc-rating{display:block;font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(64px,7vw,84px);line-height:1;color:var(--gold);
   text-shadow:0 1px 0 rgba(255,255,255,.55)}
-.pc-banner{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:12px 0 11px;
-  background:rgba(17,17,17,.92);text-align:center;
-  font-family:'Cinzel',serif;font-weight:700;font-size:clamp(15px,1.8vw,20px);
-  letter-spacing:.34em;color:#fff}
+.pc-role{display:block;margin-top:4px;font-family:'Cinzel',serif;font-size:10.5px;
+  font-weight:600;letter-spacing:.3em;color:#0b3a5c}
 .radar-col{width:100%;max-width:430px}
 .hex-svg{display:block;width:100%;height:auto;overflow:visible}
 .hex-label{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -169,7 +168,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   background:linear-gradient(90deg,var(--gold),rgba(212,175,55,0))}
 .skills-title{font-family:'Cinzel',serif;font-weight:700;
   font-size:clamp(24px,3vw,36px);letter-spacing:.06em;color:var(--ink)}
-.skills-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);
+.skills-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,44px);
   margin-top:clamp(20px,3vh,28px)}
 .skill-group-title{font-family:'Cinzel',serif;font-size:11.5px;font-weight:700;
   letter-spacing:.3em;color:#0b3a5c;text-transform:uppercase;margin-bottom:12px}
@@ -258,6 +257,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   .menu-item{padding-left:40px}
   #menu-cursor{left:4px}
   .about-col{margin-left:24px;width:calc(100vw - 48px)}
+  .about-photo{margin-left:auto;margin-right:auto}
   .stats-sheet{grid-template-columns:1fr}
   .player-card{margin:0 auto}
   .radar-col{max-width:340px;margin:0 auto}
@@ -307,31 +307,27 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
 <!-- ================= CONTENT SCREENS (stubs — filled by later tasks) ================= -->
 <section id="screen-about" class="screen" role="region" aria-labelledby="about-title" hidden>
-  <div class="water" aria-hidden="true"></div>
   <div class="about-scroll">
     <div class="about-col">
     <h2 id="about-title" class="screen-heading" tabindex="-1" data-focus>ABOUT</h2>
 
     <p class="about-name">CHRISTIAN “QUEZ” VAZQUEZ</p>
 
-    <p class="screen-body about-prose">Forward Deployed Engineer: AI-native generalist with a <em>software engineering foundation</em> and range across sales, growth, and creative. An excellent communicator, extremely personable, and technically deep enough to go beyond the surface.</p>
-    <p class="screen-body about-prose">From a <em>Fortune 20 company</em> to a <em>started-in-a-garage startup</em>: I shine in client-facing roles, build relationships I can lean on wherever I go, and actively seek out challenges that force me to improve.</p>
-    <p class="screen-body about-prose">I own the full loop: <em>audit workflows, integrate with existing tools, run evals, and deploy into the business</em>.</p>
+    <!-- PORTRAIT SLOT: profile image leads the section, directly below the name (v5 item 4).
+         Swap the src for a proper headshot later; photo.webp stays for now. -->
+    <figure class="about-photo" aria-label="Portrait of Christian Vazquez">
+      <img src="/photo.webp" alt="Portrait of Christian Vazquez" width="1400" height="1750" decoding="async" draggable="false">
+    </figure>
 
     <div class="stats-sheet">
       <div class="player-card" id="player-card" role="img" aria-label="Quez player card: overall 92, position FDE">
-        <div class="pc-top">
-          <span class="pc-tier">FDE</span>
-          <span class="pc-rating" id="pc-rating" aria-hidden="true">92</span>
-        </div>
-        <div class="pc-photo">
-          <img src="/photo.webp" alt="" aria-hidden="true" width="1400" height="1750" decoding="async" draggable="false">
-        </div>
-        <div class="pc-banner">QUEZ</div>
+        <span class="pc-tier">FDE</span>
+        <span class="pc-rating" id="pc-rating" aria-hidden="true">92</span>
+        <span class="pc-role">FORWARD DEPLOYED ENGINEER</span>
       </div>
       <div class="radar-col">
         <div id="hex-radar"></div>
-        <p class="radar-name">QUEZ</p>
+        <p class="radar-name">CHRISTIAN VAZQUEZ</p>
         <p class="radar-meta">FORT LAUDERDALE, FL · ENGLISH/SPANISH</p>
         <p class="radar-trait">AI-NATIVE GENERALIST</p>
         <p class="radar-note">Willingness to quit: 0. I'm not a quitter.</p>
@@ -342,39 +338,41 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
       <h3 class="skills-title">TOOLS &amp; SKILLS</h3>
       <div class="skills-groups">
         <section class="skill-group">
-          <h4 class="skill-group-title">AI &amp; AUTOMATION</h4>
+          <h4 class="skill-group-title">PROFICIENCIES</h4>
           <ul class="skill-list">
-            <li>Claude</li>
-            <li>Hermes Agent</li>
-            <li>MCP integrations</li>
-            <li>LLM evals</li>
-            <li>Automation pipelines</li>
+            <li>Workflow Auditing</li>
+            <li>Evals</li>
+            <li>Deployment</li>
+            <li>Model Routing</li>
+            <li>Agent Fleet/Swarm Management</li>
+            <li>MCP + API Integrations</li>
             <li>Analytics</li>
+            <li>Tech Sales</li>
+            <li>Community Growth</li>
+            <li>Live Show + Video Production</li>
           </ul>
         </section>
         <section class="skill-group">
-          <h4 class="skill-group-title">PLATFORMS &amp; ENGINEERING</h4>
+          <h4 class="skill-group-title">PLATFORMS + HARNESSES</h4>
           <ul class="skill-list">
+            <li>Hermes Agent</li>
+            <li>Claude Code/Cowork</li>
             <li>Zendesk</li>
             <li>Discord</li>
-            <li>Supabase</li>
-            <li>Next.js</li>
-            <li>API integrations</li>
-            <li>Content engine</li>
-          </ul>
-        </section>
-        <section class="skill-group">
-          <h4 class="skill-group-title">GROWTH &amp; CREATIVE</h4>
-          <ul class="skill-list">
-            <li>Sales engineering</li>
-            <li>Community growth</li>
             <li>Descript</li>
+            <li>Jira/Asana/Trello</li>
+            <li>Notion</li>
             <li>Higgsfield</li>
             <li>HeyGen</li>
+            <li>Reve</li>
           </ul>
         </section>
       </div>
     </div>
+
+    <p class="screen-body about-prose">Forward Deployed Engineer: AI-native generalist with a <em>software engineering foundation</em> and range across sales, growth, and creative. An excellent communicator, extremely personable, and technically deep enough to go beyond the surface.</p>
+    <p class="screen-body about-prose">From a <em>Fortune 20 company</em> to a <em>started-in-a-garage startup</em>: I shine in client-facing roles, build relationships I can lean on wherever I go, and actively seek out challenges that force me to improve.</p>
+    <p class="screen-body about-prose">I own the full loop: <em>audit workflows, integrate with existing tools, run evals, and deploy into the business</em>.</p>
 
     <button type="button" class="back-btn" data-back>BACK</button>
     </div>
