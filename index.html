@@ -128,7 +128,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .about-scroll{position:relative;z-index:3;min-height:100%;display:flex;align-items:flex-start;padding:clamp(36px,6vh,72px) 0}
 .about-col{width:min(940px,92vw);margin-left:clamp(28px,7vw,96px)}
 .about-name{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(15px,1.9vw,22px);letter-spacing:.28em;color:#1c1c1c;margin-top:26px}
-/* PORTRAIT SLOT: swap the img src for a proper headshot later (v5 item 4). photo.webp for now. */
+/* location/bilingual subtitle line (v6.2): sits directly below the name */
+.about-meta{margin-top:8px;font-size:12px;letter-spacing:.14em;color:#5a5b6d;text-transform:uppercase}
+/* HEADSHOT (v6.2): tight head-and-shoulders portrait, headshot.webp, 680x780 */
 .about-photo{width:min(300px,68vw);margin-top:clamp(20px,3vh,30px);border-radius:var(--radius);
   overflow:hidden;border:1px solid rgba(44,82,179,.4);box-shadow:0 14px 34px rgba(44,82,179,.16);background:#fff}
 .about-photo img{display:block;width:100%;height:auto;
@@ -142,13 +144,11 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .player-card{position:relative;width:100%;max-width:300px;min-height:300px;border-radius:var(--radius);
   background:linear-gradient(160deg,#ffffff 0%,#e3e9f8 55%,#cbd6f2 100%);
   border:1px solid rgba(44,82,179,.4);box-shadow:0 14px 34px rgba(44,82,179,.16);overflow:hidden;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:30px 20px;text-align:center}
-.pc-tier{display:block;font-family:'Cinzel',serif;font-size:11px;font-weight:600;
-  letter-spacing:.34em;color:#1d3a75}
-.pc-rating{display:block;font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(64px,7vw,84px);line-height:1;color:var(--red);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:30px 20px;text-align:center}
+.pc-tier{display:block;font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(34px,4.4vw,54px);line-height:1;color:var(--red);
   text-shadow:0 1px 0 rgba(255,255,255,.55)}
-.pc-role{display:block;margin-top:4px;font-family:'Cinzel',serif;font-size:10.5px;
+.pc-role{display:block;margin-top:6px;font-family:'Cinzel',serif;font-size:10.5px;
   font-weight:600;letter-spacing:.3em;color:#1d3a75}
 .radar-col{width:100%;max-width:430px}
 .hex-svg{display:block;width:100%;height:auto;overflow:visible}
@@ -157,12 +157,6 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .hex-fill{transform-box:view-box;transform-origin:170px 168px;
   animation:hex-grow .7s cubic-bezier(.16,1,.3,1) both}
 @keyframes hex-grow{from{opacity:0;transform:scale(.55)}to{opacity:1;transform:scale(1)}}
-.radar-name{margin-top:8px;font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(20px,2.4vw,26px);letter-spacing:.3em;color:var(--ink)}
-.radar-meta{margin-top:7px;font-size:12px;letter-spacing:.14em;color:#5a5b6d;text-transform:uppercase}
-.radar-trait{margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.3em;
-  color:#1d3a75;text-transform:uppercase}
-.radar-note{margin-top:10px;font-size:12.5px;line-height:1.55;color:#5a5b6d;max-width:40ch}
 
 /* skills list */
 .skills-block{margin-top:clamp(38px,5.5vh,58px);padding-top:clamp(26px,4vh,34px);
@@ -177,6 +171,16 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   letter-spacing:.3em;color:#1d3a75;text-transform:uppercase;margin-bottom:12px}
 .skill-list{list-style:none;margin:0;padding:0}
 .skill-list li{padding:6px 0;font-size:14.5px;color:#3c3c3c;line-height:1.45}
+
+/* education */
+.edu-block{margin-top:clamp(38px,5.5vh,58px);padding-top:clamp(26px,4vh,34px);
+  border-top:2px solid rgba(44,82,179,.35);position:relative}
+.edu-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
+  background:linear-gradient(90deg,var(--gold),rgba(255,248,103,0))}
+.edu-title{font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(24px,3vw,36px);letter-spacing:.06em;color:var(--ink)}
+.edu-line{margin-top:clamp(18px,2.4vh,26px);font-size:14.5px;line-height:1.6;color:#3c3c3c;max-width:64ch}
+.edu-line strong{font-weight:600;color:#1c1c1c}
 
 /* ---------- work history screen: in-game journal (quest log) ---------- */
 .work-scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
@@ -310,25 +314,20 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
     <h2 id="about-title" class="screen-heading" tabindex="-1" data-focus>ABOUT</h2>
 
     <p class="about-name">CHRISTIAN “QUEZ” VAZQUEZ</p>
+    <p class="about-meta">FORT LAUDERDALE, FL · ENGLISH/SPANISH</p>
 
-    <!-- PORTRAIT SLOT: profile image leads the section, directly below the name (v5 item 4).
-         Swap the src for a proper headshot later; photo.webp stays for now. -->
+    <!-- HEADSHOT (v6.2): tight head-and-shoulders portrait, headshot.webp, 680x780 -->
     <figure class="about-photo" aria-label="Portrait of Christian Vazquez">
-      <img src="/photo.webp" alt="Portrait of Christian Vazquez" width="1400" height="1750" decoding="async" draggable="false">
+      <img src="/headshot.webp" alt="Portrait of Christian Vazquez" width="680" height="780" decoding="async" draggable="false">
     </figure>
 
     <div class="stats-sheet">
-      <div class="player-card" id="player-card" role="img" aria-label="Quez player card: overall 92, position FDE">
+      <div class="player-card" id="player-card" role="img" aria-label="Quez player card: tier FDE, Forward Deployed Engineer">
         <span class="pc-tier">FDE</span>
-        <span class="pc-rating" id="pc-rating" aria-hidden="true">92</span>
         <span class="pc-role">FORWARD DEPLOYED ENGINEER</span>
       </div>
       <div class="radar-col">
         <div id="hex-radar"></div>
-        <p class="radar-name">CHRISTIAN VAZQUEZ</p>
-        <p class="radar-meta">FORT LAUDERDALE, FL · ENGLISH/SPANISH</p>
-        <p class="radar-trait">AI-NATIVE GENERALIST</p>
-        <p class="radar-note">Willingness to quit: 0. I'm not a quitter.</p>
       </div>
     </div>
 
@@ -368,9 +367,13 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
       </div>
     </div>
 
-    <p class="screen-body about-prose">Forward Deployed Engineer: AI-native generalist with a <em>software engineering foundation</em> and range across sales, growth, and creative. An excellent communicator, extremely personable, and technically deep enough to go beyond the surface.</p>
-    <p class="screen-body about-prose">From a <em>Fortune 20 company</em> to a <em>started-in-a-garage startup</em>: I shine in client-facing roles, build relationships I can lean on wherever I go, and actively seek out challenges that force me to improve.</p>
-    <p class="screen-body about-prose">I own the full loop: <em>audit workflows, integrate with existing tools, run evals, and deploy into the business</em>.</p>
+    <div class="edu-block">
+      <h3 class="edu-title">EDUCATION</h3>
+      <p class="edu-line"><strong>B.S. Software Engineering</strong>, Florida Gulf Coast University</p>
+    </div>
+
+    <p class="screen-body about-prose">I'm an AI-native generalist with a software engineering background and skills across sales, growth, and creative. I'm an excellent communicator, extremely personable, and technically deep enough to go beyond the surface.</p>
+    <p class="screen-body about-prose">I've worked at every kind of business from a Fortune 20 mega company to a startups formed in garages. I excel in client-facing roles where building relationships are key and actively seek opportunities to put my superpowers to use. From a technical standpoint, I am very comfortable owning the full loop: workflow audits, tool integration, evals, and deployment.</p>
 
     <button type="button" class="back-btn" data-back>BACK</button>
     </div>
@@ -667,16 +670,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
     { label: 'QUIT',      value: 0,  aria: 'willingness to quit 0' }
   ];
 
-  /* overall rating = rounded mean of the non-zero attributes, so tuning QUEZ_STATS stays consistent */
-  var nonzero = QUEZ_STATS.filter(function(s){ return s.value > 0; });
-  var overall = nonzero.length
-    ? Math.round(nonzero.reduce(function(a, s){ return a + s.value; }, 0) / nonzero.length)
-    : 0;
-
-  var rating = document.getElementById('pc-rating');
-  var card   = document.getElementById('player-card');
-  if (rating) rating.textContent = overall;
-  if (card) card.setAttribute('aria-label', 'Quez player card: overall ' + overall + ', position FDE');
+  /* card identity: tier + role are static in the markup (v6.2: no overall rating) */
+  var card = document.getElementById('player-card');
+  if (card) card.setAttribute('aria-label', 'Quez player card: tier FDE, Forward Deployed Engineer');
 
   var NS = 'http://www.w3.org/2000/svg';
   var W = 340, H = 330, CX = W / 2, CY = 168, R = 102;
