@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/photo2.webp">
 <style>
 :root{
   --cyan:#00FFFF; --blue:#0088FF; --gold:#D4AF37; --grey:#808080; --orange:#FFA500;
@@ -55,14 +56,14 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .subtitle{font-family:'Cinzel',serif;font-weight:600;color:#2a2a2a;
   font-size:clamp(12px,1.5vw,18px);letter-spacing:.34em;white-space:nowrap}
 
-/* photo slot — right zone (full-frame shot: Quez between two 911s, 4:5) */
+/* photo slot — right zone (landscape hero: Quez kneeling between two RWB 911s, photo2.webp ~3:2) */
 .photo-slot{position:absolute;right:clamp(16px,4vw,64px);bottom:calc(var(--bar-h) + 14px);
-  width:min(30vw,360px);z-index:2;
+  width:min(52vw,860px,78vh);z-index:2;
   background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(214,240,255,.28) 70%,rgba(0,255,255,.14) 100%)}
 .photo{position:relative;display:block;width:100%;height:auto;
   opacity:.85;filter:saturate(.92) contrast(1.05) brightness(.95);
-  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.72) 0%,#000 6%,#000 80%,rgba(0,0,0,0) 98%),linear-gradient(90deg,rgba(0,0,0,.6) 0%,#000 9%,#000 91%,rgba(0,0,0,.6) 100%);
-  mask-image:linear-gradient(180deg,rgba(0,0,0,.72) 0%,#000 6%,#000 80%,rgba(0,0,0,0) 98%),linear-gradient(90deg,rgba(0,0,0,.6) 0%,#000 9%,#000 91%,rgba(0,0,0,.6) 100%);
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.5) 3%,#000 9%,#000 84%,rgba(0,0,0,.45) 93%,rgba(0,0,0,0) 100%),linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.45) 4%,#000 9%,#000 91%,rgba(0,0,0,.45) 96%,rgba(0,0,0,0) 100%);
+  mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.5) 3%,#000 9%,#000 84%,rgba(0,0,0,.45) 93%,rgba(0,0,0,0) 100%),linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.45) 4%,#000 9%,#000 91%,rgba(0,0,0,.45) 96%,rgba(0,0,0,0) 100%);
   -webkit-mask-composite:source-in;mask-composite:intersect;
   pointer-events:none}
 .photo-slot .reflection{position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);
@@ -250,7 +251,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
 @media (max-width:760px){
   .title-block{max-width:78vw}
-  .photo-slot{right:14px;bottom:calc(var(--bar-h) + 10px);width:min(64vw,340px)}
+  .photo-slot{right:14px;bottom:calc(var(--bar-h) + 10px);width:min(92vw,620px)}
   .photo{opacity:.8}
   .bar-hint{display:none}
   .content-inner{left:24px;right:24px;max-width:none}
@@ -280,10 +281,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
     </div>
   </header>
 
-  <!-- QUEZ PHOTO: /photo.webp — full-frame studio shot (Quez between two Porsche 911s), faded KH-style, right zone -->
-  <figure class="photo-slot" aria-label="Quez standing between two Porsche 911s">
-    <img class="photo" src="/photo.webp" alt="Quez standing between two Porsche 911s"
-      width="1400" height="1750" decoding="async" draggable="false">
+  <!-- QUEZ PHOTO: /photo2.webp — landscape studio hero (Quez kneeling between two RWB Porsches), faded KH-style, right zone -->
+  <figure class="photo-slot" aria-label="Quez kneeling between two RWB Porsche 911s">
+    <img class="photo" src="/photo2.webp" alt="Quez kneeling between two RWB Porsche 911s"
+      width="1600" height="1061" decoding="async" draggable="false">
     <div class="reflection" aria-hidden="true"></div>
   </figure>
 
