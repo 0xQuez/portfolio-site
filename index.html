@@ -29,8 +29,11 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
 /* ---------- screens ---------- */
 .screen{position:fixed;inset:0;overflow:hidden;background:#FFFFFF}
-.screen:not([hidden]){animation:screen-in .38s ease}
-@keyframes screen-in{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+.screen:not([hidden]){animation:screen-in .4s cubic-bezier(.16,1,.3,1)}
+@keyframes screen-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* v6.3: title screen eases in from white on load (and on BACK) */
+#screen-title{animation:title-fade .8s ease-out both}
+@keyframes title-fade{from{opacity:0}to{opacity:1}}
 
 /* water gradient, bottom-right corner (reflection feel) */
 .water{position:absolute;inset:0;pointer-events:none;
@@ -57,7 +60,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .subtitle{font-family:'Cinzel',serif;font-weight:600;color:#2a2a2a;
   font-size:clamp(12px,1.5vw,18px);letter-spacing:.34em;white-space:nowrap}
 
-/* photo slot — FULL-BLEED hero: photo2.webp covers the whole title screen (object-fit cover);
+/* photo slot - FULL-BLEED hero: photo2.webp covers the whole title screen (object-fit cover);
    masked toward the left title zone + bottom menu bar so the text stays readable (faded KH integration) */
 .photo-slot{position:absolute;inset:0;z-index:1;margin:0;pointer-events:none}
 .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;
@@ -70,7 +73,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   background:radial-gradient(120% 120% at 100% 0%,rgba(255,255,255,.9) 0%,rgba(255,255,255,.6) 40%,rgba(255,255,255,0) 72%);
   pointer-events:none}
 
-/* game settings — top right */
+/* game settings - top right */
 .settings-btn{position:absolute;top:20px;right:clamp(16px,3vw,36px);z-index:4;
   display:flex;align-items:center;gap:9px;
   font-size:12px;font-weight:600;letter-spacing:.2em;color:#5a5b6d;text-transform:uppercase}
@@ -127,43 +130,75 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 #screen-about{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
 .about-scroll{position:relative;z-index:3;min-height:100%;display:flex;align-items:flex-start;padding:clamp(36px,6vh,72px) 0}
 .about-col{width:min(940px,92vw);margin-left:clamp(28px,7vw,96px)}
-.about-name{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(15px,1.9vw,22px);letter-spacing:.28em;color:#1c1c1c;margin-top:26px}
-/* location/bilingual subtitle line (v6.2): sits directly below the name */
-.about-meta{margin-top:8px;font-size:12px;letter-spacing:.14em;color:#5a5b6d;text-transform:uppercase}
+/* v6.3: NAME section - name as section title (parallel to TOOLS & SKILLS / EDUCATION) */
+.name-block{margin-top:clamp(26px,3.6vh,36px);padding-top:clamp(24px,3.4vh,32px);
+  border-top:2px solid rgba(44,82,179,.35);position:relative}
+.name-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
+  background:linear-gradient(90deg,var(--gold),rgba(255,248,103,0))}
+.name-grid{display:flex;align-items:center;gap:clamp(22px,3.2vw,44px);
+  margin-top:clamp(20px,3vh,28px);flex-wrap:wrap}
+.name-lines{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.name-line{font-size:15.5px;line-height:1.45;color:#333}
+.name-line:first-child{font-size:17.5px;font-weight:600;color:#1d3a75}
 /* HEADSHOT (v6.2): tight head-and-shoulders portrait, headshot.webp, 680x780 */
-.about-photo{width:min(300px,68vw);margin-top:clamp(20px,3vh,30px);border-radius:var(--radius);
+.about-photo{width:min(300px,68vw);border-radius:var(--radius);
   overflow:hidden;border:1px solid rgba(44,82,179,.4);box-shadow:0 14px 34px rgba(44,82,179,.16);background:#fff}
 .about-photo img{display:block;width:100%;height:auto;
   filter:saturate(.92) contrast(1.05) brightness(.97)}
 .about-prose{margin-top:clamp(32px,4.5vh,46px)}
 .about-prose + .about-prose{margin-top:18px}
 
-/* FIFA-style stats sheet: rating card (left) + hex radar (right) */
+/* v6.3: STATS section - player card (ranked list, left) + hex radar (right), one stats sheet */
+.stats-block{margin-top:clamp(38px,5.5vh,58px);padding-top:clamp(26px,4vh,34px);
+  border-top:2px solid rgba(44,82,179,.35);position:relative}
+.stats-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
+  background:linear-gradient(90deg,var(--gold),rgba(255,248,103,0))}
 .stats-sheet{display:grid;grid-template-columns:minmax(230px,300px) minmax(300px,1fr);
-  gap:clamp(26px,3.4vw,48px);align-items:center;margin-top:clamp(30px,4.5vh,44px)}
-.player-card{position:relative;width:100%;max-width:300px;min-height:300px;border-radius:var(--radius);
+  gap:clamp(26px,3.4vw,48px);align-items:center;margin-top:clamp(24px,3.4vh,32px)}
+.player-card{position:relative;width:100%;max-width:300px;border-radius:var(--radius);
   background:linear-gradient(160deg,#ffffff 0%,#e3e9f8 55%,#cbd6f2 100%);
   border:1px solid rgba(44,82,179,.4);box-shadow:0 14px 34px rgba(44,82,179,.16);overflow:hidden;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:30px 20px;text-align:center}
-.pc-tier{display:block;font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(34px,4.4vw,54px);line-height:1;color:var(--red);
+  padding:20px 20px 22px}
+.pc-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  padding-bottom:12px;border-bottom:1px solid rgba(44,82,179,.28)}
+.pc-tier{font-family:'Cinzel',serif;font-weight:700;font-size:22px;line-height:1;color:var(--red);
   text-shadow:0 1px 0 rgba(255,255,255,.55)}
-.pc-role{display:block;margin-top:6px;font-family:'Cinzel',serif;font-size:10.5px;
-  font-weight:600;letter-spacing:.3em;color:#1d3a75}
+.pc-role{font-family:'Cinzel',serif;font-size:9.5px;font-weight:600;
+  letter-spacing:.22em;color:#1d3a75}
+.stat-rows{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column}
+.stat-row{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 2px;border-bottom:1px solid rgba(44,82,179,.14);
+  animation:stat-in .5s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--i,0)*55ms)}
+.stat-row:last-child{border-bottom:0}
+.stat-name{font-size:13.5px;color:#2b2b2b;font-weight:500}
+.stat-val{font-family:'Cinzel',serif;font-weight:700;font-size:20px;line-height:1;color:var(--blue)}
+/* meme as the "willingness to give up" value: small card, keeps the 150x199 portrait crop intact */
+.stat-meme{width:104px;height:auto;border-radius:var(--radius);object-fit:cover;display:block;
+  border:1px solid rgba(44,82,179,.45);background:#fff}
+.stat-rows .stat-row:nth-child(1){--i:0}
+.stat-rows .stat-row:nth-child(2){--i:1}
+.stat-rows .stat-row:nth-child(3){--i:2}
+.stat-rows .stat-row:nth-child(4){--i:3}
+.stat-rows .stat-row:nth-child(5){--i:4}
+.stat-rows .stat-row:nth-child(6){--i:5}
+@keyframes stat-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .radar-col{width:100%;max-width:430px}
 .hex-svg{display:block;width:100%;height:auto;overflow:visible}
 .hex-label{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   font-size:10px;font-weight:700;letter-spacing:.16em;fill:#5a5b6d;text-transform:uppercase}
+/* v6.3: radar draws from center on screen open, then a slow subtle pulse */
 .hex-fill{transform-box:view-box;transform-origin:170px 168px;
-  animation:hex-grow .7s cubic-bezier(.16,1,.3,1) both}
-@keyframes hex-grow{from{opacity:0;transform:scale(.55)}to{opacity:1;transform:scale(1)}}
+  animation:hex-grow 1s cubic-bezier(.16,1,.3,1) both,
+            hex-pulse 5s ease-in-out 1.4s infinite}
+@keyframes hex-grow{from{opacity:0;transform:scale(.04)}to{opacity:1;transform:scale(1)}}
+@keyframes hex-pulse{0%,100%{opacity:1}50%{opacity:.8}}
 
 /* skills list */
 .skills-block{margin-top:clamp(38px,5.5vh,58px);padding-top:clamp(26px,4vh,34px);
   border-top:2px solid rgba(44,82,179,.35);position:relative}
 .skills-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
   background:linear-gradient(90deg,var(--gold),rgba(255,248,103,0))}
-.skills-title{font-family:'Cinzel',serif;font-weight:700;
+.name-title,.stats-title,.skills-title,.edu-title{font-family:'Cinzel',serif;font-weight:700;
   font-size:clamp(24px,3vw,36px);letter-spacing:.06em;color:var(--ink)}
 .skills-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,44px);
   margin-top:clamp(20px,3vh,28px)}
@@ -177,8 +212,6 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   border-top:2px solid rgba(44,82,179,.35);position:relative}
 .edu-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
   background:linear-gradient(90deg,var(--gold),rgba(255,248,103,0))}
-.edu-title{font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(24px,3vw,36px);letter-spacing:.06em;color:var(--ink)}
 .edu-line{margin-top:clamp(18px,2.4vh,26px);font-size:14.5px;line-height:1.6;color:#3c3c3c;max-width:64ch}
 .edu-line strong{font-weight:600;color:#1c1c1c}
 
@@ -199,7 +232,12 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .journal-entry{border:1px solid rgba(44,82,179,.38);border-radius:var(--radius);
   background:linear-gradient(135deg,rgba(255,255,255,.94),rgba(207,218,245,.62));
   box-shadow:0 10px 26px rgba(44,82,179,.12);overflow:hidden;
-  transition:border-color .16s ease,box-shadow .16s ease}
+  transition:border-color .16s ease,box-shadow .16s ease;
+  animation:entry-in .55s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes entry-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.journal-entry:nth-child(1){--i:0}
+.journal-entry:nth-child(2){--i:1}
+.journal-entry:nth-child(3){--i:2}
 .journal-entry.is-open{border-color:rgba(44,82,179,.65);box-shadow:0 16px 34px rgba(44,82,179,.18)}
 .journal-entry-head{display:flex;align-items:center;gap:clamp(14px,2vw,22px);width:100%;text-align:left;
   padding:clamp(16px,2.4vh,22px) clamp(18px,2.4vw,26px);background:none;border:0;cursor:pointer;
@@ -251,10 +289,11 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
 @media (prefers-reduced-motion: reduce){
   .screen:not([hidden]){animation:none}
+  #screen-title{animation:none}
   #menu-cursor{transition:none}
   .menu-item{transition:none}
   .journal-entry,.journal-entry-head,.journal-chev,.card-pill,.card-pill .arr{transition:none}
-  .hex-fill{animation:none}
+  .hex-fill,.stat-row,.journal-entry{animation:none}
 }
 
 @media (max-width:760px){
@@ -265,6 +304,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   #menu-cursor{left:4px}
   .about-col{margin-left:24px;width:calc(100vw - 48px)}
   .about-photo{margin-left:auto;margin-right:auto}
+  .name-grid{flex-direction:column;align-items:center;text-align:center}
+  .name-lines{align-items:center;text-align:center}
   .stats-sheet{grid-template-columns:1fr}
   .player-card{margin:0 auto}
   .radar-col{max-width:340px;margin:0 auto}
@@ -284,7 +325,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
     </div>
   </header>
 
-  <!-- QUEZ PHOTO: /photo2.webp — full-bleed hero (kneeling Quez between two RWB 911s), masked toward title + menu zones; onerror = graceful fallback to clean white -->
+  <!-- QUEZ PHOTO: /photo2.webp - full-bleed hero (kneeling Quez between two RWB 911s), masked toward title + menu zones; onerror = graceful fallback to clean white -->
   <figure class="photo-slot" aria-label="Quez kneeling between two RWB Porsche 911s">
     <img class="photo" src="/photo2.webp" alt="Quez kneeling between two RWB Porsche 911s"
       width="1600" height="1061" decoding="async" draggable="false" onerror="this.remove()">
@@ -307,27 +348,48 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   </nav>
 </div>
 
-<!-- ================= CONTENT SCREENS (stubs — filled by later tasks) ================= -->
+<!-- ================= CONTENT SCREENS (stubs - filled by later tasks) ================= -->
 <section id="screen-about" class="screen" role="region" aria-labelledby="about-title" hidden>
   <div class="about-scroll">
     <div class="about-col">
     <h2 id="about-title" class="screen-heading" tabindex="-1" data-focus>ABOUT</h2>
 
-    <p class="about-name">CHRISTIAN “QUEZ” VAZQUEZ</p>
-    <p class="about-meta">FORT LAUDERDALE, FL · ENGLISH/SPANISH</p>
-
-    <!-- HEADSHOT (v6.2): tight head-and-shoulders portrait, headshot.webp, 680x780 -->
-    <figure class="about-photo" aria-label="Portrait of Christian Vazquez">
-      <img src="/headshot.webp" alt="Portrait of Christian Vazquez" width="680" height="780" decoding="async" draggable="false">
-    </figure>
-
-    <div class="stats-sheet">
-      <div class="player-card" id="player-card" role="img" aria-label="Quez player card: tier FDE, Forward Deployed Engineer">
-        <span class="pc-tier">FDE</span>
-        <span class="pc-role">FORWARD DEPLOYED ENGINEER</span>
+    <!-- v6.3: NAME section - the name is the section title (parallel to TOOLS & SKILLS / EDUCATION), headshot left + 3 bio lines right -->
+    <div class="name-block">
+      <h3 class="name-title">CHRISTIAN “QUEZ” VAZQUEZ</h3>
+      <div class="name-grid">
+        <figure class="about-photo" aria-label="Portrait of Christian Vazquez">
+          <img src="/headshot.webp" alt="Portrait of Christian Vazquez" width="680" height="780" decoding="async" draggable="false">
+        </figure>
+        <ul class="name-lines">
+          <li class="name-line">AI-Native Generalist</li>
+          <li class="name-line">Located in: Fort Lauderdale, FL</li>
+          <li class="name-line">Fluent in: English &amp; Spanish</li>
+        </ul>
       </div>
-      <div class="radar-col">
-        <div id="hex-radar"></div>
+    </div>
+
+    <!-- v6.3: STATS section - player card as ranked list (left) + hex radar (right), one coherent stats sheet -->
+    <div class="stats-block">
+      <h3 class="stats-title">STATS</h3>
+      <div class="stats-sheet">
+        <div class="player-card" id="player-card">
+          <div class="pc-head">
+            <span class="pc-tier">FDE</span>
+            <span class="pc-role">FORWARD DEPLOYED ENGINEER</span>
+          </div>
+          <ul class="stat-rows">
+            <li class="stat-row"><span class="stat-name">AI Proficiency</span><span class="stat-val">85</span></li>
+            <li class="stat-row"><span class="stat-name">Communication</span><span class="stat-val">97</span></li>
+            <li class="stat-row"><span class="stat-name">Curiosity</span><span class="stat-val">95</span></li>
+            <li class="stat-row"><span class="stat-name">Rizz</span><span class="stat-val">90</span></li>
+            <li class="stat-row"><span class="stat-name">Taste</span><span class="stat-val">93</span></li>
+            <li class="stat-row"><span class="stat-name">Willingness to Give Up</span><img class="stat-meme" src="/meme.webp" alt="He got that dawg in him: zero willingness to give up" width="150" height="199" decoding="async" loading="lazy" draggable="false"></li>
+          </ul>
+        </div>
+        <div class="radar-col">
+          <div id="hex-radar"></div>
+        </div>
       </div>
     </div>
 
@@ -661,18 +723,17 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   if (!mount) return;
 
   /* EDIT ME: Quez's attributes. value is 0-100; label is the vertex label. */
+  /* v6.3: values synced with the STATS card (AI 85, COMMS 97, CURIOSITY 95, RIZZ 90, TASTE 93, QUIT 0) */
   var QUEZ_STATS = [
-    { label: 'AI',        value: 95, aria: 'AI proficiency 95' },
-    { label: 'COMMS',     value: 92, aria: 'communication skills 92' },
-    { label: 'CURIOSITY', value: 94, aria: 'curiosity 94' },
-    { label: 'RIZZ',      value: 88, aria: 'rizz 88' },
-    { label: 'TASTE',     value: 90, aria: 'taste 90' },
-    { label: 'QUIT',      value: 0,  aria: 'willingness to quit 0' }
+    { label: 'AI',        value: 85, aria: 'AI proficiency 85' },
+    { label: 'COMMS',     value: 97, aria: 'communication skills 97' },
+    { label: 'CURIOSITY', value: 95, aria: 'curiosity 95' },
+    { label: 'RIZZ',      value: 90, aria: 'rizz 90' },
+    { label: 'TASTE',     value: 93, aria: 'taste 93' },
+    { label: 'QUIT',      value: 0,  aria: 'willingness to give up 0' }
   ];
 
-  /* card identity: tier + role are static in the markup (v6.2: no overall rating) */
-  var card = document.getElementById('player-card');
-  if (card) card.setAttribute('aria-label', 'Quez player card: tier FDE, Forward Deployed Engineer');
+  /* card identity: tier + role are static in the card head (v6.3: stats rows are real list content, no role="img") */
 
   var NS = 'http://www.w3.org/2000/svg';
   var W = 340, H = 330, CX = W / 2, CY = 168, R = 102;
