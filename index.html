@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>QUEZ | AI-Native Generalist</title>
 <meta name="description" content="Christian “Quez” Vazquez: AI-native generalist and forward deployed engineer. Portfolio, remade as a Kingdom Hearts II-style title screen.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/photo2.webp">
 <style>
+/* v6.5 fonts: self-hosted, latin-subset woff2, swap. Press Start 2P = titles, Inter Tight = body/UI. */
+@font-face{font-family:'Press Start 2P';src:url('fonts/press-start-2p.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter Tight';src:url('fonts/inter-tight-regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter Tight';src:url('fonts/inter-tight-medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter Tight';src:url('fonts/inter-tight-semibold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Inter Tight';src:url('fonts/inter-tight-bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
 :root{
   /* Gundam RX-78 palette (v6): white base, RX-78 blue primary, yellow + red accents, slate grey */
   --blue:#2c52b3; --blue-deep:#1d3a75; --gold:#fff867; --grey:#5a5b6d; --red:#fb2f38;
@@ -20,7 +23,7 @@
 html,body{height:100%}
 body{
   background:#FFFFFF; color:#111; overflow:hidden;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-family:'Inter Tight',system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 [hidden]{display:none !important}
@@ -52,13 +55,13 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 /* ---------- title screen ---------- */
 
 .title-block{position:absolute;top:9%;left:clamp(20px,3.5vw,40px);z-index:3;max-width:52vw}
-.main-title{font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(60px,10vw,140px);line-height:.95;letter-spacing:.02em;
+.main-title{font-family:'Press Start 2P',monospace;font-weight:400;
+  font-size:clamp(60px,10vw,140px);line-height:1;letter-spacing:.02em;
   color:var(--ink);
 }
 .subtitle-row{display:flex;align-items:center;margin-top:20px}
-.subtitle{font-family:'Cinzel',serif;font-weight:600;color:#2a2a2a;
-  font-size:clamp(12px,1.5vw,18px);letter-spacing:.34em;white-space:nowrap}
+.subtitle{font-family:'Press Start 2P',monospace;font-weight:400;color:#2a2a2a;
+  font-size:clamp(11px,1.5vw,18px);letter-spacing:.1em;white-space:nowrap}
 
 /* photo slot - FULL-BLEED hero: photo2.webp covers the whole title screen (object-fit cover);
    masked toward the left title zone + bottom menu bar so the text stays readable (faded KH integration) */
@@ -103,10 +106,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 /* ---------- content screens (stubs) ---------- */
 .content-inner{position:absolute;left:clamp(28px,7vw,96px);top:50%;transform:translateY(-50%);
   max-width:680px;z-index:3}
-.kicker{font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:.42em;
+.kicker{font-family:'Press Start 2P',monospace;font-size:12px;font-weight:400;letter-spacing:.2em;
   color:var(--gold);text-transform:uppercase;margin-bottom:18px}
-.screen-heading{font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(42px,6.5vw,82px);line-height:.95;color:var(--ink);letter-spacing:.02em}
+.screen-heading{font-family:'Press Start 2P',monospace;font-weight:400;
+  font-size:clamp(22px,4.2vw,54px);line-height:1.08;color:var(--ink);letter-spacing:0}
 .screen-body{margin-top:22px;font-size:16px;line-height:1.75;color:#3c3c3c;max-width:54ch}
 .screen-body em{font-style:normal;color:#1d3a75;font-weight:600}
 .back-btn{margin-top:38px;display:inline-flex;align-items:center;gap:10px;
@@ -161,7 +164,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   padding:20px 20px 22px}
 .pc-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
   padding-bottom:12px;border-bottom:1px solid rgba(44,82,179,.28)}
-.pc-tier{font-family:'Cinzel',serif;font-weight:700;font-size:22px;line-height:1;color:var(--red);
+.pc-tier{font-family:'Press Start 2P',monospace;font-weight:400;font-size:20px;line-height:1;color:var(--red);
   text-shadow:0 1px 0 rgba(255,255,255,.55)}
 .stat-rows{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column}
 .stat-row{display:flex;align-items:center;justify-content:space-between;gap:12px;
@@ -169,7 +172,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   animation:stat-in .5s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--i,0)*55ms)}
 .stat-row:last-child{border-bottom:0}
 .stat-name{font-size:13.5px;color:#2b2b2b;font-weight:500}
-.stat-val{font-family:'Cinzel',serif;font-weight:700;font-size:20px;line-height:1;color:var(--blue)}
+.stat-val{font-family:'Inter Tight',system-ui,sans-serif;font-weight:600;font-size:20px;line-height:1;color:var(--blue)}
 /* meme as the "willingness to give up" value: small card, keeps the 150x199 portrait crop intact */
 .stat-meme{width:104px;height:auto;border-radius:var(--radius);object-fit:cover;display:block;
   border:1px solid rgba(44,82,179,.45);background:#fff}
@@ -182,8 +185,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 @keyframes stat-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .radar-col{width:100%;max-width:430px}
 .hex-svg{display:block;width:100%;height:auto;overflow:visible}
-.hex-label{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  font-size:10px;font-weight:700;letter-spacing:.16em;fill:#5a5b6d;text-transform:uppercase}
+.hex-label{font-family:'Inter Tight',system-ui,sans-serif;
+  font-size:10px;font-weight:600;letter-spacing:.16em;fill:#5a5b6d;text-transform:uppercase}
 /* v6.3: radar draws from center on screen open, then a slow subtle pulse */
 .hex-fill{transform-box:view-box;transform-origin:170px 168px;
   animation:hex-grow 1s cubic-bezier(.16,1,.3,1) both,
@@ -196,12 +199,12 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   border-top:2px solid rgba(44,82,179,.35);position:relative}
 .skills-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
   background:linear-gradient(90deg,var(--gold),rgba(255,248,103,0))}
-.name-title,.stats-title,.skills-title,.edu-title{font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(24px,3vw,36px);letter-spacing:.06em;color:var(--ink)}
+.name-title,.stats-title,.skills-title,.edu-title{font-family:'Press Start 2P',monospace;font-weight:400;
+  font-size:clamp(19px,2.8vw,34px);line-height:1.12;letter-spacing:.02em;color:var(--ink)}
 .skills-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,44px);
   margin-top:clamp(20px,3vh,28px)}
-.skill-group-title{font-family:'Cinzel',serif;font-size:11.5px;font-weight:700;
-  letter-spacing:.3em;color:#1d3a75;text-transform:uppercase;margin-bottom:12px}
+.skill-group-title{font-family:'Press Start 2P',monospace;font-size:11px;font-weight:400;
+  letter-spacing:.16em;color:#1d3a75;text-transform:uppercase;margin-bottom:12px}
 .skill-list{list-style:none;margin:0;padding:0}
 .skill-list li{padding:6px 0;font-size:14.5px;color:#3c3c3c;line-height:1.45}
 
@@ -243,11 +246,11 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .journal-entry-head:hover{background:rgba(44,82,179,.05)}
 .journal-entry-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
 .journal-idx{flex:none;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;
-  font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:.14em;
+  font-family:'Press Start 2P',monospace;font-size:12px;font-weight:400;letter-spacing:0;
   color:var(--gold);background:var(--blue);border-radius:var(--radius)}
 .journal-id-main{flex:1;min-width:0}
-.journal-name{display:block;font-family:'Cinzel',serif;font-weight:700;font-size:clamp(19px,2.2vw,26px);
-  line-height:1.1;color:var(--ink);letter-spacing:.04em}
+.journal-name{display:block;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(16px,1.9vw,22px);
+  line-height:1.1;color:var(--ink);letter-spacing:.03em}
 .journal-meta{display:block;margin-top:5px;font-size:12px;font-weight:600;letter-spacing:.16em;
   color:rgba(29,58,117,.8);text-transform:uppercase}
 .journal-chev{flex:none;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;
@@ -263,12 +266,12 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .journal-achievement{padding:clamp(14px,2vh,18px) clamp(14px,2vw,20px);
   border:1px solid rgba(44,82,179,.22);border-radius:var(--radius);background:rgba(255,255,255,.55)}
 .ach-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
-.ach-title{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(14px,1.6vw,17px);
-  line-height:1.25;color:var(--ink);letter-spacing:.03em}
+.ach-title{font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(12px,1.3vw,15px);
+  line-height:1.3;color:var(--ink);letter-spacing:.02em}
 .ach-copy{margin-top:10px;font-size:14px;line-height:1.7;color:#3c3c3c;max-width:64ch}
 .card-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .card-pill{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 16px;
-  border:1px solid rgba(44,82,179,.55);border-radius:var(--radius);font-family:'Cinzel',serif;font-size:11px;
+  border:1px solid rgba(44,82,179,.55);border-radius:var(--radius);font-family:'Inter Tight',system-ui,sans-serif;font-size:11px;
   font-weight:600;letter-spacing:.18em;color:#1d3a75;text-transform:uppercase;
   background:rgba(255,255,255,.55);transition:background .15s ease,color .15s ease,border-color .15s ease}
 .card-pill .arr{color:var(--gold);transition:color .15s ease}
@@ -280,8 +283,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   background:rgba(24,37,68,.5);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .modal-panel{width:min(460px,90vw);background:#f2f5fc;border:1px solid var(--blue);
   border-radius:var(--radius);box-shadow:0 24px 60px rgba(44,82,179,.35);padding:34px 36px 30px}
-.modal-panel h2{font-family:'Cinzel',serif;font-weight:700;font-size:30px;color:var(--ink);
-  letter-spacing:.04em;margin-bottom:16px}
+.modal-panel h2{font-family:'Press Start 2P',monospace;font-weight:400;font-size:21px;color:var(--ink);
+  line-height:1.15;letter-spacing:.02em;margin-bottom:16px}
 .modal-panel p{font-size:14px;line-height:1.7;color:#444;margin-bottom:10px}
 .modal-panel .back-btn{margin-top:22px}
 
