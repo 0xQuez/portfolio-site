@@ -55,11 +55,6 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .subtitle{font-family:'Cinzel',serif;font-weight:600;color:#2a2a2a;
   font-size:clamp(12px,1.5vw,18px);letter-spacing:.34em;white-space:nowrap}
 
-.credits{position:absolute;left:clamp(20px,3.5vw,40px);top:45%;z-index:3}
-.credits small{display:block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.42em;color:#8f8f8f}
-.credits strong{display:block;font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(18px,2.4vw,30px);letter-spacing:.3em;color:#1c1c1c;margin-top:6px}
-
 /* photo slot — right zone (full-frame shot: Quez between two 911s, 4:5) */
 .photo-slot{position:absolute;right:clamp(16px,4vw,64px);bottom:calc(var(--bar-h) + 14px);
   width:min(30vw,360px);z-index:2;
@@ -125,15 +120,60 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 /* ---------- about screen ---------- */
 #screen-about{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
 .about-scroll{position:relative;z-index:3;min-height:100%;display:flex;align-items:center;padding:clamp(36px,6vh,72px) 0}
-.about-col{width:min(780px,88vw);margin-left:clamp(28px,7vw,96px)}
+.about-col{width:min(940px,92vw);margin-left:clamp(28px,7vw,96px)}
 .about-name{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(15px,1.9vw,22px);letter-spacing:.28em;color:#1c1c1c;margin-top:26px}
 .about-prose{margin-top:18px}
-.stats-block{margin-top:34px;padding-top:26px;border-top:1px solid rgba(0,136,255,.35)}
-.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
-.stat-tile{position:relative;padding:18px 20px 15px;background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(214,240,255,.6));border:1px solid rgba(0,136,255,.35);border-radius:var(--radius);box-shadow:0 6px 18px rgba(0,40,80,.10)}
 .stat-num{display:block;font-family:'Cinzel',serif;font-weight:700;font-size:clamp(36px,4.2vw,52px);line-height:1;color:var(--ink)}
 .stat-unit{display:block;margin-top:9px;font-family:'Cinzel',serif;font-size:10.5px;font-weight:600;letter-spacing:.24em;color:#0b3a5c;text-transform:uppercase}
-.stats-updated{margin-top:12px;font-size:11px;letter-spacing:.18em;color:rgba(0,0,0,.45);text-transform:uppercase}
+
+/* FIFA-style stats sheet: player card (left) + hex radar (right) */
+.stats-sheet{display:grid;grid-template-columns:minmax(230px,300px) minmax(300px,1fr);
+  gap:clamp(26px,3.4vw,48px);align-items:center;margin-top:clamp(30px,4.5vh,44px)}
+.player-card{position:relative;width:100%;max-width:300px;border-radius:var(--radius);
+  background:linear-gradient(160deg,#ffffff 0%,#e0f3ff 55%,#c8ecff 100%);
+  border:1px solid rgba(0,136,255,.4);box-shadow:0 14px 34px rgba(0,40,80,.16);overflow:hidden}
+.pc-photo{position:relative;aspect-ratio:4/5;width:100%}
+.pc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:saturate(.92) contrast(1.05) brightness(.97);
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0%,#000 15%,#000 72%,rgba(0,0,0,0) 95%);
+  mask-image:linear-gradient(180deg,rgba(0,0,0,0) 0%,#000 15%,#000 72%,rgba(0,0,0,0) 95%)}
+.pc-top{position:absolute;top:14px;left:16px;z-index:2}
+.pc-tier{display:block;font-family:'Cinzel',serif;font-size:11px;font-weight:600;
+  letter-spacing:.34em;color:#0b3a5c}
+.pc-rating{display:block;margin-top:2px;font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(52px,6vw,72px);line-height:.95;color:var(--gold);
+  text-shadow:0 1px 0 rgba(255,255,255,.55)}
+.pc-banner{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:12px 0 11px;
+  background:rgba(17,17,17,.92);text-align:center;
+  font-family:'Cinzel',serif;font-weight:700;font-size:clamp(15px,1.8vw,20px);
+  letter-spacing:.34em;color:#fff}
+.radar-col{width:100%;max-width:430px}
+.hex-svg{display:block;width:100%;height:auto;overflow:visible}
+.hex-label{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:10px;font-weight:700;letter-spacing:.16em;fill:#5a6b72;text-transform:uppercase}
+.hex-fill{transform-box:view-box;transform-origin:170px 168px;
+  animation:hex-grow .7s cubic-bezier(.16,1,.3,1) both}
+@keyframes hex-grow{from{opacity:0;transform:scale(.55)}to{opacity:1;transform:scale(1)}}
+.radar-name{margin-top:8px;font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(20px,2.4vw,26px);letter-spacing:.3em;color:var(--ink)}
+.radar-meta{margin-top:7px;font-size:12px;letter-spacing:.14em;color:#5a6b72;text-transform:uppercase}
+.radar-trait{margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.3em;
+  color:#0b6e8c;text-transform:uppercase}
+.radar-note{margin-top:10px;font-size:12.5px;line-height:1.55;color:#6b7a80;max-width:40ch}
+
+/* skills list */
+.skills-block{margin-top:clamp(38px,5.5vh,58px);padding-top:clamp(26px,4vh,34px);
+  border-top:2px solid rgba(0,136,255,.35);position:relative}
+.skills-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
+  background:linear-gradient(90deg,var(--gold),rgba(212,175,55,0))}
+.skills-title{font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(24px,3vw,36px);letter-spacing:.06em;color:var(--ink)}
+.skills-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);
+  margin-top:clamp(20px,3vh,28px)}
+.skill-group-title{font-family:'Cinzel',serif;font-size:11.5px;font-weight:700;
+  letter-spacing:.3em;color:#0b3a5c;text-transform:uppercase;margin-bottom:12px}
+.skill-list{list-style:none;margin:0;padding:0}
+.skill-list li{padding:6px 0;font-size:14.5px;color:#3c3c3c;line-height:1.45}
 
 /* ---------- work history screen ---------- */
 .work-scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
@@ -205,6 +245,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   #menu-cursor{transition:none}
   .menu-item{transition:none}
   .work-card,.card-pill,.card-pill .arr{transition:none}
+  .hex-fill{animation:none}
 }
 
 @media (max-width:760px){
@@ -216,7 +257,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   .menu-item{padding-left:40px}
   #menu-cursor{left:4px}
   .about-col{margin-left:24px;width:calc(100vw - 48px)}
-  .stats-grid{grid-template-columns:1fr}
+  .stats-sheet{grid-template-columns:1fr}
+  .player-card{margin:0 auto}
+  .radar-col{max-width:340px;margin:0 auto}
+  .skills-groups{grid-template-columns:1fr}
   .work-col{padding-left:24px;padding-right:24px}
   .work-grid{grid-template-columns:1fr}
   .track-grid{grid-template-columns:1fr}
@@ -235,8 +279,6 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
       <span class="subtitle">AI-NATIVE GENERALIST</span>
     </div>
   </header>
-
-  <p class="credits"><small>DEVELOPED BY</small><strong>QUEZ</strong></p>
 
   <!-- QUEZ PHOTO: /photo.webp — full-frame studio shot (Quez between two Porsche 911s), faded KH-style, right zone -->
   <figure class="photo-slot" aria-label="Quez standing between two Porsche 911s">
@@ -271,38 +313,66 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
     <p class="about-name">CHRISTIAN “QUEZ” VAZQUEZ</p>
 
-    <p class="screen-body about-prose">AI-native generalist with a <em>software engineering foundation</em> and range across sales, growth, and creative. An excellent communicator, extremely personable, and technically deep enough to go beyond the surface.</p>
+    <p class="screen-body about-prose">Forward Deployed Engineer: AI-native generalist with a <em>software engineering foundation</em> and range across sales, growth, and creative. An excellent communicator, extremely personable, and technically deep enough to go beyond the surface.</p>
     <p class="screen-body about-prose">From a <em>Fortune 20 company</em> to a <em>started-in-a-garage startup</em>: I shine in client-facing roles, build relationships I can lean on wherever I go, and actively seek out challenges that force me to improve.</p>
-    <p class="screen-body about-prose">I build the full loop: <em>analytics that surface trends</em>, honest evaluation of outcomes, and <em>automations that act on those insights</em> to drive the result.</p>
+    <p class="screen-body about-prose">I own the full loop: <em>audit workflows, integrate with existing tools, run evals, and deploy into the business</em>.</p>
 
-    <div class="stats-block">
-      <div class="stats-grid" id="stats-grid" role="list" aria-label="Headline numbers, live where available">
-        <div class="stat-tile" role="listitem" data-tile="downloads" aria-label="250,000+ app downloads">
-          <span class="stat-num" data-count aria-hidden="true">0</span>
-          <span class="stat-unit">App Downloads</span>
+    <div class="stats-sheet">
+      <div class="player-card" id="player-card" role="img" aria-label="Quez player card: overall 92, position FDE">
+        <div class="pc-top">
+          <span class="pc-tier">FDE</span>
+          <span class="pc-rating" id="pc-rating" aria-hidden="true">92</span>
         </div>
-        <div class="stat-tile" role="listitem" data-tile="discord" aria-label="25,000+ Discord members">
-          <span class="stat-num" data-count aria-hidden="true">0</span>
-          <span class="stat-unit">Discord Members</span>
+        <div class="pc-photo">
+          <img src="/photo.webp" alt="" aria-hidden="true" width="1400" height="1750" decoding="async" draggable="false">
         </div>
-        <div class="stat-tile" role="listitem" data-tile="support" aria-label="1,000+ support inquiries automated">
-          <span class="stat-num" data-count aria-hidden="true">0</span>
-          <span class="stat-unit">Support Inquiries Automated</span>
-        </div>
-        <div class="stat-tile" role="listitem" data-tile="pipelines" aria-label="6+ AI pipelines in production">
-          <span class="stat-num" data-count aria-hidden="true">0</span>
-          <span class="stat-unit">AI Pipelines in Production</span>
-        </div>
-        <div class="stat-tile" role="listitem" data-tile="sales" aria-label="$3.6M+ technical sales closed">
-          <span class="stat-num" data-count aria-hidden="true">0</span>
-          <span class="stat-unit">Technical Sales Closed</span>
-        </div>
-        <div class="stat-tile" role="listitem" data-tile="radio" aria-label="500 average live radio listeners">
-          <span class="stat-num" data-count aria-hidden="true">0</span>
-          <span class="stat-unit">Avg Live Radio Listeners</span>
-        </div>
+        <div class="pc-banner">QUEZ</div>
       </div>
-      <p class="stats-updated" id="stats-updated" hidden></p>
+      <div class="radar-col">
+        <div id="hex-radar"></div>
+        <p class="radar-name">QUEZ</p>
+        <p class="radar-meta">FORT LAUDERDALE, FL · ENGLISH/SPANISH</p>
+        <p class="radar-trait">AI-NATIVE GENERALIST</p>
+        <p class="radar-note">Willingness to quit: 0. I'm not a quitter.</p>
+      </div>
+    </div>
+
+    <div class="skills-block">
+      <h3 class="skills-title">TOOLS &amp; SKILLS</h3>
+      <div class="skills-groups">
+        <section class="skill-group">
+          <h4 class="skill-group-title">AI &amp; AUTOMATION</h4>
+          <ul class="skill-list">
+            <li>Claude</li>
+            <li>Hermes Agent</li>
+            <li>MCP integrations</li>
+            <li>LLM evals</li>
+            <li>Automation pipelines</li>
+            <li>Analytics</li>
+          </ul>
+        </section>
+        <section class="skill-group">
+          <h4 class="skill-group-title">PLATFORMS &amp; ENGINEERING</h4>
+          <ul class="skill-list">
+            <li>Zendesk</li>
+            <li>Discord</li>
+            <li>Supabase</li>
+            <li>Next.js</li>
+            <li>API integrations</li>
+            <li>Content engine</li>
+          </ul>
+        </section>
+        <section class="skill-group">
+          <h4 class="skill-group-title">GROWTH &amp; CREATIVE</h4>
+          <ul class="skill-list">
+            <li>Sales engineering</li>
+            <li>Community growth</li>
+            <li>Descript</li>
+            <li>Higgsfield</li>
+            <li>HeyGen</li>
+          </ul>
+        </section>
+      </div>
     </div>
 
     <button type="button" class="back-btn" data-back>BACK</button>
@@ -542,108 +612,101 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 })();
 </script>
 <script>
-/* ABOUT screen: headline count-up counters + stats.json live wiring */
+/* ABOUT: FIFA-style hex radar, drawn with vanilla SVG. Tune QUEZ_STATS below. */
 (function(){
   'use strict';
-  var screen = document.getElementById('screen-about');
-  var grid   = document.getElementById('stats-grid');
-  if (!screen || !grid) return;
+  var mount = document.getElementById('hex-radar');
+  if (!mount) return;
 
-  var REDUCED = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  var DURATION = 1200; /* ms, ease-out */
-  var EASE = function(t){ return 1 - Math.pow(1 - t, 3); };
-
-  function fmtInt(v){ return Math.round(v).toLocaleString('en-US'); }
-  function fmtK(v){ return Math.round(v / 1000) + 'K'; }
-  function fmtMoney(v){ return '$' + v.toFixed(1) + 'M'; }
-
-  var TILES = [
-    {key:'downloads', value:250000, fmt:fmtK,    plus:'+'},
-    {key:'discord',   value:25000,  fmt:fmtInt,  plus:'+', live:['pipelines','analytics','members_total']},
-    {key:'support',   value:1000,   fmt:fmtInt,  plus:'+', live:['pipelines','support','inquiries_resolved']},
-    {key:'pipelines', value:6,      fmt:fmtInt,  plus:'+', liveCount:true},
-    {key:'sales',     value:3.6,    fmt:fmtMoney,plus:'+'},
-    {key:'radio',     value:500,    fmt:fmtInt}
+  /* EDIT ME: Quez's attributes. value is 0-100; label is the vertex label. */
+  var QUEZ_STATS = [
+    { label: 'AI',        value: 95, aria: 'AI proficiency 95' },
+    { label: 'COMMS',     value: 92, aria: 'communication skills 92' },
+    { label: 'CURIOSITY', value: 94, aria: 'curiosity 94' },
+    { label: 'RIZZ',      value: 88, aria: 'rizz 88' },
+    { label: 'TASTE',     value: 90, aria: 'taste 90' },
+    { label: 'QUIT',      value: 0,  aria: 'willingness to quit 0' }
   ];
 
-  var state = {};
-  TILES.forEach(function(t){
-    var tile = grid.querySelector('[data-tile="' + t.key + '"]');
-    state[t.key] = {tile: tile, num: tile ? tile.querySelector('[data-count]') : null, value: t.value};
+  /* overall rating = rounded mean of the non-zero attributes, so tuning QUEZ_STATS stays consistent */
+  var nonzero = QUEZ_STATS.filter(function(s){ return s.value > 0; });
+  var overall = nonzero.length
+    ? Math.round(nonzero.reduce(function(a, s){ return a + s.value; }, 0) / nonzero.length)
+    : 0;
+
+  var rating = document.getElementById('pc-rating');
+  var card   = document.getElementById('player-card');
+  if (rating) rating.textContent = overall;
+  if (card) card.setAttribute('aria-label', 'Quez player card: overall ' + overall + ', position FDE');
+
+  var NS = 'http://www.w3.org/2000/svg';
+  var W = 340, H = 330, CX = W / 2, CY = 168, R = 102;
+  var svg = document.createElementNS(NS, 'svg');
+  svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+  svg.setAttribute('role', 'img');
+  svg.setAttribute('aria-label', 'Attribute radar: ' + QUEZ_STATS.map(function(s){ return s.aria; }).join(', ') + '.');
+  svg.classList.add('hex-svg');
+
+  function pt(i, r){
+    var a = (Math.PI / 180) * (-90 + i * 60);  /* pointy-top hexagon */
+    return [CX + r * Math.cos(a), CY + r * Math.sin(a)];
+  }
+  function statPoints(){
+    var p = [];
+    for (var i = 0; i < 6; i++){
+      p.push(pt(i, R * QUEZ_STATS[i].value / 100).map(function(n){ return n.toFixed(1); }).join(','));
+    }
+    return p.join(' ');
+  }
+  function gridPoints(scale){
+    var p = [];
+    for (var i = 0; i < 6; i++){
+      p.push(pt(i, R * scale).map(function(n){ return n.toFixed(1); }).join(','));
+    }
+    return p.join(' ');
+  }
+  function el(name, attrs){
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  /* concentric grid: 3 levels + spokes */
+  [0.33, 0.66, 1].forEach(function(scale){
+    svg.appendChild(el('polygon', {
+      points: gridPoints(scale), fill: 'none',
+      stroke: scale === 1 ? '#b7c0c5' : '#d9dee1', 'stroke-width': scale === 1 ? 1.4 : 1
+    }));
+  });
+  for (var i = 0; i < 6; i++){
+    var p = pt(i, R);
+    svg.appendChild(el('line', {
+      x1: CX, y1: CY, x2: p[0].toFixed(1), y2: p[1].toFixed(1),
+      stroke: '#e4e8ea', 'stroke-width': 1
+    }));
+  }
+
+  /* stat polygon (the 0-value vertex collapses to the center) */
+  var fill = el('polygon', {
+    points: statPoints(), fill: 'rgba(0,255,255,.16)',
+    stroke: '#00a8a8', 'stroke-width': 2, 'stroke-linejoin': 'round'
+  });
+  fill.classList.add('hex-fill');
+  svg.appendChild(fill);
+
+  /* vertex labels */
+  QUEZ_STATS.forEach(function(s, i){
+    var p = pt(i, R * 1.24);
+    var t = el('text', {
+      x: p[0].toFixed(1), y: (p[1] + 3.5).toFixed(1),
+      'text-anchor': i === 0 || i === 3 ? 'middle' : (i < 3 ? 'start' : 'end'),
+      'class': 'hex-label'
+    });
+    t.textContent = s.label;
+    svg.appendChild(t);
   });
 
-  function render(key, v){
-    var s = state[key];
-    if (!s || !s.num) return;
-    var t = null;
-    for (var i = 0; i < TILES.length; i++){ if (TILES[i].key === key){ t = TILES[i]; break; } }
-    s.num.textContent = t.fmt(v) + (t.plus || '');
-  }
-
-  function runCounters(){
-    if (REDUCED){ TILES.forEach(function(t){ render(t.key, state[t.key].value); }); return; }
-    TILES.forEach(function(t){
-      var start = null, target = state[t.key].value;
-      /* rAF timestamps are absolute (performance timeline) — let the first rAF
-         callback establish `start`; invoking with a literal 0 would make p>=1
-         whenever the animation starts more than DURATION ms after page load */
-      function frame(ts){
-        if (start === null) start = ts;
-        var p = Math.min((ts - start) / DURATION, 1);
-        render(t.key, EASE(p) * target);
-        if (p < 1) requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
-    });
-  }
-
-  /* re-animate every time the ABOUT screen becomes visible (threshold 0: fire on
-     first pixel — the stats grid may start below the fold on short viewports) */
-  new IntersectionObserver(function(entries){
-    entries.forEach(function(en){ if (en.isIntersecting) runCounters(); });
-  }, {threshold: 0}).observe(grid);
-
-  function getPath(obj, path){
-    for (var i = 0; i < path.length; i++){
-      if (obj == null || typeof obj !== 'object') return null;
-      obj = obj[path[i]];
-    }
-    return obj;
-  }
-
-  function applyStats(data){
-    TILES.forEach(function(t){
-      var liveVal = null;
-      if (t.live) liveVal = getPath(data, t.live);
-      else if (t.liveCount && data.pipelines) liveVal = Object.keys(data.pipelines).length;
-      /* support inquiries are manually entered in stats.json — value is real but not pipeline-derived */
-      var manual = (t.live && t.live[1] === 'support' && data.pipelines && data.pipelines.support && data.pipelines.support.source === 'manual');
-      var valid = (typeof liveVal === 'number' && isFinite(liveVal) && liveVal > 0);
-      if (valid) state[t.key].value = liveVal;
-    });
-  }
-
-  function showLive(generatedAt){
-    var updated = document.getElementById('stats-updated');
-    if (updated && generatedAt){
-      var d = new Date(generatedAt);
-      if (!isNaN(d.getTime())){
-        updated.textContent = 'UPDATED ' + d.toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
-        updated.hidden = false;
-      }
-    }
-  }
-
-  fetch('stats.json', {cache: 'no-store'})
-    .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then(function(data){
-      applyStats(data);
-      showLive(data.generated_at);
-      if (!screen.hidden) runCounters(); /* already open — animate to live values */
-    })
-    .catch(function(){
-      /* stats.json unreachable — static fallback numbers stay in place */
-    });
+  mount.appendChild(svg);
 })();
 </script>
 <script>
