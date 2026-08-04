@@ -11,7 +11,8 @@
 <link rel="preload" as="image" href="/photo2.webp">
 <style>
 :root{
-  --cyan:#00FFFF; --blue:#0088FF; --gold:#D4AF37; --grey:#808080; --orange:#FFA500;
+  /* Gundam RX-78 palette (v6): white base, RX-78 blue primary, yellow + red accents, slate grey */
+  --blue:#2c52b3; --blue-deep:#1d3a75; --gold:#fff867; --grey:#5a5b6d; --red:#fb2f38;
   --ink:#111; --radius:4px;
   --bar-h:clamp(132px,18vh,170px);
 }
@@ -34,12 +35,12 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 /* water gradient, bottom-right corner (reflection feel) */
 .water{position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(115% 88% at 100% 100%,
-    rgba(0,255,255,.52) 0%, rgba(0,136,255,.36) 34%, rgba(0,136,255,.12) 56%, rgba(255,255,255,0) 76%);
+    rgba(44,82,179,.52) 0%, rgba(44,82,179,.36) 34%, rgba(44,82,179,.12) 56%, rgba(255,255,255,0) 76%);
 }
 .water::after{content:"";position:absolute;inset:0;
   background:repeating-linear-gradient(180deg,
     rgba(255,255,255,0) 0 24px, rgba(255,255,255,.30) 25px 27px,
-    rgba(0,136,255,.10) 28px 30px, rgba(255,255,255,0) 31px 46px);
+    rgba(44,82,179,.10) 28px 30px, rgba(255,255,255,0) 31px 46px);
   -webkit-mask-image:radial-gradient(85% 65% at 100% 100%,#000 0%,transparent 72%);
   mask-image:radial-gradient(85% 65% at 100% 100%,#000 0%,transparent 72%);
   opacity:.5;
@@ -72,27 +73,27 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 /* game settings — top right */
 .settings-btn{position:absolute;top:20px;right:clamp(16px,3vw,36px);z-index:4;
   display:flex;align-items:center;gap:9px;
-  font-size:12px;font-weight:600;letter-spacing:.2em;color:#4a4a4a;text-transform:uppercase}
-.settings-icon{width:19px;height:19px;border-radius:var(--radius);background:#a7a7a7;flex:none;
+  font-size:12px;font-weight:600;letter-spacing:.2em;color:#5a5b6d;text-transform:uppercase}
+.settings-icon{width:19px;height:19px;border-radius:var(--radius);background:#5a5b6d;flex:none;
   display:inline-flex;align-items:center;justify-content:center}
 .settings-icon svg{width:13px;height:13px;fill:#fff}
 .settings-btn:hover .settings-icon{background:var(--blue)}
-.settings-btn:hover{color:#0b3a5c}
+.settings-btn:hover{color:#1d3a75}
 
 /* bottom bar + menu */
 .menu-bar{position:absolute;left:0;right:0;bottom:0;height:var(--bar-h);z-index:3;
-  background:linear-gradient(90deg,rgba(255,255,255,.88) 0%,rgba(214,240,255,.72) 100%);
+  background:linear-gradient(90deg,rgba(255,255,255,.88) 0%,rgba(211,222,246,.72) 100%);
   -webkit-backdrop-filter:blur(8px) saturate(1.2);backdrop-filter:blur(8px) saturate(1.2);
-  border-top:1px solid rgba(0,136,255,.28)}
+  border-top:1px solid rgba(44,82,179,.28)}
 .menu{position:absolute;left:clamp(24px,5vw,64px);top:50%;transform:translateY(-50%);
   list-style:none;margin:0;padding:0}
 .menu-item{position:relative;display:block;padding:9px 18px 9px 44px;
   font-size:clamp(17px,2.1vw,26px);font-weight:500;letter-spacing:.2em;text-transform:uppercase;
   color:var(--grey);transition:color .15s ease;white-space:nowrap}
-.menu-item.is-active{color:#fff;font-weight:700;
-  text-shadow:0 0 5px rgba(0,0,0,.55),0 2px 3px rgba(0,0,0,.5)}
+.menu-item.is-active{color:var(--red);font-weight:700;
+  text-shadow:0 1px 0 rgba(255,255,255,.6),0 0 5px rgba(255,255,255,.4)}
 #menu-cursor{position:absolute;left:6px;top:0;width:16px;height:16px;
-  background:var(--orange);box-shadow:0 2px 6px rgba(0,0,0,.28);z-index:2;
+  background:var(--red);box-shadow:0 2px 6px rgba(0,0,0,.28);z-index:2;
   transition:top .18s ease;pointer-events:none}
 #menu-cursor::after{content:"";position:absolute;inset:0;margin:auto;
   width:5px;height:5px;border-radius:50%;background:#fff}
@@ -105,14 +106,14 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .content-inner{position:absolute;left:clamp(28px,7vw,96px);top:50%;transform:translateY(-50%);
   max-width:680px;z-index:3}
 .kicker{font-family:'Cinzel',serif;font-size:12px;font-weight:600;letter-spacing:.42em;
-  color:var(--blue);text-transform:uppercase;margin-bottom:18px}
+  color:var(--gold);text-transform:uppercase;margin-bottom:18px}
 .screen-heading{font-family:'Cinzel',serif;font-weight:700;
   font-size:clamp(42px,6.5vw,82px);line-height:.95;color:var(--ink);letter-spacing:.02em}
 .screen-body{margin-top:22px;font-size:16px;line-height:1.75;color:#3c3c3c;max-width:54ch}
-.screen-body em{font-style:normal;color:#0b3a5c;font-weight:600}
+.screen-body em{font-style:normal;color:#1d3a75;font-weight:600}
 .back-btn{margin-top:38px;display:inline-flex;align-items:center;gap:10px;
   padding:13px 28px;font-size:13px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;
-  color:#0b3a5c;border:1px solid rgba(0,136,255,.55);border-radius:var(--radius);
+  color:#1d3a75;border:1px solid rgba(44,82,179,.55);border-radius:var(--radius);
   background:rgba(255,255,255,.55);transition:background .15s ease,color .15s ease}
 .back-btn:hover,.back-btn:focus-visible{background:var(--blue);color:#fff}
 
@@ -123,113 +124,106 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 .about-name{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(15px,1.9vw,22px);letter-spacing:.28em;color:#1c1c1c;margin-top:26px}
 /* PORTRAIT SLOT: swap the img src for a proper headshot later (v5 item 4). photo.webp for now. */
 .about-photo{width:min(300px,68vw);margin-top:clamp(20px,3vh,30px);border-radius:var(--radius);
-  overflow:hidden;border:1px solid rgba(0,136,255,.4);box-shadow:0 14px 34px rgba(0,40,80,.16);background:#fff}
+  overflow:hidden;border:1px solid rgba(44,82,179,.4);box-shadow:0 14px 34px rgba(44,82,179,.16);background:#fff}
 .about-photo img{display:block;width:100%;height:auto;
   filter:saturate(.92) contrast(1.05) brightness(.97)}
 .about-prose{margin-top:clamp(32px,4.5vh,46px)}
 .about-prose + .about-prose{margin-top:18px}
-.stat-num{display:block;font-family:'Cinzel',serif;font-weight:700;font-size:clamp(36px,4.2vw,52px);line-height:1;color:var(--ink)}
-.stat-unit{display:block;margin-top:9px;font-family:'Cinzel',serif;font-size:10.5px;font-weight:600;letter-spacing:.24em;color:#0b3a5c;text-transform:uppercase}
 
 /* FIFA-style stats sheet: rating card (left) + hex radar (right) */
 .stats-sheet{display:grid;grid-template-columns:minmax(230px,300px) minmax(300px,1fr);
   gap:clamp(26px,3.4vw,48px);align-items:center;margin-top:clamp(30px,4.5vh,44px)}
 .player-card{position:relative;width:100%;max-width:300px;min-height:300px;border-radius:var(--radius);
-  background:linear-gradient(160deg,#ffffff 0%,#e0f3ff 55%,#c8ecff 100%);
-  border:1px solid rgba(0,136,255,.4);box-shadow:0 14px 34px rgba(0,40,80,.16);overflow:hidden;
+  background:linear-gradient(160deg,#ffffff 0%,#e3e9f8 55%,#cbd6f2 100%);
+  border:1px solid rgba(44,82,179,.4);box-shadow:0 14px 34px rgba(44,82,179,.16);overflow:hidden;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:30px 20px;text-align:center}
 .pc-tier{display:block;font-family:'Cinzel',serif;font-size:11px;font-weight:600;
-  letter-spacing:.34em;color:#0b3a5c}
+  letter-spacing:.34em;color:#1d3a75}
 .pc-rating{display:block;font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(64px,7vw,84px);line-height:1;color:var(--gold);
+  font-size:clamp(64px,7vw,84px);line-height:1;color:var(--red);
   text-shadow:0 1px 0 rgba(255,255,255,.55)}
 .pc-role{display:block;margin-top:4px;font-family:'Cinzel',serif;font-size:10.5px;
-  font-weight:600;letter-spacing:.3em;color:#0b3a5c}
+  font-weight:600;letter-spacing:.3em;color:#1d3a75}
 .radar-col{width:100%;max-width:430px}
 .hex-svg{display:block;width:100%;height:auto;overflow:visible}
 .hex-label{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  font-size:10px;font-weight:700;letter-spacing:.16em;fill:#5a6b72;text-transform:uppercase}
+  font-size:10px;font-weight:700;letter-spacing:.16em;fill:#5a5b6d;text-transform:uppercase}
 .hex-fill{transform-box:view-box;transform-origin:170px 168px;
   animation:hex-grow .7s cubic-bezier(.16,1,.3,1) both}
 @keyframes hex-grow{from{opacity:0;transform:scale(.55)}to{opacity:1;transform:scale(1)}}
 .radar-name{margin-top:8px;font-family:'Cinzel',serif;font-weight:700;
   font-size:clamp(20px,2.4vw,26px);letter-spacing:.3em;color:var(--ink)}
-.radar-meta{margin-top:7px;font-size:12px;letter-spacing:.14em;color:#5a6b72;text-transform:uppercase}
+.radar-meta{margin-top:7px;font-size:12px;letter-spacing:.14em;color:#5a5b6d;text-transform:uppercase}
 .radar-trait{margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.3em;
-  color:#0b6e8c;text-transform:uppercase}
-.radar-note{margin-top:10px;font-size:12.5px;line-height:1.55;color:#6b7a80;max-width:40ch}
+  color:#1d3a75;text-transform:uppercase}
+.radar-note{margin-top:10px;font-size:12.5px;line-height:1.55;color:#5a5b6d;max-width:40ch}
 
 /* skills list */
 .skills-block{margin-top:clamp(38px,5.5vh,58px);padding-top:clamp(26px,4vh,34px);
-  border-top:2px solid rgba(0,136,255,.35);position:relative}
+  border-top:2px solid rgba(44,82,179,.35);position:relative}
 .skills-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
-  background:linear-gradient(90deg,var(--gold),rgba(212,175,55,0))}
+  background:linear-gradient(90deg,var(--gold),rgba(255,248,103,0))}
 .skills-title{font-family:'Cinzel',serif;font-weight:700;
   font-size:clamp(24px,3vw,36px);letter-spacing:.06em;color:var(--ink)}
 .skills-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,44px);
   margin-top:clamp(20px,3vh,28px)}
 .skill-group-title{font-family:'Cinzel',serif;font-size:11.5px;font-weight:700;
-  letter-spacing:.3em;color:#0b3a5c;text-transform:uppercase;margin-bottom:12px}
+  letter-spacing:.3em;color:#1d3a75;text-transform:uppercase;margin-bottom:12px}
 .skill-list{list-style:none;margin:0;padding:0}
 .skill-list li{padding:6px 0;font-size:14.5px;color:#3c3c3c;line-height:1.45}
 
 /* ---------- work history screen: in-game journal (quest log) ---------- */
 .work-scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
-  scrollbar-width:thin;scrollbar-color:rgba(0,136,255,.55) rgba(0,136,255,.07)}
+  scrollbar-width:thin;scrollbar-color:rgba(44,82,179,.55) rgba(44,82,179,.07)}
 .work-scroll::-webkit-scrollbar{width:10px}
-.work-scroll::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(0,255,255,.6),rgba(0,136,255,.7));border-radius:var(--radius);border:2px solid #fff}
-.work-scroll::-webkit-scrollbar-track{background:rgba(0,136,255,.06)}
+.work-scroll::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(44,82,179,.6),rgba(44,82,179,.7));border-radius:var(--radius);border:2px solid #fff}
+.work-scroll::-webkit-scrollbar-track{background:rgba(44,82,179,.06)}
 .work-col{position:relative;z-index:3;min-height:100%;max-width:1180px;margin:0 auto;
   padding:clamp(36px,6vh,72px) clamp(24px,5vw,64px) clamp(88px,11vh,120px)}
 .journal-intro{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
   margin-top:clamp(18px,2.5vh,28px)}
-.journal-hint{font-size:10.5px;font-weight:600;letter-spacing:.24em;color:rgba(0,60,110,.55);
+.journal-hint{font-size:10.5px;font-weight:600;letter-spacing:.24em;color:rgba(29,58,117,.78);
   text-transform:uppercase;white-space:nowrap}
 .journal{list-style:none;margin:clamp(16px,2.2vh,24px) 0 0;padding:0;
   display:flex;flex-direction:column;gap:clamp(10px,1.4vh,14px)}
-.journal-entry{border:1px solid rgba(0,136,255,.38);border-radius:var(--radius);
-  background:linear-gradient(135deg,rgba(255,255,255,.94),rgba(214,240,255,.62));
-  box-shadow:0 10px 26px rgba(0,40,80,.12);overflow:hidden;
+.journal-entry{border:1px solid rgba(44,82,179,.38);border-radius:var(--radius);
+  background:linear-gradient(135deg,rgba(255,255,255,.94),rgba(207,218,245,.62));
+  box-shadow:0 10px 26px rgba(44,82,179,.12);overflow:hidden;
   transition:border-color .16s ease,box-shadow .16s ease}
-.journal-entry.is-open{border-color:rgba(0,136,255,.65);box-shadow:0 16px 34px rgba(0,40,80,.18)}
+.journal-entry.is-open{border-color:rgba(44,82,179,.65);box-shadow:0 16px 34px rgba(44,82,179,.18)}
 .journal-entry-head{display:flex;align-items:center;gap:clamp(14px,2vw,22px);width:100%;text-align:left;
   padding:clamp(16px,2.4vh,22px) clamp(18px,2.4vw,26px);background:none;border:0;cursor:pointer;
   font:inherit;color:inherit;transition:background .15s ease}
-.journal-entry-head:hover{background:rgba(0,136,255,.05)}
+.journal-entry-head:hover{background:rgba(44,82,179,.05)}
 .journal-entry-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
-.journal-idx{flex:none;width:26px;font-family:'Cinzel',serif;font-size:13px;font-weight:700;
-  letter-spacing:.14em;color:var(--gold)}
+.journal-idx{flex:none;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:.14em;
+  color:var(--gold);background:var(--blue);border-radius:var(--radius)}
 .journal-id-main{flex:1;min-width:0}
 .journal-name{display:block;font-family:'Cinzel',serif;font-weight:700;font-size:clamp(19px,2.2vw,26px);
   line-height:1.1;color:var(--ink);letter-spacing:.04em}
 .journal-meta{display:block;margin-top:5px;font-size:12px;font-weight:600;letter-spacing:.16em;
-  color:rgba(0,60,110,.66);text-transform:uppercase}
-.journal-head-stat{flex:none;font-family:'Cinzel',serif;font-weight:700;
-  font-size:clamp(14px,1.6vw,19px);letter-spacing:.1em;color:var(--ink);text-align:right}
+  color:rgba(29,58,117,.8);text-transform:uppercase}
 .journal-chev{flex:none;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;
-  border:1px solid rgba(0,136,255,.5);border-radius:var(--radius);color:var(--gold);
+  border:1px solid rgba(44,82,179,.5);border-radius:var(--radius);color:var(--gold);
   font-size:11px;line-height:1;transition:transform .18s ease,background .15s ease,color .15s ease}
-.journal-entry.is-open .journal-chev{transform:rotate(90deg);background:var(--blue);
-  border-color:var(--blue);color:#fff}
+.journal-entry.is-open .journal-chev{transform:rotate(90deg);background:var(--red);
+  border-color:var(--red);color:#fff}
 .journal-panel{padding:0 clamp(18px,2.4vw,26px) clamp(20px,3vh,28px)}
 .journal-panel[hidden]{display:none}
-.journal-panel-inner{border-top:1px solid rgba(0,136,255,.25);padding-top:clamp(14px,2vh,18px)}
+.journal-panel-inner{border-top:1px solid rgba(44,82,179,.25);padding-top:clamp(14px,2vh,18px)}
 .journal-achievements{list-style:none;margin:0;padding:0;
   display:flex;flex-direction:column;gap:clamp(12px,1.8vh,16px)}
 .journal-achievement{padding:clamp(14px,2vh,18px) clamp(14px,2vw,20px);
-  border:1px solid rgba(0,136,255,.22);border-radius:var(--radius);background:rgba(255,255,255,.55)}
+  border:1px solid rgba(44,82,179,.22);border-radius:var(--radius);background:rgba(255,255,255,.55)}
 .ach-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
 .ach-title{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(14px,1.6vw,17px);
   line-height:1.25;color:var(--ink);letter-spacing:.03em}
-.ach-stat{flex:none;text-align:right;min-width:120px}
-.ach-stat .stat-num{font-size:clamp(22px,2.4vw,30px);line-height:1}
-.ach-stat .stat-unit{margin-top:5px}
 .ach-copy{margin-top:10px;font-size:14px;line-height:1.7;color:#3c3c3c;max-width:64ch}
-.ach-wins{margin-top:8px;font-size:12.5px;line-height:1.6;color:#0b6e8c;font-weight:600}
 .card-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .card-pill{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 16px;
-  border:1px solid rgba(0,136,255,.55);border-radius:var(--radius);font-family:'Cinzel',serif;font-size:11px;
-  font-weight:600;letter-spacing:.18em;color:#0b3a5c;text-transform:uppercase;
+  border:1px solid rgba(44,82,179,.55);border-radius:var(--radius);font-family:'Cinzel',serif;font-size:11px;
+  font-weight:600;letter-spacing:.18em;color:#1d3a75;text-transform:uppercase;
   background:rgba(255,255,255,.55);transition:background .15s ease,color .15s ease,border-color .15s ease}
 .card-pill .arr{color:var(--gold);transition:color .15s ease}
 .card-pill:hover,.card-pill:focus-visible{background:var(--blue);border-color:var(--blue);color:#fff}
@@ -237,9 +231,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
 
 /* ---------- settings modal ---------- */
 .modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;
-  background:rgba(15,35,50,.42);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-.modal-panel{width:min(460px,90vw);background:#f7fbff;border:1px solid var(--blue);
-  border-radius:var(--radius);box-shadow:0 24px 60px rgba(0,40,80,.35);padding:34px 36px 30px}
+  background:rgba(24,37,68,.5);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.modal-panel{width:min(460px,90vw);background:#f2f5fc;border:1px solid var(--blue);
+  border-radius:var(--radius);box-shadow:0 24px 60px rgba(44,82,179,.35);padding:34px 36px 30px}
 .modal-panel h2{font-family:'Cinzel',serif;font-weight:700;font-size:30px;color:var(--ink);
   letter-spacing:.04em;margin-bottom:16px}
 .modal-panel p{font-size:14px;line-height:1.7;color:#444;margin-bottom:10px}
@@ -267,9 +261,6 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   .radar-col{max-width:340px;margin:0 auto}
   .skills-groups{grid-template-columns:1fr}
   .work-col{padding-left:24px;padding-right:24px}
-  .journal-head-stat{display:none}
-  .ach-head{flex-direction:column;gap:8px}
-  .ach-stat{text-align:left;min-width:0}
 }
 </style>
 </head>
@@ -392,89 +383,49 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
       </div>
 
       <ol class="journal" id="journal-list">
-        <!-- 375ai: the current run. 6 achievements, one per case study. -->
+        <!-- 375ai: the current run. 4 achievements. -->
         <li class="journal-entry" data-entry="375ai">
           <button type="button" class="journal-entry-head" id="journal-btn-375ai"
                   aria-expanded="false" aria-controls="journal-panel-375ai">
             <span class="journal-idx" aria-hidden="true">01</span>
             <span class="journal-id-main">
               <span class="journal-name">375AI</span>
-              <span class="journal-meta">AI Systems &amp; Support, 2024-Present</span>
+              <span class="journal-meta">Community Manager, June 2024 - Present</span>
             </span>
-            <span class="journal-head-stat">6 ACHIEVEMENTS</span>
             <span class="journal-chev" aria-hidden="true">▸</span>
           </button>
           <div class="journal-panel" id="journal-panel-375ai" role="region"
                aria-labelledby="journal-btn-375ai" tabindex="-1" hidden>
             <div class="journal-panel-inner">
               <ul class="journal-achievements">
-                <li class="journal-achievement" data-work="support">
+                <li class="journal-achievement">
                   <div class="ach-head">
-                    <h4 class="ach-title">SUPPORT &amp; CUSTOMER SUCCESS, BUILT SOLO</h4>
-                    <div class="ach-stat">
-                      <span class="stat-num" data-work-stat>1,000+</span>
-                      <span class="stat-unit">Inquiries Resolved</span>
-                    </div>
+                    <h4 class="ach-title">Community Growth</h4>
                   </div>
-                  <p class="ach-copy">Set up, managed, and automated the entire customer support operation for 375go. Native Zendesk pipelines resolved more than a thousand inquiries without a dedicated support team.</p>
-                </li>
-                <li class="journal-achievement" data-work="pipelines">
-                  <div class="ach-head">
-                    <h4 class="ach-title">AI AUTOMATION PIPELINES</h4>
-                    <div class="ach-stat">
-                      <span class="stat-num" data-work-stat>6+</span>
-                      <span class="stat-unit">Recurring Pipelines</span>
-                    </div>
-                  </div>
-                  <p class="ach-copy">Recurring automation pipelines for Discord analytics, token payouts, content research, and growth outreach. Weekly work became repeatable systems that surface what to act on.</p>
-                </li>
-                <li class="journal-achievement" data-work="growth">
-                  <div class="ach-head">
-                    <h4 class="ach-title">COMMUNITY GROWTH &amp; 375GO LAUNCH</h4>
-                    <div class="ach-stat">
-                      <span class="stat-num" data-work-stat>25,000+</span>
-                      <span class="stat-unit">Discord Members</span>
-                    </div>
-                  </div>
-                  <p class="ach-copy">Partnered with the Head of Marketing to grow the Discord and drive 250K+ 375go app downloads. Beta feedback directly shaped photo submissions, referrals, and rewards UX.</p>
-                  <p class="ach-wins">Beta feedback wins: expanded shelf-scan acceptance, referral program, rewards breakdown page.</p>
-                </li>
-                <li class="journal-achievement" data-work="content">
-                  <div class="ach-head">
-                    <h4 class="ach-title">CONTENT ENGINE &amp; CURRICULUM</h4>
-                    <div class="ach-stat">
-                      <span class="stat-num" data-work-stat>4</span>
-                      <span class="stat-unit">Weekly Source-Verified Briefs</span>
-                    </div>
-                  </div>
-                  <p class="ach-copy">Built an AI-powered content engine producing source-verified posts for Discord, X, and LinkedIn, plus a 12-week Physical AI curriculum and co-creation tool adopted by marketing.</p>
+                  <p class="ach-copy">Partnered with the Head of Marketing to grow the Discord server to 20k+ members and drive 250K+ downloads of the 375go mobile app. Managed the V3 Beta Testing period and communicated user feedback to scope out new features.</p>
                 </li>
                 <li class="journal-achievement">
                   <div class="ach-head">
-                    <h4 class="ach-title">CREATIVE VIDEO &amp; PRODUCTION</h4>
-                    <div class="ach-stat">
-                      <span class="stat-num">E2E</span>
-                      <span class="stat-unit">Script to Ship</span>
-                    </div>
+                    <h4 class="ach-title">Technical Support &amp; Customer Success</h4>
                   </div>
-                  <p class="ach-copy">Explainer videos, product demos, and SME reference videos, scripted, storyboarded, and produced end to end.</p>
+                  <p class="ach-copy">Set up, managed, and automated the entire customer support operation for 375go. Native Zendesk pipelines resolved more than a thousand inquiries without a dedicated support team. Worked as the liaison between our users and the engineering team.</p>
+                </li>
+                <li class="journal-achievement">
+                  <div class="ach-head">
+                    <h4 class="ach-title">Creative &amp; Content</h4>
+                  </div>
+                  <p class="ach-copy">Explainer videos, product demos, and SME reference videos, scripted, storyboarded, and produced end to end. Built an AI-powered content engine producing source-verified posts for Discord, X, and LinkedIn, plus a co-creation tool adopted by our marketing department. Hosted two seasons of live radio shows averaging 500 listeners, interviewing guests across DePIN and AI. Handled everything from outreach, scheduling, asset production, live show management, and post show editing.</p>
                   <div class="card-links">
-                    <a class="card-pill" href="https://x.com/375ai_/status/2074927736498577524" target="_blank" rel="noopener">Watch on X <span class="arr" aria-hidden="true">↗</span></a>
-                    <a class="card-pill" href="https://www.youtube.com/watch?v=vP-JFfU_jHc" target="_blank" rel="noopener">Watch on YouTube <span class="arr" aria-hidden="true">↗</span></a>
+                    <a class="card-pill" href="https://x.com/375ai_/status/2074927736498577524" target="_blank" rel="noopener">See SME References <span class="arr" aria-hidden="true">↗</span></a>
+                    <a class="card-pill" href="https://www.youtube.com/watch?v=vP-JFfU_jHc" target="_blank" rel="noopener">Watch 375ai Explainer Video <span class="arr" aria-hidden="true">↗</span></a>
+                    <a class="card-pill" href="https://x.com/i/spaces/1nAKEpMlQgvxL" target="_blank" rel="noopener">Listen to a Radio Episode <span class="arr" aria-hidden="true">↗</span></a>
                   </div>
                 </li>
-                <li class="journal-achievement" data-work="radio">
+                <li class="journal-achievement">
                   <div class="ach-head">
-                    <h4 class="ach-title">LIVE RADIO &amp; INTERVIEWS</h4>
-                    <div class="ach-stat">
-                      <span class="stat-num" data-work-stat>500</span>
-                      <span class="stat-unit">Avg Live Listeners</span>
-                    </div>
+                    <h4 class="ach-title">AI Integration</h4>
                   </div>
-                  <p class="ach-copy">Hosted two seasons of live radio shows averaging 500 listeners, interviewing guests across Web3 and AI and making technical ideas accessible in real time.</p>
-                  <div class="card-links">
-                    <a class="card-pill" href="https://x.com/i/spaces/1nAKEpMlQgvxL" target="_blank" rel="noopener">Listen to an episode <span class="arr" aria-hidden="true">↗</span></a>
-                  </div>
+                  <p class="ach-copy">Recurring automation pipelines for Discord analytics, beta testing contributions &amp; reward payouts, content research, and growth outreach, technical support, and creative. Identified key areas to create AI systems that surface what to act on.</p>
                 </li>
               </ul>
             </div>
@@ -488,9 +439,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
             <span class="journal-idx" aria-hidden="true">02</span>
             <span class="journal-id-main">
               <span class="journal-name">NAMETAG</span>
-              <span class="journal-meta">Sales Engineer / PM, 2021-2023</span>
+              <span class="journal-meta">Sales Engineer / PM / Community Manager, September 2021 - August 2023</span>
             </span>
-            <span class="journal-head-stat">$1.1M+ SOLD</span>
             <span class="journal-chev" aria-hidden="true">▸</span>
           </button>
           <div class="journal-panel" id="journal-panel-nametag" role="region"
@@ -499,33 +449,21 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
               <ul class="journal-achievements">
                 <li class="journal-achievement">
                   <div class="ach-head">
-                    <h4 class="ach-title">PRODUCT SOLD</h4>
-                    <div class="ach-stat">
-                      <span class="stat-num">$1.1M+</span>
-                      <span class="stat-unit">B2B SaaS</span>
-                    </div>
+                    <h4 class="ach-title">Community Growth</h4>
                   </div>
-                  <p class="ach-copy">Sold $1.1M+ of product, running the full cycle as a Sales Engineer and PM.</p>
+                  <p class="ach-copy">Grew the userbase from 0 to over 60,000 users.</p>
                 </li>
                 <li class="journal-achievement">
                   <div class="ach-head">
-                    <h4 class="ach-title">0 TO 60,000+ USERS</h4>
-                    <div class="ach-stat">
-                      <span class="stat-num">60,000+</span>
-                      <span class="stat-unit">Users</span>
-                    </div>
+                    <h4 class="ach-title">Product Management</h4>
                   </div>
-                  <p class="ach-copy">Grew the user base from 0 to 60,000+.</p>
+                  <p class="ach-copy">Scoped out and shipped multiple products for Nametag including a Chrome Extension, Profile Management System, and a Third Party Integration tool to bring Nametag functionality across apps and games.</p>
                 </li>
                 <li class="journal-achievement">
                   <div class="ach-head">
-                    <h4 class="ach-title">6 PRODUCTS SHIPPED</h4>
-                    <div class="ach-stat">
-                      <span class="stat-num">6</span>
-                      <span class="stat-unit">Products</span>
-                    </div>
+                    <h4 class="ach-title">Tech Sales</h4>
                   </div>
-                  <p class="ach-copy">Shipped 6 products and tools from concept to public release.</p>
+                  <p class="ach-copy">Supported the CEO and CTO during the sales cycle through discovery calls, technical demos, and integration sessions.</p>
                 </li>
               </ul>
             </div>
@@ -539,9 +477,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
             <span class="journal-idx" aria-hidden="true">03</span>
             <span class="journal-id-main">
               <span class="journal-name">IBM</span>
-              <span class="journal-meta">Solutions Engineer, 2019-2022</span>
+              <span class="journal-meta">Solutions Engineer, June 2019 - June 2022</span>
             </span>
-            <span class="journal-head-stat">$2.5M DEALS</span>
             <span class="journal-chev" aria-hidden="true">▸</span>
           </button>
           <div class="journal-panel" id="journal-panel-ibm" role="region"
@@ -551,24 +488,14 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
                 <li class="journal-achievement">
                   <div class="ach-head">
                     <h4 class="ach-title">$2.5M DEALS CLOSED</h4>
-                    <div class="ach-stat">
-                      <span class="stat-num">$2.5M</span>
-                      <span class="stat-unit">Deals</span>
-                    </div>
                   </div>
                   <p class="ach-copy">Closed $2.5M in deals, landing $1.4M above yearly quota as a Solutions Engineer.</p>
                 </li>
                 <li class="journal-achievement">
                   <div class="ach-head">
-                    <h4 class="ach-title">CLOUD PAK FOR INTEGRATION POCS</h4>
+                    <h4 class="ach-title">Client POCs &amp; MVPs</h4>
                   </div>
-                  <p class="ach-copy">Delivered Cloud Pak for Integration proof of concepts to Fortune 20 executives and technical leaders.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">GAMING &amp; ESPORTS INITIATIVE</h4>
-                  </div>
-                  <p class="ach-copy">Led the Global IBM Gaming &amp; Esports Initiative.</p>
+                  <p class="ach-copy">Built and delivered client-specific POCs and MVPs. Spearheaded installation and configuration of OpenShift clusters to support Cloud Pak for Integration deployments. Led the Global IBM Gaming &amp; Esports Initiative, presenting solutions across the IBM portfolio to game publishers, studios, and esports organizations.</p>
                 </li>
               </ul>
             </div>
@@ -765,21 +692,21 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
   [0.33, 0.66, 1].forEach(function(scale){
     svg.appendChild(el('polygon', {
       points: gridPoints(scale), fill: 'none',
-      stroke: scale === 1 ? '#b7c0c5' : '#d9dee1', 'stroke-width': scale === 1 ? 1.4 : 1
+      stroke: scale === 1 ? '#9aa1ad' : '#cdd1d9', 'stroke-width': scale === 1 ? 1.4 : 1
     }));
   });
   for (var i = 0; i < 6; i++){
     var p = pt(i, R);
     svg.appendChild(el('line', {
       x1: CX, y1: CY, x2: p[0].toFixed(1), y2: p[1].toFixed(1),
-      stroke: '#e4e8ea', 'stroke-width': 1
+      stroke: '#dfe3ea', 'stroke-width': 1
     }));
   }
 
   /* stat polygon (the 0-value vertex collapses to the center) */
   var fill = el('polygon', {
-    points: statPoints(), fill: 'rgba(0,255,255,.16)',
-    stroke: '#00a8a8', 'stroke-width': 2, 'stroke-linejoin': 'round'
+    points: statPoints(), fill: 'rgba(255,248,103,.32)',
+    stroke: '#2c52b3', 'stroke-width': 2, 'stroke-linejoin': 'round'
   });
   fill.classList.add('hex-fill');
   svg.appendChild(fill);
@@ -869,47 +796,6 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offse
     var next = (idx + (e.key === 'ArrowDown' ? 1 : entries.length - 1)) % entries.length;
     entries[next].querySelector('.journal-entry-head').focus();
   });
-
-  /* ---- live stat wiring from stats.json (fallback: static numbers stay in place) ---- */
-  var CARDS = [
-    {key:'support',   path:['pipelines','support','inquiries_resolved'], plus:'+'},
-    {key:'pipelines', count:true, plus:'+'},
-    {key:'growth',    path:['pipelines','analytics','members_total'],    plus:'+'},
-    {key:'content',   path:['pipelines','content_engine','briefs_published'], plus:''}
-  ];
-
-  function getPath(obj, path){
-    for (var i = 0; i < path.length; i++){
-      if (obj == null || typeof obj !== 'object') return null;
-      obj = obj[path[i]];
-    }
-    return obj;
-  }
-  function fmtInt(v){ return Math.round(v).toLocaleString('en-US'); }
-
-  var cards = {};
-  CARDS.forEach(function(c){
-    var el = document.querySelector('#screen-work .journal-achievement[data-work="' + c.key + '"]');
-    cards[c.key] = {el: el, num: el ? el.querySelector('[data-work-stat]') : null};
-  });
-
-  function applyStats(data){
-    CARDS.forEach(function(c){
-      var liveVal = null;
-      if (c.count){ if (data && data.pipelines) liveVal = Object.keys(data.pipelines).length; }
-      else if (c.path) liveVal = getPath(data, c.path);
-      var valid = (typeof liveVal === 'number' && isFinite(liveVal) && liveVal > 0);
-      var s = cards[c.key];
-      if (valid && s && s.num) s.num.textContent = fmtInt(liveVal) + c.plus;
-    });
-  }
-
-  fetch('stats.json', {cache: 'no-store'})
-    .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then(applyStats)
-    .catch(function(){
-      /* stats.json unreachable: static fallback numbers stay in place */
-    });
 })();
 </script>
 </body>
