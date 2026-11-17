@@ -1,918 +1,345 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>QUEZ | Technical GTM Specialist</title>
-<meta name="description" content="Christian “Quez” Vazquez: AI-native generalist and forward deployed engineer. Portfolio, remade as a Kingdom Hearts II-style title screen.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>christian vazquez</title>
+<meta name="description" content="christian vazquez. projects, work history, film, writing, collectibles.">
+<meta property="og:title" content="christian vazquez">
+<meta property="og:description" content="projects, work history, film, writing, collectibles.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/photo2.webp">
 <link rel="preload" as="image" href="/photo2.webp">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-tight-regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-tight-medium.woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='18' fill='%23fff' text-anchor='middle'%3Eq%3C/text%3E%3C/svg%3E">
 <style>
-/* v6.5 fonts: self-hosted, latin-subset woff2, swap. Press Start 2P = titles, Inter Tight = body/UI. */
-@font-face{font-family:'Press Start 2P';src:url('fonts/press-start-2p.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Inter Tight';src:url('fonts/inter-tight-regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Inter Tight';src:url('fonts/inter-tight-medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:'Inter Tight';src:url('fonts/inter-tight-semibold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
-@font-face{font-family:'Inter Tight';src:url('fonts/inter-tight-bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
-:root{
-  /* Gundam RX-78 palette (v6): white base, RX-78 blue primary, yellow + red accents, slate grey */
-  --blue:#2c52b3; --blue-deep:#1d3a75; --gold:#fff867; --grey:#5a5b6d; --red:#fb2f38;
-  --ink:#111; --radius:4px;
-  --bar-h:clamp(132px,18vh,170px);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  background:#FFFFFF; color:#111; overflow:hidden;
-  font-family:'Inter Tight',system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;
-}
-[hidden]{display:none !important}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-button:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+  @font-face{font-family:'Inter Tight';src:url('/fonts/inter-tight-regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:'Inter Tight';src:url('/fonts/inter-tight-medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+  @font-face{font-family:'Inter Tight';src:url('/fonts/inter-tight-semibold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
 
-/* ---------- screens ---------- */
-.screen{position:fixed;inset:0;overflow:hidden;background:#FFFFFF}
-.screen:not([hidden]){animation:screen-in .4s cubic-bezier(.16,1,.3,1)}
-@keyframes screen-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-/* v6.3: title screen eases in from white on load (and on BACK) */
-#screen-title{animation:title-fade .8s ease-out both}
-@keyframes title-fade{from{opacity:0}to{opacity:1}}
+  :root{
+    --ink:#121212;
+    --ink-soft:#4c4c4c;
+    --paper:#ffffff;
+    --rule:rgba(18,18,18,.16);
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
 
-/* water gradient, bottom-right corner (reflection feel) */
-.water{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(115% 88% at 100% 100%,
-    rgba(44,82,179,.52) 0%, rgba(44,82,179,.36) 34%, rgba(44,82,179,.12) 56%, rgba(255,255,255,0) 76%);
-}
-.water::after{content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(180deg,
-    rgba(255,255,255,0) 0 24px, rgba(255,255,255,.30) 25px 27px,
-    rgba(44,82,179,.10) 28px 30px, rgba(255,255,255,0) 31px 46px);
-  -webkit-mask-image:radial-gradient(85% 65% at 100% 100%,#000 0%,transparent 72%);
-  mask-image:radial-gradient(85% 65% at 100% 100%,#000 0%,transparent 72%);
-  opacity:.5;
-}
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    min-height:100dvh;
+    font-family:'Inter Tight',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
 
-/* ---------- title screen ---------- */
+  /* the photo stays: full-bleed, fixed, held back so type stays legible */
+  .bg{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:url('/photo2.webp');
+    background-size:cover;
+    background-position:50% 32%;
+  }
+  .bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(96deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.94) 28%,rgba(255,255,255,.72) 44%,rgba(255,255,255,.26) 62%,rgba(255,255,255,.10) 100%),
+      linear-gradient(180deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,0) 22%,rgba(255,255,255,0) 62%,rgba(255,255,255,.78) 100%);
+  }
+  @media (max-width:700px){
+    .bg{background-size:contain;background-position:50% 100%;background-repeat:no-repeat}
+    .bg::after{background:linear-gradient(180deg,rgba(255,255,255,.99) 0%,rgba(255,255,255,.97) 46%,rgba(255,255,255,.86) 66%,rgba(255,255,255,.94) 100%)}
+  }
 
-.title-block{position:absolute;top:9%;left:clamp(20px,3.5vw,40px);z-index:3;max-width:52vw}
-.main-title{font-family:'Press Start 2P',monospace;font-weight:400;
-  font-size:clamp(60px,10vw,140px);line-height:1;letter-spacing:.02em;
-  color:var(--ink);
-}
-.subtitle-row{display:flex;align-items:center;margin-top:20px}
-.subtitle{font-family:'Press Start 2P',monospace;font-weight:400;color:#2a2a2a;
-  font-size:clamp(11px,1.5vw,18px);letter-spacing:.1em;white-space:nowrap}
+  .shell{position:relative;z-index:1;min-height:100dvh;display:flex;flex-direction:column}
+  .wrap{width:100%;max-width:660px;padding:clamp(28px,7vh,64px) clamp(22px,6vw,44px) clamp(24px,5vh,48px)}
+  @media (min-width:900px){.wrap{padding-left:clamp(44px,8vw,120px)}}
 
-/* photo slot - FULL-BLEED hero: photo2.webp covers the whole title screen (object-fit cover);
-   masked toward the left title zone + bottom menu bar so the text stays readable (faded KH integration) */
-.photo-slot{position:absolute;inset:0;z-index:1;margin:0;pointer-events:none}
-.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%;
-  opacity:.9;filter:saturate(.92) contrast(1.05) brightness(.96);
-  -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 24%,rgba(0,0,0,.35) 38%,rgba(0,0,0,.72) 50%,#000 62%),linear-gradient(180deg,#000 0%,#000 calc(100% - var(--bar-h) - 14px),rgba(0,0,0,0) 100%);
-  mask-image:linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 24%,rgba(0,0,0,.35) 38%,rgba(0,0,0,.72) 50%,#000 62%),linear-gradient(180deg,#000 0%,#000 calc(100% - var(--bar-h) - 14px),rgba(0,0,0,0) 100%);
-  -webkit-mask-composite:source-in;mask-composite:intersect}
-/* soft corner wash so GAME SETTINGS (top-right) stays readable over the photo */
-.settings-scrim{position:absolute;top:0;right:0;z-index:1;width:min(340px,42vw);height:min(190px,30vh);
-  background:radial-gradient(120% 120% at 100% 0%,rgba(255,255,255,.9) 0%,rgba(255,255,255,.6) 40%,rgba(255,255,255,0) 72%);
-  pointer-events:none}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:1px}
 
-/* game settings - top right */
-.settings-btn{position:absolute;top:20px;right:clamp(16px,3vw,36px);z-index:4;
-  display:flex;align-items:center;gap:9px;
-  font-size:12px;font-weight:600;letter-spacing:.2em;color:#5a5b6d;text-transform:uppercase}
-.settings-icon{width:19px;height:19px;border-radius:var(--radius);background:#5a5b6d;flex:none;
-  display:inline-flex;align-items:center;justify-content:center}
-.settings-icon svg{width:13px;height:13px;fill:#fff}
-.settings-btn:hover .settings-icon{background:var(--blue)}
-.settings-btn:hover{color:#1d3a75}
+  .name{
+    margin:0;
+    font-size:clamp(1.5rem,5.4vw,2rem);
+    font-weight:500;
+    letter-spacing:-.035em;
+    line-height:1.05;
+  }
+  .name a{display:inline-block;transition:opacity .25s var(--ease)}
+  .name a:hover{opacity:.6}
 
-/* bottom bar + menu */
-.menu-bar{position:absolute;left:0;right:0;bottom:0;height:var(--bar-h);z-index:3;
-  background:linear-gradient(90deg,rgba(255,255,255,.88) 0%,rgba(211,222,246,.72) 100%);
-  -webkit-backdrop-filter:blur(8px) saturate(1.2);backdrop-filter:blur(8px) saturate(1.2);
-  border-top:1px solid rgba(44,82,179,.28)}
-.menu{position:absolute;left:clamp(24px,5vw,64px);top:50%;transform:translateY(-50%);
-  list-style:none;margin:0;padding:0}
-.menu-item{position:relative;display:block;padding:9px 18px 9px 44px;
-  font-size:clamp(17px,2.1vw,26px);font-weight:500;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--grey);transition:color .15s ease;white-space:nowrap}
-.menu-item.is-active{color:var(--blue);font-weight:700;
-  text-shadow:0 1px 0 rgba(255,255,255,.6),0 0 5px rgba(255,255,255,.4)} /* v6.1: active menu text is RX-78 blue (red read like an error); red stays everywhere else */
-#menu-cursor{position:absolute;left:6px;top:0;width:16px;height:16px;
-  background:#fff867;box-shadow:0 2px 6px rgba(0,0,0,.28);z-index:2; /* v6.1: RX-78 yellow cursor */
-  transition:top .18s ease;pointer-events:none}
-#menu-cursor::after{content:"";position:absolute;inset:0;margin:auto;
-  width:5px;height:5px;border-radius:50%;background:#fff}
-/* ---------- content screens (stubs) ---------- */
-.content-inner{position:absolute;left:clamp(28px,7vw,96px);top:50%;transform:translateY(-50%);
-  max-width:680px;z-index:3}
-.kicker{font-family:'Press Start 2P',monospace;font-size:12px;font-weight:400;letter-spacing:.2em;
-  color:var(--gold);text-transform:uppercase;margin-bottom:18px}
-.screen-heading{font-family:'Press Start 2P',monospace;font-weight:400;
-  font-size:clamp(22px,4.2vw,54px);line-height:1.08;color:var(--ink);letter-spacing:0}
-.screen-body{margin-top:22px;font-size:16px;line-height:1.75;color:#3c3c3c;max-width:54ch}
-.screen-body em{font-style:normal;color:#1d3a75;font-weight:600}
-.back-btn{margin-top:38px;display:inline-flex;align-items:center;gap:10px;
-  padding:13px 28px;font-size:13px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;
-  color:#1d3a75;border:1px solid rgba(44,82,179,.55);border-radius:var(--radius);
-  background:rgba(255,255,255,.55);transition:background .15s ease,color .15s ease}
-.back-btn:hover,.back-btn:focus-visible{background:var(--blue);color:#fff}
+  .index{list-style:none;margin:clamp(26px,5vh,44px) 0 0;padding:0;display:flex;flex-direction:column;gap:clamp(2px,.6vh,6px)}
 
-/* ---------- contact screen ---------- */
-.contact-list{list-style:none;margin:26px 0 0;padding:0;max-width:440px}
-.contact-row{display:flex;align-items:baseline;gap:18px;padding:13px 2px;
-  border-bottom:1px solid rgba(44,82,179,.18)}
-.contact-row:first-child{border-top:1px solid rgba(44,82,179,.18)}
-.contact-key{flex:none;width:110px;font-size:11px;font-weight:600;letter-spacing:.24em;
-  color:var(--grey);text-transform:uppercase}
-.contact-link{color:var(--blue);font-size:16px;font-weight:600;text-decoration:underline;
-  text-decoration-color:rgba(44,82,179,.4);text-underline-offset:3px}
-.contact-link:hover{color:var(--blue-deep);text-decoration-color:var(--blue-deep)}
+  .row{display:flex;align-items:baseline;gap:.62em;width:100%}
+  .dash{flex:none;font-size:clamp(1.1rem,3.2vw,1.28rem);color:var(--ink-soft);transform:translateY(-.06em)}
 
-/* ---------- about screen ---------- */
-#screen-about{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
-.about-scroll{position:relative;z-index:3;min-height:100%;display:flex;align-items:flex-start;padding:clamp(36px,6vh,72px) 0}
-.about-col{width:min(940px,92vw);margin-left:clamp(28px,7vw,96px)}
-/* v6.3: NAME section - name as section title (parallel to TOOLS & SKILLS / EDUCATION) */
-.name-block{margin-top:clamp(26px,3.6vh,36px);padding-top:clamp(24px,3.4vh,32px);
-  border-top:2px solid rgba(44,82,179,.35);position:relative}
-.name-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
-  background:linear-gradient(90deg,var(--gold),rgba(255,248,103,0))}
-.name-grid{display:flex;align-items:center;gap:clamp(22px,3.2vw,44px);
-  margin-top:clamp(20px,3vh,28px);flex-wrap:wrap}
-.name-lines{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
-.name-line{font-size:15.5px;line-height:1.45;color:#333}
-.name-line:first-child{font-size:17.5px;font-weight:600;color:#1d3a75}
-/* HEADSHOT (v6.2): tight head-and-shoulders portrait, headshot.webp, 680x780 */
-.about-photo{width:min(300px,68vw);border-radius:var(--radius);
-  overflow:hidden;border:1px solid rgba(44,82,179,.4);box-shadow:0 14px 34px rgba(44,82,179,.16);background:#fff}
-.about-photo img{display:block;width:100%;height:auto;
-  filter:saturate(.92) contrast(1.05) brightness(.97)}
-.about-prose{margin-top:clamp(32px,4.5vh,46px)}
-.about-prose + .about-prose{margin-top:18px}
+  .entry{
+    appearance:none;background:none;border:0;padding:0;margin:0;cursor:pointer;text-align:left;
+    display:inline-flex;align-items:center;gap:.45em;font:inherit;
+    font-size:clamp(1.32rem,4.6vw,1.72rem);
+    font-weight:400;letter-spacing:-.032em;line-height:1.5;
+    color:var(--ink);transition:opacity .22s var(--ease),transform .28s var(--ease);
+  }
+  .entry:hover{opacity:.55}
+  .entry:active{transform:translateY(1px)}
+  .entry .mark{font-size:.62em;color:var(--ink-soft);transition:transform .3s var(--ease);display:inline-block}
+  .has-sub[aria-expanded="true"] .mark{transform:rotate(180deg)}
 
-/* v6.3: STATS section - player card (ranked list, left) + hex radar (right), one stats sheet */
-.stats-block{margin-top:clamp(38px,5.5vh,58px);padding-top:clamp(26px,4vh,34px);
-  border-top:2px solid rgba(44,82,179,.35);position:relative}
-.stats-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
-  background:linear-gradient(90deg,var(--gold),rgba(255,248,103,0))}
-.stats-sheet{display:grid;grid-template-columns:minmax(230px,300px) minmax(300px,1fr);
-  gap:clamp(26px,3.4vw,48px);align-items:center;margin-top:clamp(24px,3.4vh,32px)}
-.player-card{position:relative;width:100%;max-width:300px;border-radius:var(--radius);
-  background:linear-gradient(160deg,#ffffff 0%,#e3e9f8 55%,#cbd6f2 100%);
-  border:1px solid rgba(44,82,179,.4);box-shadow:0 14px 34px rgba(44,82,179,.16);overflow:hidden;
-  padding:20px 20px 22px}
-.pc-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
-  padding-bottom:12px;border-bottom:1px solid rgba(44,82,179,.28)}
-.pc-tier{font-family:'Press Start 2P',monospace;font-weight:400;font-size:20px;line-height:1;color:var(--red);
-  text-shadow:0 1px 0 rgba(255,255,255,.55)}
-.stat-rows{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column}
-.stat-row{display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:10px 2px;border-bottom:1px solid rgba(44,82,179,.14);
-  animation:stat-in .5s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--i,0)*55ms)}
-.stat-row:last-child{border-bottom:0}
-.stat-name{font-size:13.5px;color:#2b2b2b;font-weight:500}
-.stat-val{font-family:'Inter Tight',system-ui,sans-serif;font-weight:600;font-size:20px;line-height:1;color:var(--blue)}
-/* meme as the "willingness to give up" value: small card, keeps the 150x199 portrait crop intact */
-.stat-meme{width:104px;height:auto;border-radius:var(--radius);object-fit:cover;display:block;
-  border:1px solid rgba(44,82,179,.45);background:#fff}
-.stat-rows .stat-row:nth-child(1){--i:0}
-.stat-rows .stat-row:nth-child(2){--i:1}
-.stat-rows .stat-row:nth-child(3){--i:2}
-.stat-rows .stat-row:nth-child(4){--i:3}
-.stat-rows .stat-row:nth-child(5){--i:4}
-.stat-rows .stat-row:nth-child(6){--i:5}
-@keyframes stat-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.radar-col{width:100%;max-width:430px}
-.hex-svg{display:block;width:100%;height:auto;overflow:visible}
-.hex-label{font-family:'Inter Tight',system-ui,sans-serif;
-  font-size:10px;font-weight:600;letter-spacing:.16em;fill:#5a5b6d;text-transform:uppercase}
-/* v6.3: radar draws from center on screen open, then a slow subtle pulse */
-.hex-fill{transform-box:view-box;transform-origin:170px 168px;
-  animation:hex-grow 1s cubic-bezier(.16,1,.3,1) both,
-            hex-pulse 5s ease-in-out 1.4s infinite}
-@keyframes hex-grow{from{opacity:0;transform:scale(.04)}to{opacity:1;transform:scale(1)}}
-@keyframes hex-pulse{0%,100%{opacity:1}50%{opacity:.8}}
+  .sub{
+    list-style:none;margin:.1em 0 .55em;padding:0 0 0 1.55em;
+    display:grid;gap:.18em;overflow:hidden;
+  }
+  .sub[hidden]{display:none}
+  .sub li{display:flex;flex-direction:column;gap:.1em;padding:.28em 0}
+  .sub a{
+    font-size:clamp(.98rem,3.1vw,1.06rem);line-height:1.4;letter-spacing:-.01em;
+    display:inline-flex;align-items:baseline;gap:.4em;width:fit-content;
+    border-bottom:1px solid transparent;transition:border-color .25s var(--ease),opacity .25s var(--ease);
+  }
+  .sub a:hover{border-bottom-color:var(--ink)}
+  .sub .arrow{font-size:.82em;color:var(--ink-soft)}
+  .sub .note{font-size:.86rem;color:var(--ink-soft);line-height:1.4;letter-spacing:-.005em}
 
-/* skills list */
-.skills-block{margin-top:clamp(38px,5.5vh,58px);padding-top:clamp(26px,4vh,34px);
-  border-top:2px solid rgba(44,82,179,.35);position:relative}
-.skills-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
-  background:linear-gradient(90deg,var(--gold),rgba(255,248,103,0))}
-.name-title,.stats-title,.skills-title,.edu-title{font-family:'Press Start 2P',monospace;font-weight:400;
-  font-size:clamp(19px,2.8vw,34px);line-height:1.12;letter-spacing:.02em;color:var(--ink)}
-.skills-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,44px);
-  margin-top:clamp(20px,3vh,28px)}
-.skill-group-title{font-family:'Press Start 2P',monospace;font-size:11px;font-weight:400;
-  letter-spacing:.16em;color:#1d3a75;text-transform:uppercase;margin-bottom:12px}
-.skill-list{list-style:none;margin:0;padding:0}
-.skill-list li{padding:6px 0;font-size:14.5px;color:#3c3c3c;line-height:1.45}
+  .foot{
+    margin-top:auto;padding:clamp(30px,6vh,48px) clamp(22px,6vw,44px) clamp(20px,4vh,32px);
+    font-size:.82rem;color:var(--ink-soft);letter-spacing:-.005em;
+    display:flex;flex-wrap:wrap;gap:.4em 1.1em;
+  }
+  @media (min-width:900px){.foot{padding-left:clamp(44px,8vw,120px)}}
+  .foot a{border-bottom:1px solid transparent;transition:border-color .25s var(--ease),color .25s var(--ease)}
+  .foot a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 
-/* education */
-.edu-block{margin-top:clamp(38px,5.5vh,58px);padding-top:clamp(26px,4vh,34px);
-  border-top:2px solid rgba(44,82,179,.35);position:relative}
-.edu-block::before{content:"";position:absolute;top:-2px;left:0;width:64px;height:2px;
-  background:linear-gradient(90deg,var(--gold),rgba(255,248,103,0))}
-.edu-line{margin-top:clamp(18px,2.4vh,26px);font-size:14.5px;line-height:1.6;color:#3c3c3c;max-width:64ch}
-.edu-line strong{font-weight:600;color:#1c1c1c}
+  /* ---------- views ---------- */
+  .view{display:flex;flex-direction:column;min-height:100dvh}
+  .view[hidden]{display:none}
 
-/* ---------- work history screen: in-game journal (quest log) ---------- */
-.work-scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
-  scrollbar-width:thin;scrollbar-color:rgba(44,82,179,.55) rgba(44,82,179,.07)}
-.work-scroll::-webkit-scrollbar{width:10px}
-.work-scroll::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(44,82,179,.6),rgba(44,82,179,.7));border-radius:var(--radius);border:2px solid #fff}
-.work-scroll::-webkit-scrollbar-track{background:rgba(44,82,179,.06)}
-.work-col{position:relative;z-index:3;min-height:100%;max-width:1180px;margin:0 auto;
-  padding:clamp(36px,6vh,72px) clamp(24px,5vw,64px) clamp(88px,11vh,120px)}
-.journal-intro{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  margin-top:clamp(18px,2.5vh,28px)}
-.journal-hint{font-size:10.5px;font-weight:600;letter-spacing:.24em;color:rgba(29,58,117,.78);
-  text-transform:uppercase;white-space:nowrap}
-.journal{list-style:none;margin:clamp(16px,2.2vh,24px) 0 0;padding:0;
-  display:flex;flex-direction:column;gap:clamp(10px,1.4vh,14px)}
-.journal-entry{border:1px solid rgba(44,82,179,.38);border-radius:var(--radius);
-  background:linear-gradient(135deg,rgba(255,255,255,.94),rgba(207,218,245,.62));
-  box-shadow:0 10px 26px rgba(44,82,179,.12);overflow:hidden;
-  transition:border-color .16s ease,box-shadow .16s ease;
-  animation:entry-in .55s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--i,0)*70ms)}
-@keyframes entry-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.journal-entry:nth-child(1){--i:0}
-.journal-entry:nth-child(2){--i:1}
-.journal-entry:nth-child(3){--i:2}
-.journal-entry.is-open{border-color:rgba(44,82,179,.65);box-shadow:0 16px 34px rgba(44,82,179,.18)}
-.journal-entry-head{display:flex;align-items:center;gap:clamp(14px,2vw,22px);width:100%;text-align:left;
-  padding:clamp(16px,2.4vh,22px) clamp(18px,2.4vw,26px);background:none;border:0;cursor:pointer;
-  font:inherit;color:inherit;transition:background .15s ease}
-.journal-entry-head:hover{background:rgba(44,82,179,.05)}
-.journal-entry-head:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
-.journal-idx{flex:none;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;
-  font-family:'Press Start 2P',monospace;font-size:12px;font-weight:400;letter-spacing:0;
-  color:var(--gold);background:var(--blue);border-radius:var(--radius)}
-.journal-id-main{flex:1;min-width:0}
-.journal-name{display:block;font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(16px,1.9vw,22px);
-  line-height:1.1;color:var(--ink);letter-spacing:.03em}
-.journal-meta{display:block;margin-top:5px;font-size:12px;font-weight:600;letter-spacing:.16em;
-  color:rgba(29,58,117,.8);text-transform:uppercase}
-.journal-chev{flex:none;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;
-  border:1px solid rgba(44,82,179,.5);border-radius:var(--radius);color:var(--gold);
-  font-size:11px;line-height:1;transition:transform .18s ease,background .15s ease,color .15s ease}
-.journal-entry.is-open .journal-chev{transform:rotate(90deg);background:var(--red);
-  border-color:var(--red);color:#fff}
-.journal-panel{padding:0 clamp(18px,2.4vw,26px) clamp(20px,3vh,28px)}
-.journal-panel[hidden]{display:none}
-.journal-panel-inner{border-top:1px solid rgba(44,82,179,.25);padding-top:clamp(14px,2vh,18px)}
-.journal-achievements{list-style:none;margin:0;padding:0;
-  display:flex;flex-direction:column;gap:clamp(12px,1.8vh,16px)}
-.journal-achievement{padding:clamp(14px,2vh,18px) clamp(14px,2vw,20px);
-  border:1px solid rgba(44,82,179,.22);border-radius:var(--radius);background:rgba(255,255,255,.55)}
-.ach-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
-.ach-title{font-family:'Press Start 2P',monospace;font-weight:400;font-size:clamp(12px,1.3vw,15px);
-  line-height:1.3;color:var(--ink);letter-spacing:.02em}
-.ach-copy{margin-top:10px;font-size:14px;line-height:1.7;color:#3c3c3c;max-width:64ch}
-.card-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.card-pill{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:0 16px;
-  border:1px solid rgba(44,82,179,.55);border-radius:var(--radius);font-family:'Inter Tight',system-ui,sans-serif;font-size:11px;
-  font-weight:600;letter-spacing:.18em;color:#1d3a75;text-transform:uppercase;
-  background:rgba(255,255,255,.55);transition:background .15s ease,color .15s ease,border-color .15s ease}
-.card-pill .arr{color:var(--gold);transition:color .15s ease}
-.card-pill:hover,.card-pill:focus-visible{background:var(--blue);border-color:var(--blue);color:#fff}
-.card-pill:hover .arr,.card-pill:focus-visible .arr{color:#fff}
+  .back{
+    appearance:none;background:none;border:0;padding:0;cursor:pointer;font:inherit;
+    margin:0 0 clamp(22px,4.5vh,38px);display:inline-flex;align-items:center;gap:.4em;
+    font-size:clamp(1.5rem,5.4vw,2rem);font-weight:500;letter-spacing:-.035em;line-height:1.05;
+    transition:opacity .25s var(--ease);
+  }
+  .back:hover{opacity:.6}
+  .back .arrow{font-size:.6em;font-weight:400;color:var(--ink-soft)}
 
-/* ---------- settings modal ---------- */
-.modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;
-  background:rgba(24,37,68,.5);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
-.modal-panel{width:min(460px,90vw);background:#f2f5fc;border:1px solid var(--blue);
-  border-radius:var(--radius);box-shadow:0 24px 60px rgba(44,82,179,.35);padding:34px 36px 30px}
-.modal-panel h2{font-family:'Press Start 2P',monospace;font-weight:400;font-size:21px;color:var(--ink);
-  line-height:1.15;letter-spacing:.02em;margin-bottom:16px}
-.modal-panel p{font-size:14px;line-height:1.7;color:#444;margin-bottom:10px}
-.modal-panel .back-btn{margin-top:22px}
+  .view-title{
+    margin:0 0 1.1em;font-size:1.02rem;font-weight:500;letter-spacing:-.01em;color:var(--ink-soft);
+  }
 
-@media (prefers-reduced-motion: reduce){
-  .screen:not([hidden]){animation:none}
-  #screen-title{animation:none}
-  #menu-cursor{transition:none}
-  .menu-item{transition:none}
-  .journal-entry,.journal-entry-head,.journal-chev,.card-pill,.card-pill .arr{transition:none}
-  .hex-fill,.stat-row,.journal-entry{animation:none}
-}
+  .jobs{list-style:none;margin:0;padding:0;display:grid;gap:clamp(20px,3.6vh,30px)}
+  .job{border-top:1px solid var(--rule);padding-top:clamp(14px,2.4vh,20px)}
+  .job-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.2em 1em}
+  .job-org{font-size:1.1rem;font-weight:500;letter-spacing:-.02em}
+  .job-when{font-size:.84rem;color:var(--ink-soft)}
+  .job-role{margin:.15em 0 .7em;font-size:.95rem;color:var(--ink-soft);letter-spacing:-.01em}
+  .job-points{list-style:none;margin:0;padding:0;display:grid;gap:.55em}
+  .job-points li{font-size:.94rem;line-height:1.5;letter-spacing:-.005em;padding-left:1.15em;position:relative}
+  .job-points li::before{content:"-";position:absolute;left:0;color:var(--ink-soft)}
+  .job-points strong{font-weight:500}
+  .job-links{display:flex;flex-wrap:wrap;gap:.35em 1em;margin-top:.7em;font-size:.9rem}
+  .job-links a{border-bottom:1px solid var(--rule);transition:border-color .25s var(--ease)}
+  .job-links a:hover{border-bottom-color:var(--ink)}
 
-@media (max-width:760px){
-  .title-block{max-width:78vw}
-  .photo{object-position:50% 55%}
-  .content-inner{left:24px;right:24px;max-width:none}
-  .menu-item{padding-left:40px}
-  #menu-cursor{left:4px}
-  .about-col{margin-left:24px;width:calc(100vw - 48px)}
-  .about-photo{margin-left:auto;margin-right:auto}
-  .name-grid{flex-direction:column;align-items:center;text-align:center}
-  .name-lines{align-items:center;text-align:center}
-  .stats-sheet{grid-template-columns:1fr}
-  .player-card{margin:0 auto}
-  .radar-col{max-width:340px;margin:0 auto}
-  .skills-groups{grid-template-columns:1fr}
-  .work-col{padding-left:24px;padding-right:24px}
-}
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  }
 </style>
 </head>
 <body>
+<div class="bg" aria-hidden="true"></div>
 
-<!-- ================= TITLE SCREEN ================= -->
-<div id="screen-title" class="screen" role="group" aria-label="Title screen">
-  <header class="title-block">
-    <h1 class="main-title">QUEZ</h1>
-    <div class="subtitle-row" role="doc-subtitle">
-      <span class="subtitle">TECHNICAL GTM SPECIALIST</span>
-    </div>
-  </header>
+<div class="shell">
 
-  <!-- QUEZ PHOTO: /photo2.webp - full-bleed hero (kneeling Quez between two RWB 911s), masked toward title + menu zones; onerror = graceful fallback to clean white -->
-  <figure class="photo-slot" aria-label="Quez kneeling between two RWB Porsche 911s">
-    <img class="photo" src="/photo2.webp" alt="Quez kneeling between two RWB Porsche 911s"
-      width="1600" height="1061" decoding="async" draggable="false" onerror="this.remove()">
-  </figure>
-  <div class="settings-scrim" aria-hidden="true"></div>
+  <!-- ============ HOME ============ -->
+  <main class="view" id="view-home">
+    <div class="wrap">
+      <h1 class="name"><a href="/" aria-label="christian vazquez, home">christian vazquez</a></h1>
 
-  <button type="button" id="btn-settings" class="settings-btn" aria-haspopup="dialog" aria-controls="settings-modal" aria-expanded="false">
-    <span class="settings-icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24"><path d="M12 8.6A3.4 3.4 0 1 0 12 15.4 3.4 3.4 0 0 0 12 8.6Zm9.2 5.9-1.9 1.1-.3 2.2a.9.9 0 0 1-.7.7l-2.2.3-1.1 1.9a.9.9 0 0 1-1 .4l-2.1-.7-2.1.7a.9.9 0 0 1-1-.4l-1.1-1.9-2.2-.3a.9.9 0 0 1-.7-.7l-.3-2.2L1.8 14.5a.9.9 0 0 1-.4-1l.7-2.1-.7-2.1a.9.9 0 0 1 .4-1l1.9-1.1.3-2.2a.9.9 0 0 1 .7-.7l2.2-.3L8 2.1a.9.9 0 0 1 1-.4l2.1.7 2.1-.7a.9.9 0 0 1 1 .4l1.1 1.9 2.2.3a.9.9 0 0 1 .7.7l.3 2.2 1.9 1.1a.9.9 0 0 1 .4 1l-.7 2.1.7 2.1a.9.9 0 0 1-.4 1Z"/></svg>
-    </span>GAME SETTINGS
-  </button>
+      <nav aria-label="sections">
+        <ul class="index">
+          <li>
+            <div class="row">
+              <span class="dash" aria-hidden="true">-</span>
+              <button type="button" class="entry has-sub" id="btn-projects" aria-expanded="false" aria-controls="sub-projects">projects <span class="mark" aria-hidden="true">↓</span></button>
+            </div>
+            <ul class="sub" id="sub-projects" hidden>
+              <li>
+                <a href="https://plumbertech.vercel.app" target="_blank" rel="noopener">plumbertech <span class="arrow" aria-hidden="true">↗</span></a>
+                <span class="note">a solver that designs a house's plumbing to code</span>
+              </li>
+              <li>
+                <a href="https://hot-wheels-garage-one.vercel.app" target="_blank" rel="noopener">hot wheels garage <span class="arrow" aria-hidden="true">↗</span></a>
+                <span class="note">3d gallery for a diecast collection</span>
+              </li>
+              <li>
+                <a href="https://hipjumpers.vercel.app" target="_blank" rel="noopener">poke card tracker <span class="arrow" aria-hidden="true">↗</span></a>
+                <span class="note">card inventory, pricing and grading tracker</span>
+              </li>
+              <li>
+                <a href="https://www.caribe.studio" target="_blank" rel="noopener">caribe studio <span class="arrow" aria-hidden="true">↗</span></a>
+                <span class="note">photography studio site, built for a working client</span>
+              </li>
+            </ul>
+          </li>
 
-  <nav class="menu-bar" aria-label="Main menu">
-    <ul id="title-menu" class="menu" role="menu" aria-label="Portfolio sections">
-      <li id="menu-cursor" aria-hidden="true"></li>
-      <li role="none"><button type="button" role="menuitem" class="menu-item is-active" id="menu-about" data-target="screen-about" tabindex="0" aria-current="true">ABOUT</button></li>
-      <li role="none"><button type="button" role="menuitem" class="menu-item" id="menu-work" data-target="screen-work" tabindex="-1" aria-current="false">WORK HISTORY</button></li>
-      <li role="none"><button type="button" role="menuitem" class="menu-item" id="menu-contact" data-target="screen-contact" tabindex="-1" aria-current="false">CONTACT INFO</button></li>
-    </ul>
-  </nav>
-</div>
+          <li>
+            <div class="row">
+              <span class="dash" aria-hidden="true">-</span>
+              <button type="button" class="entry" id="btn-work">work history <span class="mark" aria-hidden="true">→</span></button>
+            </div>
+          </li>
 
-<!-- ================= CONTENT SCREENS (stubs - filled by later tasks) ================= -->
-<section id="screen-about" class="screen" role="region" aria-labelledby="about-title" hidden>
-  <div class="about-scroll">
-    <div class="about-col">
-    <h2 id="about-title" class="screen-heading" tabindex="-1" data-focus>ABOUT</h2>
+          <li>
+            <div class="row">
+              <span class="dash" aria-hidden="true">-</span>
+              <a class="entry" href="https://instagram.com/quez.film" target="_blank" rel="noopener">film <span class="mark" aria-hidden="true">↗</span></a>
+            </div>
+          </li>
 
-    <!-- v6.3: NAME section - the name is the section title (parallel to TOOLS & SKILLS / EDUCATION), headshot left + 3 bio lines right -->
-    <div class="name-block">
-      <h3 class="name-title">CHRISTIAN “QUEZ” VAZQUEZ</h3>
-      <div class="name-grid">
-        <figure class="about-photo" aria-label="Portrait of Christian Vazquez">
-          <img src="/headshot.webp" alt="Portrait of Christian Vazquez" width="680" height="780" decoding="async" draggable="false">
-        </figure>
-        <ul class="name-lines">
-          <li class="name-line">Technical GTM Specialist</li>
-          <li class="name-line">Located in: Fort Lauderdale, FL</li>
-          <li class="name-line">Fluent in: English &amp; Spanish</li>
+          <li>
+            <div class="row">
+              <span class="dash" aria-hidden="true">-</span>
+              <a class="entry" href="https://substack.com/@quezt" target="_blank" rel="noopener">writing <span class="mark" aria-hidden="true">↗</span></a>
+            </div>
+          </li>
+
+          <li>
+            <div class="row">
+              <span class="dash" aria-hidden="true">-</span>
+              <button type="button" class="entry has-sub" id="btn-collectibles" aria-expanded="false" aria-controls="sub-collectibles">collectibles <span class="mark" aria-hidden="true">↓</span></button>
+            </div>
+            <ul class="sub" id="sub-collectibles" hidden>
+              <li><a href="https://instagram.com/hipjumpers" target="_blank" rel="noopener">instagram <span class="arrow" aria-hidden="true">↗</span></a></li>
+              <li><a href="https://www.youtube.com/@hipjumpers" target="_blank" rel="noopener">youtube <span class="arrow" aria-hidden="true">↗</span></a></li>
+            </ul>
+          </li>
         </ul>
-      </div>
+      </nav>
     </div>
 
-    <!-- v6.3: STATS section - player card as ranked list (left) + hex radar (right), one coherent stats sheet -->
-    <div class="stats-block">
-      <h3 class="stats-title">STATS</h3>
-      <div class="stats-sheet">
-        <div class="player-card" id="player-card">
-          <div class="pc-head">
-            <span class="pc-tier">ATTRIBUTES</span>
+    <div class="foot">
+      <a href="mailto:cquez221@gmail.com">cquez221@gmail.com</a>
+      <a href="https://x.com/0xQuez" target="_blank" rel="noopener">x.com/0xquez</a>
+      <a href="https://www.linkedin.com/in/christianqvazquez" target="_blank" rel="noopener">linkedin</a>
+    </div>
+  </main>
+
+  <!-- ============ WORK HISTORY ============ -->
+  <main class="view" id="view-work" hidden>
+    <div class="wrap">
+      <button type="button" class="back" id="btn-back"><span class="arrow" aria-hidden="true">←</span> christian vazquez</button>
+      <p class="view-title">work history</p>
+
+      <ol class="jobs">
+        <li class="job">
+          <div class="job-head">
+            <span class="job-org">375ai</span>
+            <span class="job-when">june 2024 - present</span>
           </div>
-          <ul class="stat-rows">
-            <li class="stat-row"><span class="stat-name">AI Proficiency</span><span class="stat-val">85</span></li>
-            <li class="stat-row"><span class="stat-name">Communication</span><span class="stat-val">97</span></li>
-            <li class="stat-row"><span class="stat-name">Curiosity</span><span class="stat-val">95</span></li>
-            <li class="stat-row"><span class="stat-name">Rizz</span><span class="stat-val">90</span></li>
-            <li class="stat-row"><span class="stat-name">Taste</span><span class="stat-val">93</span></li>
-            <li class="stat-row"><span class="stat-name">Willingness to Give Up</span><img class="stat-meme" src="/meme.webp" alt="He got that dawg in him: zero willingness to give up" width="150" height="199" decoding="async" loading="lazy" draggable="false"></li>
+          <p class="job-role">technical community and support lead</p>
+          <ul class="job-points">
+            <li><strong>Physical and edge AI.</strong> Researched and published on edge inference and computer vision.</li>
+            <li><strong>AI across the go-to-market.</strong> Automated research found high-value prospects in physical AI and computer vision, putting founders on shows like Genfinity (32K+ views) and into the 375ai ecosystem.</li>
+            <li><strong>Automation pipelines.</strong> Built recurring pipelines for server analytics, feature test feedback and rewards, content research and targeted outreach.</li>
+            <li><strong>Community growth.</strong> Grew the Discord to 20K+ members and drove 250K+ downloads of the 375go mobile app.</li>
+            <li><strong>Support and customer success.</strong> Set up, ran and automated the Zendesk operation for 375go. Resolved 1,000+ inquiries without a dedicated support team.</li>
+            <li><strong>Content engine.</strong> Built an AI content engine producing two source-checked posts per week for Discord, X and LinkedIn.</li>
+            <li><strong>Media and live shows.</strong> Produced explainer videos, product demos and expert reference videos end to end. Hosted 16 episodes of live radio, 500 listeners on average, 8,000+ cumulative.</li>
           </ul>
-        </div>
-        <div class="radar-col">
-          <div id="hex-radar"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="skills-block">
-      <h3 class="skills-title">TOOLS &amp; SKILLS</h3>
-      <div class="skills-groups">
-        <section class="skill-group">
-          <h4 class="skill-group-title">PROFICIENCIES</h4>
-          <ul class="skill-list">
-            <li>Workflow Auditing</li>
-            <li>Evals</li>
-            <li>Deployment</li>
-            <li>Model Routing</li>
-            <li>Agent Fleet/Swarm Management</li>
-            <li>MCP + API Integrations</li>
-            <li>Analytics</li>
-            <li>Tech Sales</li>
-            <li>Community Growth</li>
-            <li>Live Show + Video Production</li>
-          </ul>
-        </section>
-        <section class="skill-group">
-          <h4 class="skill-group-title">PLATFORMS + HARNESSES</h4>
-          <ul class="skill-list">
-            <li>Hermes Agent</li>
-            <li>Claude Code/Cowork</li>
-            <li>Zendesk</li>
-            <li>Discord</li>
-            <li>Descript</li>
-            <li>Jira/Asana/Trello</li>
-            <li>Notion</li>
-            <li>Higgsfield</li>
-            <li>HeyGen</li>
-            <li>Reve</li>
-          </ul>
-        </section>
-      </div>
-    </div>
-
-    <div class="edu-block">
-      <h3 class="edu-title">EDUCATION</h3>
-      <p class="edu-line"><strong>B.S. Software Engineering</strong>, Florida Gulf Coast University, May 2019</p>
-    </div>
-
-    <div class="edu-block">
-      <h3 class="edu-title">WHO AM I?</h3>
-      <p class="screen-body about-prose">AI-native builder with a foundation in software engineering and technical sales. Today, I build with AI tooling to acquire, implement, and retain users: scaled bases 0 to 60K+ and 250K+ app downloads, shipped product improvements from user feedback, and automated a solo Zendesk operation resolving 1,000+ inquiries with no support team.</p>
-      <p class="screen-body about-prose">My career spans a Fortune 20 enterprise and early-stage startups. I build trusted relationships and own the full customer loop, from first touch to success.</p>
-    </div>
-
-    <button type="button" class="back-btn" data-back>BACK</button>
-    </div>
-  </div>
-</section>
-
-<section id="screen-work" class="screen" role="region" aria-labelledby="work-title" hidden>
-  <div class="water" aria-hidden="true"></div>
-  <div class="work-scroll" id="work-scroll">
-    <div class="work-col">
-      <div class="journal-intro">
-        <h2 id="work-title" class="screen-heading" tabindex="-1" data-focus>WORK HISTORY</h2>
-        <p class="journal-hint">Select an entry to read the record</p>
-      </div>
-
-      <ol class="journal" id="journal-list">
-        <!-- 375ai: the current run. 7 achievements. -->
-        <li class="journal-entry" data-entry="375ai">
-          <button type="button" class="journal-entry-head" id="journal-btn-375ai"
-                  aria-expanded="false" aria-controls="journal-panel-375ai">
-            <span class="journal-idx" aria-hidden="true">01</span>
-            <span class="journal-id-main">
-              <span class="journal-name">375AI</span>
-              <span class="journal-meta">Technical Community & Support Lead, June 2024 - Present</span>
-            </span>
-            <span class="journal-chev" aria-hidden="true">▸</span>
-          </button>
-          <div class="journal-panel" id="journal-panel-375ai" role="region"
-               aria-labelledby="journal-btn-375ai" tabindex="-1" hidden>
-            <div class="journal-panel-inner">
-              <ul class="journal-achievements">
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Physical AI &amp; Edge AI</h4>
-                  </div>
-                  <p class="ach-copy">Developed working fluency in physical AI and edge AI: researched and published on edge inference and computer vision.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">AI Across the GTM Motion</h4>
-                  </div>
-                  <p class="ach-copy">Deployed AI across the GTM motion: automated research identified high-value prospects in physical AI and computer vision, placing founders on shows like Genfinity (32K+ views) and onboarding them into the 375ai ecosystem.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Automation Pipelines</h4>
-                  </div>
-                  <p class="ach-copy">Built recurring automation pipelines for server analytics, feature testing feedback and rewards, content research, and targeted outreach, turning tedious manual work into repeatable systems.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Community Growth</h4>
-                  </div>
-                  <p class="ach-copy">Grew the Discord userbase to 20K+ members and drove 250K+ downloads of the 375go mobile app.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Support &amp; Customer Success</h4>
-                  </div>
-                  <p class="ach-copy">Set up, managed, and automated the Zendesk support operation for 375go; resolved 1,000+ inquiries without a dedicated support team; served as liaison between users and engineering.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Content Engine</h4>
-                  </div>
-                  <p class="ach-copy">Built an AI content engine producing 2 source-verified posts weekly for Discord, X, and LinkedIn, plus a co-creation tool adopted by marketing.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Media &amp; Live Shows</h4>
-                  </div>
-                  <p class="ach-copy">Produced explainer videos, product demos, and SME reference videos end to end (Descript, Higgsfield, HyperFrames), and hosted 16 episodes of live radio shows averaging 500 listeners each (8,000+ cumulative) across AI topics.</p>
-                  <div class="card-links">
-                    <a class="card-pill" href="https://x.com/375ai_/status/2074927736498577524" target="_blank" rel="noopener">See SME References <span class="arr" aria-hidden="true">↗</span></a>
-                    <a class="card-pill" href="https://www.youtube.com/watch?v=vP-JFfU_jHc" target="_blank" rel="noopener">Watch 375ai Explainer Video <span class="arr" aria-hidden="true">↗</span></a>
-                    <a class="card-pill" href="https://x.com/i/spaces/1nAKEpMlQgvxL" target="_blank" rel="noopener">Listen to a Radio Episode <span class="arr" aria-hidden="true">↗</span></a>
-                  </div>
-                </li>
-              </ul>
-            </div>
+          <div class="job-links">
+            <a href="https://x.com/375ai_/status/2074927736498577524" target="_blank" rel="noopener">expert references ↗</a>
+            <a href="https://www.youtube.com/watch?v=vP-JFfU_jHc" target="_blank" rel="noopener">explainer video ↗</a>
+            <a href="https://x.com/i/spaces/1nAKEpMlQgvxL" target="_blank" rel="noopener">radio episode ↗</a>
           </div>
         </li>
 
-        <!-- Nametag: earlier run. -->
-        <li class="journal-entry" data-entry="nametag">
-          <button type="button" class="journal-entry-head" id="journal-btn-nametag"
-                  aria-expanded="false" aria-controls="journal-panel-nametag">
-            <span class="journal-idx" aria-hidden="true">02</span>
-            <span class="journal-id-main">
-              <span class="journal-name">NAMETAG</span>
-              <span class="journal-meta">Sales Engineer, July 2022 - May 2024</span>
-            </span>
-            <span class="journal-chev" aria-hidden="true">▸</span>
-          </button>
-          <div class="journal-panel" id="journal-panel-nametag" role="region"
-               aria-labelledby="journal-btn-nametag" tabindex="-1" hidden>
-            <div class="journal-panel-inner">
-              <ul class="journal-achievements">
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Community Growth</h4>
-                  </div>
-                  <p class="ach-copy">Grew the userbase from 0 to 60,000+ users.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Product Shipments</h4>
-                  </div>
-                  <p class="ach-copy">Shipped 6 products from concept to release, including a Chrome Extension, Profile Management System, and the Nametag API.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Tech Sales</h4>
-                  </div>
-                  <p class="ach-copy">Ran discovery calls with the CEO and CTO, delivering technical demos and integration sessions that closed $1.1M+ in sales.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Product Deliverables</h4>
-                  </div>
-                  <p class="ach-copy">Created product deliverables (POCs, documentation, video demos, articles) to release alongside product launches.</p>
-                </li>
-              </ul>
-            </div>
+        <li class="job">
+          <div class="job-head">
+            <span class="job-org">nametag</span>
+            <span class="job-when">july 2022 - may 2024</span>
           </div>
+          <p class="job-role">sales engineer</p>
+          <ul class="job-points">
+            <li><strong>Community growth.</strong> Grew the userbase from 0 to 60,000+ users.</li>
+            <li><strong>Product shipments.</strong> Shipped 6 products from concept to release, including a Chrome extension, a profile management system and the Nametag API.</li>
+            <li><strong>Technical sales.</strong> Ran discovery calls with the CEO and CTO. Delivered demos and integration sessions that closed $1.1M+ in sales.</li>
+            <li><strong>Product deliverables.</strong> Built proofs of concept, documentation, video demos and articles to ship with each launch.</li>
+          </ul>
         </li>
 
-        <!-- IBM: enterprise chapter. -->
-        <li class="journal-entry" data-entry="ibm">
-          <button type="button" class="journal-entry-head" id="journal-btn-ibm"
-                  aria-expanded="false" aria-controls="journal-panel-ibm">
-            <span class="journal-idx" aria-hidden="true">03</span>
-            <span class="journal-id-main">
-              <span class="journal-name">IBM</span>
-              <span class="journal-meta">Solutions Engineer, June 2019 - June 2022</span>
-            </span>
-            <span class="journal-chev" aria-hidden="true">▸</span>
-          </button>
-          <div class="journal-panel" id="journal-panel-ibm" role="region"
-               aria-labelledby="journal-btn-ibm" tabindex="-1" hidden>
-            <div class="journal-panel-inner">
-              <ul class="journal-achievements">
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Account Management</h4>
-                  </div>
-                  <p class="ach-copy">Managed 20+ accounts in the Media &amp; Entertainment industry while actively seeking out evergreen accounts and driving sales of Cloud Pak for Integration as a trusted technical advisor.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">$2.5M Deals Closed</h4>
-                  </div>
-                  <p class="ach-copy">Closed $2.5M in deals, landing $1.4M above yearly quota.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Technical Demos</h4>
-                  </div>
-                  <p class="ach-copy">Ran technical demos of Cloud Pak for Integration products on a weekly cadence.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">Pipeline Management</h4>
-                  </div>
-                  <p class="ach-copy">Extensively used Salesforce to manage quarterly pipelines and document demos/engagements to push deals forward.</p>
-                </li>
-                <li class="journal-achievement">
-                  <div class="ach-head">
-                    <h4 class="ach-title">POCs &amp; MVPs</h4>
-                  </div>
-                  <p class="ach-copy">Built and delivered client-specific POCs and MVPs; spearheaded OpenShift cluster setup for Cloud Pak for Integration deployments.</p>
-                </li>
-              </ul>
-            </div>
+        <li class="job">
+          <div class="job-head">
+            <span class="job-org">IBM</span>
+            <span class="job-when">june 2019 - june 2022</span>
           </div>
+          <p class="job-role">solutions engineer</p>
+          <ul class="job-points">
+            <li><strong>Account management.</strong> Managed 20+ accounts in media and entertainment as a technical advisor on Cloud Pak for Integration.</li>
+            <li><strong>$2.5M closed.</strong> Landed $1.4M above yearly quota.</li>
+            <li><strong>Technical demos.</strong> Ran demos of Cloud Pak for Integration products on a weekly cadence.</li>
+            <li><strong>Pipeline management.</strong> Used Salesforce to manage quarterly pipelines and document every demo and engagement.</li>
+            <li><strong>Proofs of concept.</strong> Built client-specific proofs of concept and MVPs. Led OpenShift cluster setup for Cloud Pak deployments.</li>
+          </ul>
         </li>
       </ol>
-
-      <button type="button" class="back-btn" data-back>BACK</button>
     </div>
-  </div>
-</section>
 
-<section id="screen-contact" class="screen" role="region" aria-labelledby="contact-title" hidden>
-  <div class="water" aria-hidden="true"></div>
-  <div class="content-inner">
-    <h2 id="contact-title" class="screen-heading" tabindex="-1" data-focus>CONTACT INFO</h2>
-    <p class="screen-body">Open to Forward Deployed Engineer roles. Pick a channel and say hi.</p>
-    <ul class="contact-list">
-      <li class="contact-row">
-        <span class="contact-key">EMAIL</span>
-        <a class="contact-link" href="mailto:cquez221@gmail.com">cquez221@gmail.com</a>
-      </li>
-      <li class="contact-row">
-        <span class="contact-key">X / TWITTER</span>
-        <a class="contact-link" href="https://x.com/0xQuez">@0xQuez</a>
-      </li>
-      <li class="contact-row">
-        <span class="contact-key">LINKEDIN</span>
-        <a class="contact-link" href="https://www.linkedin.com/in/christianqvazquez">LinkedIn</a>
-      </li>
-    </ul>
-    <button type="button" class="back-btn" data-back>BACK</button>
-  </div>
-</section>
+    <div class="foot">
+      <a href="mailto:cquez221@gmail.com">cquez221@gmail.com</a>
+      <a href="https://x.com/0xQuez" target="_blank" rel="noopener">x.com/0xquez</a>
+      <a href="https://www.linkedin.com/in/christianqvazquez" target="_blank" rel="noopener">linkedin</a>
+    </div>
+  </main>
 
-<!-- ================= SETTINGS MODAL ================= -->
-<div id="settings-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="settings-title" hidden>
-  <div class="modal-panel">
-    <h2 id="settings-title">Easter Egg found!</h2>
-    <p>Site inspired by my love for video games, retro anime, and cars</p>
-    <button type="button" class="back-btn" id="btn-settings-close">CLOSE</button>
-  </div>
 </div>
 
 <script>
 (function(){
   'use strict';
-  var title   = document.getElementById('screen-title');
-  var menu    = document.getElementById('title-menu');
-  var items   = Array.prototype.slice.call(menu.querySelectorAll('.menu-item'));
-  var cursor  = document.getElementById('menu-cursor');
-  var screens = {
-    'screen-about':   document.getElementById('screen-about'),
-    'screen-work':    document.getElementById('screen-work'),
-    'screen-contact': document.getElementById('screen-contact')
-  };
-  var modal        = document.getElementById('settings-modal');
-  var settingsBtn  = document.getElementById('btn-settings');
-  var settingsClose= document.getElementById('btn-settings-close');
-  var activeIndex  = 0;
+  var home = document.getElementById('view-home');
+  var work = document.getElementById('view-work');
+  var backBtn = document.getElementById('btn-back');
+  var workBtn = document.getElementById('btn-work');
 
-  function moveCursor(i, doFocus){
-    activeIndex = (i + items.length) % items.length;
-    items.forEach(function(it, j){
-      var on = (j === activeIndex);
-      it.classList.toggle('is-active', on);
-      it.setAttribute('tabindex', on ? '0' : '-1');
-      it.setAttribute('aria-current', on ? 'true' : 'false');
+  function showWork(push){
+    home.hidden = true;
+    work.hidden = false;
+    document.title = 'work history - christian vazquez';
+    if (push && location.hash !== '#work-history') history.pushState({view:'work'}, '', '#work-history');
+    window.scrollTo(0,0);
+    backBtn.focus();
+  }
+  function showHome(push){
+    work.hidden = true;
+    home.hidden = false;
+    document.title = 'christian vazquez';
+    if (push && location.hash) history.pushState({view:'home'}, '', location.pathname);
+    window.scrollTo(0,0);
+    workBtn.focus();
+  }
+
+  workBtn.addEventListener('click', function(){ showWork(true); });
+  backBtn.addEventListener('click', function(){ showHome(true); });
+
+  window.addEventListener('popstate', function(){
+    if (location.hash === '#work-history') { home.hidden = true; work.hidden = false; document.title = 'work history - christian vazquez'; }
+    else { work.hidden = true; home.hidden = false; document.title = 'christian vazquez'; }
+  });
+
+  if (location.hash === '#work-history') { home.hidden = true; work.hidden = false; }
+
+  ['projects','collectibles'].forEach(function(key){
+    var btn = document.getElementById('btn-' + key);
+    var panel = document.getElementById('sub-' + key);
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.hidden = open;
     });
-    var it = items[activeIndex];
-    cursor.style.top = (it.offsetTop + it.offsetHeight / 2 - cursor.offsetHeight / 2) + 'px';
-    if (doFocus) it.focus();
-  }
-
-  function openScreen(id){
-    title.hidden = true;
-    title.setAttribute('aria-hidden', 'true');
-    var scr = screens[id];
-    scr.hidden = false;
-    scr.removeAttribute('aria-hidden');
-    var head = scr.querySelector('[data-focus]');
-    if (head) head.focus();
-  }
-
-  function backToTitle(){
-    Object.keys(screens).forEach(function(k){ screens[k].hidden = true; });
-    title.hidden = false;
-    title.removeAttribute('aria-hidden');
-    items[activeIndex].focus();
-  }
-
-  function openModal(){
-    modal.hidden = false;
-    settingsBtn.setAttribute('aria-expanded', 'true');
-    settingsClose.focus();
-  }
-  function closeModal(){
-    modal.hidden = true;
-    settingsBtn.setAttribute('aria-expanded', 'false');
-    settingsBtn.focus();
-  }
-
-  /* keyboard: game-style menu */
-  menu.addEventListener('keydown', function(e){
-    if (e.key === 'ArrowDown'){ e.preventDefault(); moveCursor(activeIndex + 1, true); }
-    else if (e.key === 'ArrowUp'){ e.preventDefault(); moveCursor(activeIndex - 1, true); }
-    else if (e.key === 'Home'){ e.preventDefault(); moveCursor(0, true); }
-    else if (e.key === 'End'){ e.preventDefault(); moveCursor(items.length - 1, true); }
-    else if (e.key === 'Enter' || e.key === ' '){
-      e.preventDefault();
-      openScreen(items[activeIndex].dataset.target);
-    }
-  });
-
-  /* mouse: hover moves the cursor, click selects */
-  items.forEach(function(it, j){
-    it.addEventListener('pointerenter', function(){ moveCursor(j, false); });
-    it.addEventListener('click', function(){
-      moveCursor(j, false);
-      openScreen(it.dataset.target);
-    });
-    it.addEventListener('focus', function(){ moveCursor(j, false); });
-  });
-
-  /* BACK buttons return to the title screen */
-  Array.prototype.slice.call(document.querySelectorAll('[data-back]')).forEach(function(b){
-    b.addEventListener('click', backToTitle);
-  });
-
-  /* ESC: close modal first, else go back to title */
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape'){
-      if (!modal.hidden){ closeModal(); return; }
-      if (title.hidden) backToTitle();
-    }
-  });
-
-  settingsBtn.addEventListener('click', openModal);
-  settingsClose.addEventListener('click', closeModal);
-  modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
-
-  moveCursor(0, false);
-})();
-</script>
-<script>
-/* ABOUT: FIFA-style hex radar, drawn with vanilla SVG. Tune QUEZ_STATS below. */
-(function(){
-  'use strict';
-  var mount = document.getElementById('hex-radar');
-  if (!mount) return;
-
-  /* EDIT ME: Quez's attributes. value is 0-100; label is the vertex label. */
-  /* v6.3: values synced with the STATS card (AI 85, COMMS 97, CURIOSITY 95, RIZZ 90, TASTE 93, QUIT 0) */
-  var QUEZ_STATS = [
-    { label: 'AI',        value: 85, aria: 'AI proficiency 85' },
-    { label: 'COMMS',     value: 97, aria: 'communication skills 97' },
-    { label: 'CURIOSITY', value: 95, aria: 'curiosity 95' },
-    { label: 'RIZZ',      value: 90, aria: 'rizz 90' },
-    { label: 'TASTE',     value: 93, aria: 'taste 93' },
-    { label: 'QUIT',      value: 0,  aria: 'willingness to give up 0' }
-  ];
-
-  /* card identity: tier + role are static in the card head (v6.3: stats rows are real list content, no role="img") */
-
-  var NS = 'http://www.w3.org/2000/svg';
-  var W = 340, H = 330, CX = W / 2, CY = 168, R = 102;
-  var svg = document.createElementNS(NS, 'svg');
-  svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-  svg.setAttribute('role', 'img');
-  svg.setAttribute('aria-label', 'Attribute radar: ' + QUEZ_STATS.map(function(s){ return s.aria; }).join(', ') + '.');
-  svg.classList.add('hex-svg');
-
-  function pt(i, r){
-    var a = (Math.PI / 180) * (-90 + i * 60);  /* pointy-top hexagon */
-    return [CX + r * Math.cos(a), CY + r * Math.sin(a)];
-  }
-  function statPoints(){
-    var p = [];
-    for (var i = 0; i < 6; i++){
-      p.push(pt(i, R * QUEZ_STATS[i].value / 100).map(function(n){ return n.toFixed(1); }).join(','));
-    }
-    return p.join(' ');
-  }
-  function gridPoints(scale){
-    var p = [];
-    for (var i = 0; i < 6; i++){
-      p.push(pt(i, R * scale).map(function(n){ return n.toFixed(1); }).join(','));
-    }
-    return p.join(' ');
-  }
-  function el(name, attrs){
-    var e = document.createElementNS(NS, name);
-    for (var k in attrs) e.setAttribute(k, attrs[k]);
-    return e;
-  }
-
-  /* concentric grid: 3 levels + spokes */
-  [0.33, 0.66, 1].forEach(function(scale){
-    svg.appendChild(el('polygon', {
-      points: gridPoints(scale), fill: 'none',
-      stroke: scale === 1 ? '#9aa1ad' : '#cdd1d9', 'stroke-width': scale === 1 ? 1.4 : 1
-    }));
-  });
-  for (var i = 0; i < 6; i++){
-    var p = pt(i, R);
-    svg.appendChild(el('line', {
-      x1: CX, y1: CY, x2: p[0].toFixed(1), y2: p[1].toFixed(1),
-      stroke: '#dfe3ea', 'stroke-width': 1
-    }));
-  }
-
-  /* stat polygon (the 0-value vertex collapses to the center) */
-  var fill = el('polygon', {
-    points: statPoints(), fill: 'rgba(255,248,103,.32)',
-    stroke: '#2c52b3', 'stroke-width': 2, 'stroke-linejoin': 'round'
-  });
-  fill.classList.add('hex-fill');
-  svg.appendChild(fill);
-
-  /* vertex labels */
-  QUEZ_STATS.forEach(function(s, i){
-    var p = pt(i, R * 1.24);
-    var t = el('text', {
-      x: p[0].toFixed(1), y: (p[1] + 3.5).toFixed(1),
-      'text-anchor': i === 0 || i === 3 ? 'middle' : (i < 3 ? 'start' : 'end'),
-      'class': 'hex-label'
-    });
-    t.textContent = s.label;
-    svg.appendChild(t);
-  });
-
-  mount.appendChild(svg);
-})();
-</script>
-<script>
-/* WORK HISTORY screen: in-game journal (quest-log entries) + live stat wiring from stats.json */
-(function(){
-  'use strict';
-  var scroll = document.getElementById('work-scroll');
-  if (!scroll) return;
-
-  /* ---- journal: one entry open at a time (accordion), keyboard accessible ---- */
-  var entries = Array.prototype.slice.call(document.querySelectorAll('#screen-work .journal-entry'));
-
-  function panelOf(li){
-    var btn = li.querySelector('.journal-entry-head');
-    return document.getElementById(btn.getAttribute('aria-controls'));
-  }
-  function closeEntry(li, returnFocus){
-    var btn = li.querySelector('.journal-entry-head');
-    var panel = panelOf(li);
-    li.classList.remove('is-open');
-    btn.setAttribute('aria-expanded', 'false');
-    if (panel) panel.hidden = true;
-    if (returnFocus) btn.focus();
-  }
-  function openEntry(li){
-    entries.forEach(function(other){
-      if (other !== li && other.classList.contains('is-open')) closeEntry(other, false);
-    });
-    var btn = li.querySelector('.journal-entry-head');
-    var panel = panelOf(li);
-    li.classList.add('is-open');
-    btn.setAttribute('aria-expanded', 'true');
-    if (panel){
-      panel.hidden = false;
-      panel.focus();
-    }
-    li.scrollIntoView({block: 'nearest'});
-  }
-  function toggleEntry(li){
-    if (li.classList.contains('is-open')) closeEntry(li, true);
-    else openEntry(li);
-  }
-
-  entries.forEach(function(li){
-    li.querySelector('.journal-entry-head').addEventListener('click', function(){ toggleEntry(li); });
-  });
-
-  /* Escape: collapse the open entry first; if none open, let the global handler BACK to title */
-  document.getElementById('screen-work').addEventListener('keydown', function(e){
-    if (e.key !== 'Escape') return;
-    var open = null;
-    for (var i = 0; i < entries.length; i++){
-      if (entries[i].classList.contains('is-open')){ open = entries[i]; break; }
-    }
-    if (open){
-      e.stopPropagation();
-      closeEntry(open, true);
-    }
-  });
-
-  /* Arrow keys move between entry headers when focus is on one (menu-style) */
-  document.getElementById('journal-list').addEventListener('keydown', function(e){
-    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
-    var idx = -1;
-    for (var i = 0; i < entries.length; i++){
-      if (entries[i].querySelector('.journal-entry-head') === document.activeElement){ idx = i; break; }
-    }
-    if (idx === -1) return;
-    e.preventDefault();
-    var next = (idx + (e.key === 'ArrowDown' ? 1 : entries.length - 1)) % entries.length;
-    entries[next].querySelector('.journal-entry-head').focus();
   });
 })();
 </script>
