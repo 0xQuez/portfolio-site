@@ -64,6 +64,7 @@
   }
   .stat .n{font-size:clamp(1.5rem,4.6vw,2rem);font-weight:500;letter-spacing:-.04em;line-height:1}
   .stat .l{margin-top:.5em;font-size:.82rem;line-height:1.4;color:var(--ink-soft);letter-spacing:-.005em}
+  .count-note{font-size:.82rem;line-height:1.45;color:var(--ink-soft);margin:.2em 0 1.6em;max-width:612px;letter-spacing:-.005em}
   @media (max-width:620px){.stats{grid-template-columns:1fr;gap:16px}}
 
   .callout{border-left:2px solid var(--ink);padding:.1em 0 .1em 1em;margin:0 0 1.2em;max-width:612px}
@@ -146,25 +147,26 @@
   <div class="stats">
     <div class="stat"><div class="n">1,000+</div><div class="l">common issues auto-resolved in the first six months</div></div>
     <div class="stat"><div class="n">20 to 25</div><div class="l">hours a week saved on ticket handling</div></div>
-    <div class="stat"><div class="n">250,000+</div><div class="l">375go downloads the pipeline had to cover</div></div>
+    <div class="stat"><div class="n">250,000+</div><div class="l">375go downloads the support pipeline had to keep up with</div></div>
   </div>
+  <p class="count-note">The 1,000 figure and the hours come from my own ticket history and my own week, not from a Zendesk report. Downloads were the public app total at the time.</p>
 
   <div class="prose">
     <h2>what i learned</h2>
     <p>The bottleneck was me, not the automation. Two limits made me the only path between the engineers and the users, and only one of them was money.</p>
-    <p>The money limit was one paid agent seat on Suite Team. Light agent seats, the cheaper tier, were an add-on on that plan. They were a purchase, not a feature gap.</p>
-    <p>The product limit is the part I did not understand well enough. A light agent can read a ticket and leave a private note, and that is the end of their reach. They cannot post a public reply. So with light seats bought, an engineer could write the fix and still not send it.</p>
+    <p>The money limit was one paid agent seat on Suite Team, Zendesk's cheapest plan. Light agent seats, the cheaper tier, were an add-on on that plan. They cost less than full seats, but they were still a purchase.</p>
+    <p>The product limit is the part I did not understand well enough. A light agent can read a ticket and leave a private note, and nothing more. They cannot post a public reply. So with light seats bought, an engineer could write the fix and still not send it.</p>
   </div>
 
   <figure>
     <img src="/img/seats.png" width="1676" height="1146" alt="Top panel: end users open tickets in Zendesk, where christian holds the one paid seat, and questions and answers are relayed by hand to an engineering team with no seats. Bottom panel: a proposed relay, where engineering writes the fix with no seat of their own and one service identity calls the tickets api to post the public reply.">
-    <figcaption>What the seat limit forced, and the relay that removes the person instead of the seat.</figcaption>
+    <figcaption>What the seat limit forced, and the relay that takes the person out of the seat.</figcaption>
   </figure>
 
   <div class="prose">
     <p>The feature built for this already existed, and I did not use it. Side conversations attach an email, Slack or Teams thread to a ticket, and the people on that thread do not need agent seats. It has been in the product for years. It needs Suite Professional or above, and we were on Team. That is the first thing I would ask for.</p>
-    <p>If the plan cannot move, light agent seats plus a small relay come next. Engineering works on the ticket instead of over email, and the relay turns a private note into the public reply.</p>
-    <p>Then the API. Zendesk creates a comment when you update a ticket, and the author defaults to the account that authenticated the call. One service identity holds a seat, calls <code>PUT /api/v2/tickets/{id}</code> with the reply, and the thread updates. Two rules: use a dedicated service account instead of my login, or the audit trail reads as me, and stay inside the rate limit, which is 200 requests a minute on Team and 400 on Growth.</p>
+    <p>If the plan cannot move, light agent seats plus a small relay come next. Engineering works on the ticket, not over email, and the relay turns a private note into the public reply.</p>
+    <p>The API path comes next. Zendesk creates a comment when you update a ticket, and the author defaults to the account that authenticated the call. One service identity holds a seat and calls <code>PUT /api/v2/tickets/{id}</code> with a comment object, <code>public</code> set to true. The thread updates. Two rules: use a dedicated service account instead of my login, or the audit trail reads as me, and stay inside the rate limit, which is 200 requests a minute on Suite Team and 400 on Suite Growth.</p>
     <p>MCP is the newest path. Zendesk runs an MCP server, and Bridge lets an outside agent act inside Zendesk through scoped tools, with a person confirming each change. It is in early access and the pricing is not settled, so I would test it rather than design against it.</p>
   </div>
 
