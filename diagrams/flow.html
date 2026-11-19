@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+  @font-face{font-family:'Inter Tight';src:url('../fonts/inter-tight-regular.woff2') format('woff2');font-weight:400}
+  @font-face{font-family:'Inter Tight';src:url('../fonts/inter-tight-medium.woff2') format('woff2');font-weight:500}
+  @font-face{font-family:'Inter Tight';src:url('../fonts/inter-tight-semibold.woff2') format('woff2');font-weight:600}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#fff}
+  body{font-family:'Inter Tight',Helvetica,Arial,sans-serif;color:#121212;width:900px;padding:34px 34px 30px;-webkit-font-smoothing:antialiased}
+
+  .row{display:flex;align-items:stretch;gap:0}
+  .col{display:flex;flex-direction:column;gap:0}
+
+  .node{border:1px solid #121212;padding:16px 18px;background:#fff}
+  .node.auto{background:#f4f4f3}
+  .node.human{border-width:2px}
+  .node.final{border-style:dashed;background:#fff}
+  .k{font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:#5f5f5f;margin-bottom:7px}
+  .t{font-size:21px;line-height:1.22;letter-spacing:-.02em;font-weight:500}
+  .s{font-size:15px;line-height:1.4;color:#4c4c4c;margin-top:7px;letter-spacing:-.005em}
+  .status{display:inline-block;margin-top:10px;font-size:13px;letter-spacing:.02em;border:1px solid #121212;padding:2px 7px;background:#fff}
+
+  .link{display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:#6a6a6a;padding:9px 0;letter-spacing:-.005em}
+  .link .ar{font-size:17px;color:#121212}
+
+  .dec{display:grid;grid-template-columns:152px 1fr;gap:0 18px;align-items:start;margin-top:12px}
+  .dbox{border:1px solid #121212;padding:9px 10px;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:#5f5f5f;text-align:center}
+  .dyes{display:flex;align-items:center;gap:9px;font-size:15px;line-height:1.3;letter-spacing:-.01em;padding-top:11px}
+  .dno{grid-column:1 / -1;display:flex;align-items:center;gap:9px;font-size:14px;color:#4c4c4c;padding:10px 0 2px;letter-spacing:-.005em}
+  .dec .ar{font-size:16px;color:#121212}
+</style></head>
+<body>
+  <div class="col">
+
+    <div class="node">
+      <div class="k">01 · inquiry</div>
+      <div class="t">a 375go user writes in</div>
+      <div class="s">email or the in-app web form, both connected to Zendesk</div>
+    </div>
+
+    <div class="link"><span class="ar">↓</span> new ticket</div>
+
+    <div class="node auto">
+      <div class="k">02 · automated</div>
+      <div class="t">zendesk ai agent reads the message</div>
+      <div class="s">greets the user, assesses the request, answers from the knowledge base: faqs, support articles, how-to guides, technical documentation</div>
+    </div>
+
+    <div class="dec">
+      <div class="dbox">resolved?</div>
+      <div class="dyes"><span class="ar">→</span><span>yes: answer sent, ticket closed</span></div>
+      <div class="dno"><span class="ar">↓</span><span>no: not resolved in the first reply</span></div>
+    </div>
+
+    <div class="node auto">
+      <div class="k">03 · automated</div>
+      <div class="t">agent collects what the ticket needs</div>
+      <div class="s">device details, steps to reproduce, screenshots and videos, all stored on the ticket.</div>
+      <div class="status">status: needs human</div>
+    </div>
+
+    <div class="link"><span class="ar">↓</span> agent has no clear path forward, and guesswork is not allowed</div>
+
+    <div class="node human">
+      <div class="k">04 · human</div>
+      <div class="t">christian reviews the ticket</div>
+      <div class="s">reads the history, asks for anything missing, decides whether engineering must see it</div>
+      <div class="status">status: eng review</div>
+    </div>
+
+    <div class="link"><span class="ar">↓</span> zapier watches for that status</div>
+
+    <div class="node">
+      <div class="k">05 · handoff</div>
+      <div class="t">linear ticket created</div>
+      <div class="s">user info, issue description, steps already tried, steps to reproduce</div>
+    </div>
+
+    <div class="link"><span class="ar">↓</span> assigned</div>
+
+    <div class="node final">
+      <div class="k">06 · engineering</div>
+      <div class="t">engineers investigate the bug</div>
+      <div class="s">findings come back to christian, who replies to the user in zendesk</div>
+    </div>
+
+  </div>
+</body></html>

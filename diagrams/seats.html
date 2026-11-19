@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+  @font-face{font-family:'Inter Tight';src:url('../fonts/inter-tight-regular.woff2') format('woff2');font-weight:400}
+  @font-face{font-family:'Inter Tight';src:url('../fonts/inter-tight-medium.woff2') format('woff2');font-weight:500}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#fff}
+  body{font-family:'Inter Tight',Helvetica,Arial,sans-serif;color:#121212;width:900px;padding:34px;-webkit-font-smoothing:antialiased}
+  .panel{border:1px solid #121212;padding:20px}
+  .panel.ghost{border-style:dashed;margin-top:22px}
+  .head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:20px}
+  .t{font-size:21px;line-height:1.2;letter-spacing:-.02em;font-weight:500}
+  .tag{font-size:13px;color:#5f5f5f;letter-spacing:.01em}
+  .lane{display:grid;grid-template-columns:1fr 128px 1fr 128px 1fr;align-items:stretch;grid-template-rows:1fr}
+  .box{border:1px solid #121212;padding:14px 15px;background:#fff;height:100%;display:flex;flex-direction:column;justify-content:center}
+  .box.on{background:#f4f4f3}
+  .box h4{font-size:16.5px;font-weight:500;letter-spacing:-.015em;margin-bottom:5px}
+  .box p{font-size:13.5px;line-height:1.38;color:#4c4c4c;letter-spacing:-.005em}
+  .seat{display:inline-block;margin-top:8px;font-size:12px;letter-spacing:.03em;border:1px solid #121212;padding:1px 6px;width:fit-content}
+  .mid{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:12.5px;color:#4c4c4c;text-align:center;line-height:1.25}
+  .mid .ar{font-size:19px;color:#121212}
+  .note{font-size:14px;line-height:1.45;color:#4c4c4c;margin-top:16px;letter-spacing:-.005em}
+</style></head>
+<body>
+  <div class="panel">
+    <div class="head">
+      <div class="t">as it was built</div>
+      <div class="tag">zendesk starter/team plan, one seat</div>
+    </div>
+    <div class="lane">
+      <div class="box">
+        <h4>end users</h4>
+        <p>375go users with questions and bugs, writing in by email or the web form</p>
+      </div>
+      <div class="mid"><span class="ar">→</span><span>ticket<br>opens</span></div>
+      <div class="box on">
+        <h4>zendesk</h4>
+        <p>tickets, knowledge base, ai agent</p>
+        <span class="seat">christian, 1 seat</span>
+      </div>
+      <div class="mid"><span class="ar">↔</span><span>questions and<br>answers relayed<br>by hand</span></div>
+      <div class="box">
+        <h4>engineering team</h4>
+        <p>no seats, so no access to the tickets. every follow-up ran through one person.</p>
+      </div>
+    </div>
+    <p class="note">Seats set the limit on who could open a ticket. With one seat, I became the only two-way channel between the customer and the people who could fix the bug.</p>
+  </div>
+
+  <div class="panel ghost">
+    <div class="head">
+      <div class="t">what i would build instead</div>
+      <div class="tag">proposed, never shipped</div>
+    </div>
+    <div class="lane">
+      <div class="box">
+        <h4>engineering team</h4>
+        <p>writes the answer or the next step, no zendesk login needed</p>
+      </div>
+      <div class="mid"><span class="ar">→</span><span>api or mcp<br>request</span></div>
+      <div class="box on">
+        <h4>relay layer</h4>
+        <p>checks the ticket id, keeps the thread straight, posts the reply</p>
+      </div>
+      <div class="mid"><span class="ar">→</span><span>zendesk<br>api call</span></div>
+      <div class="box">
+        <h4>zendesk ticket</h4>
+        <p>the reply lands on the ticket and reaches the user, no human in the middle</p>
+      </div>
+    </div>
+    <p class="note">Same relay idea, minus the middleman. Payloads travel as api or mcp requests instead of an agent driving the zendesk interface on my behalf.</p>
+  </div>
+</body></html>

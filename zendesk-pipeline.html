@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>the zendesk support pipeline · christian vazquez</title>
+<meta name="description" content="How 375go handled more than 250,000 downloads of support traffic with a Zendesk knowledge base, an AI agent, Zapier and Linear.">
+<meta property="og:title" content="the zendesk support pipeline · christian vazquez">
+<meta property="og:description" content="1,000+ common issues resolved without a human in the loop, and 20 to 25 hours a week saved.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="/img/flow.png">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-tight-regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-tight-medium.woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23111'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial,sans-serif' font-size='18' fill='%23fff' text-anchor='middle'%3Eq%3C/text%3E%3C/svg%3E">
+<style>
+  @font-face{font-family:'Inter Tight';src:url('/fonts/inter-tight-regular.woff2') format('woff2');font-weight:400;font-display:swap}
+  @font-face{font-family:'Inter Tight';src:url('/fonts/inter-tight-medium.woff2') format('woff2');font-weight:500;font-display:swap}
+
+  :root{
+    --ink:#121212;
+    --ink-soft:#4c4c4c;
+    --rule:rgba(18,18,18,.16);
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{
+    margin:0;background:#fff;color:var(--ink);
+    font-family:'Inter Tight',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:1px}
+
+  .page{max-width:900px;padding:clamp(26px,6vh,56px) clamp(22px,6vw,44px) 40px;margin:0 auto}
+  .prose{max-width:612px}
+
+  .top{display:flex;align-items:baseline;justify-content:space-between;gap:1em;flex-wrap:wrap;margin-bottom:clamp(30px,6vh,56px)}
+  .back{font-size:1rem;font-weight:500;letter-spacing:-.015em;border-bottom:1px solid transparent;transition:border-color .25s var(--ease);padding-bottom:2px}
+  .back:hover{border-bottom-color:var(--ink)}
+  .crumb{font-size:.85rem;color:var(--ink-soft);letter-spacing:-.005em}
+
+  h1{
+    margin:0 0 .5em;font-size:clamp(1.75rem,5vw,2.5rem);line-height:1.06;
+    font-weight:500;letter-spacing:-.04em;max-width:15ch;
+  }
+  .meta{margin:0 0 clamp(30px,6vh,48px);font-size:.9rem;color:var(--ink-soft);letter-spacing:-.005em}
+
+  h2{
+    margin:clamp(38px,7vh,64px) 0 .5em;font-size:.95rem;font-weight:500;
+    letter-spacing:.02em;color:var(--ink-soft);
+  }
+  h2::after{content:"";display:block;width:44px;height:1px;background:var(--ink);margin-top:.55em;opacity:.5}
+
+  p{margin:0 0 1.05em;font-size:clamp(1rem,2.6vw,1.06rem);line-height:1.62;letter-spacing:-.008em;max-width:612px}
+
+  figure{margin:clamp(26px,5vh,40px) 0 clamp(30px,6vh,44px)}
+  figure img{display:block;width:100%;height:auto;border:1px solid var(--rule)}
+  figcaption{margin-top:.75em;font-size:.875rem;line-height:1.45;color:var(--ink-soft);max-width:612px;letter-spacing:-.005em}
+
+  .stats{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.4vw,26px);
+    margin:clamp(26px,5vh,40px) 0;padding:clamp(18px,3vh,26px) 0;
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  }
+  .stat .n{font-size:clamp(1.5rem,4.6vw,2rem);font-weight:500;letter-spacing:-.04em;line-height:1}
+  .stat .l{margin-top:.5em;font-size:.82rem;line-height:1.4;color:var(--ink-soft);letter-spacing:-.005em}
+  @media (max-width:620px){.stats{grid-template-columns:1fr;gap:16px}}
+
+  .callout{border-left:2px solid var(--ink);padding:.1em 0 .1em 1em;margin:0 0 1.2em;max-width:612px}
+  .callout p{margin-bottom:0;color:var(--ink-soft)}
+  .status{white-space:nowrap;border:1px solid var(--rule);padding:1px 6px;font-size:.94em;letter-spacing:.005em}
+
+  footer{margin-top:clamp(46px,9vh,80px);padding-top:20px;border-top:1px solid var(--rule);
+    display:flex;flex-wrap:wrap;gap:.5em 1.2em;font-size:.85rem;color:var(--ink-soft)}
+  footer a{border-bottom:1px solid transparent;transition:border-color .25s var(--ease),color .25s var(--ease)}
+  footer a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top">
+    <a class="back" href="/">christian vazquez</a>
+    <span class="crumb">projects / support pipeline</span>
+  </div>
+
+  <h1>the zendesk support pipeline</h1>
+  <p class="meta">375ai · october 2025 to july 2026 · zendesk, zapier, linear</p>
+
+  <div class="prose">
+    <h2>story</h2>
+    <p>In October 2025 we publicly launched 375go, our mobile app. It passed 250,000 downloads worldwide, and with that came a wave of support requests: crashes, login problems, missing rewards, questions about how the app worked.</p>
+    <p>The team had no channel to organize, understand and resolve those requests. I set up and administered Zendesk for the company, and I answered the support tickets myself. One inbox, one person. I needed a way to handle the volume without answering every ticket by hand.</p>
+
+    <h2>how it works</h2>
+    <p>I built the pipeline around Zendesk's own AI agent. It answers from our knowledge base using retrieval-augmented generation, so every reply comes from a document we wrote, not from a guess. I wrote the knowledge base, configured the agent, and designed the status flow that moves a ticket from a machine to a person to an engineer.</p>
+    <p>Three tools carry the work.</p>
+  </div>
+
+  <figure>
+    <img src="/img/tools.png" width="1676" height="753" alt="Three boxes in a row: zendesk holds the knowledge base, the email and web channels and the AI agent. Zapier watches for the eng review status and pulls the ticket data. Linear receives a ticket with the user info, the issue, the steps already attempted and the steps to reproduce.">
+    <figcaption>Each tool does one job. Zendesk holds the conversation, Zapier carries the status, Linear holds the engineering queue.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>The knowledge base started with what we already had: FAQs, technical documentation, support articles, and how-to guides with documented steps for common issues. No answer was added without a source document behind it.</p>
+    <p>Every inquiry got the same first pass. The agent greeted the user, assessed the message, and replied with specific steps for the user's issue. If the issue survived that first reply, the agent asked for what an engineer would eventually need: device details, steps to reproduce, screenshots, videos. All of it went onto the ticket.</p>
+    <p>A ticket changed hands on one condition: the agent had no clear path forward. Guesswork was not allowed, so the status moved to <span class="status">needs human</span> and I joined the conversation.</p>
+    <p>I reviewed the ticket, asked for anything still missing, and set the status to <span class="status">eng review</span>. Zapier watched for that status, pulled the ticket data, and created a Linear ticket with everything engineering needed: the user and device info, a description of the issue, the steps already tried, and the steps to reproduce it.</p>
+  </div>
+
+  <figure>
+    <img src="/img/flow.png" width="1676" height="2000" alt="Six stage flow: a 375go user writes in, the Zendesk AI agent answers from the knowledge base, a resolved issue closes and an unresolved one gets a request for device details and reproduction steps, the status goes to needs human, christian reviews and sets eng review, Zapier creates a Linear ticket, engineers investigate.">
+    <figcaption>The full loop: from a user's first message to an engineer's findings, and back.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>impact</h2>
+    <p>In the first six months, more than 1,000 common issues were resolved by the agent with no human in the loop. Our community described support as diligent and helpful.</p>
+    <p>The pipeline saved me an estimated 20 to 25 hours of work every week. Tickets stopped piling up while I answered them one at a time.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">1,000+</div><div class="l">common issues auto-resolved in the first six months</div></div>
+    <div class="stat"><div class="n">20 to 25</div><div class="l">hours a week saved on ticket handling</div></div>
+    <div class="stat"><div class="n">250,000+</div><div class="l">375go downloads the pipeline had to cover</div></div>
+  </div>
+
+  <div class="prose">
+    <h2>what i learned</h2>
+    <p>The bottleneck was me. I was the only path between the engineering team and the end users, and the limit was seats. We were on a starter plan with a single seat, so the engineers had no way to open a ticket. In a perfect world I would have given two to four engineers direct access.</p>
+  </div>
+
+  <figure>
+    <img src="/img/seats.png" width="1676" height="1149" alt="Top panel: end users open tickets in Zendesk, where christian holds the single seat, and questions and answers are relayed by hand to an engineering team with no seats. Bottom panel: a proposed relay, where engineering sends an api or mcp request to a relay layer that posts the reply to the Zendesk ticket through its api.">
+    <figcaption>What the seat limit forced, and the design it pushed me toward.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <p>The cheap version of a fix is a relay. Suggestions from engineering arrive at my email with the ticket identifier, and an agent posts the reply to the user through the Zendesk interface while logged in as me. That is duct tape, and it still leans on my account.</p>
+    <p>The more honest version keeps the same relay and moves the payload. Engineering sends the reply as an API or MCP request, a relay layer checks the ticket, and the Zendesk API posts it. No computer-use loop, no borrowed login. I have not shipped that version, and I would not claim it works until I tested it against the seat model.</p>
+
+    <div class="callout">
+      <p>What I would test first: whether an API integration can post an agent reply on a plan where the engineers have no seats. If it can, the human stops being the relay and goes back to being the reviewer.</p>
+    </div>
+  </div>
+
+  <footer>
+    <a href="/">all work</a>
+    <a href="mailto:cquez221@gmail.com">cquez221@gmail.com</a>
+    <a href="https://x.com/0xQuez" target="_blank" rel="noopener">x.com/0xquez</a>
+    <a href="https://www.linkedin.com/in/christianqvazquez" target="_blank" rel="noopener">linkedin</a>
+  </footer>
+
+</div>
+</body>
+</html>
