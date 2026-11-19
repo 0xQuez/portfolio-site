@@ -25,7 +25,7 @@
   <div class="panel">
     <div class="head">
       <div class="t">as it was built</div>
-      <div class="tag">zendesk starter/team plan, one seat</div>
+      <div class="tag">suite team, one paid agent seat</div>
     </div>
     <div class="lane">
       <div class="box">
@@ -36,12 +36,12 @@
       <div class="box on">
         <h4>zendesk</h4>
         <p>tickets, knowledge base, ai agent</p>
-        <span class="seat">christian, 1 seat</span>
+        <span class="seat">christian, 1 paid seat</span>
       </div>
       <div class="mid"><span class="ar">↔</span><span>questions and<br>answers relayed<br>by hand</span></div>
       <div class="box">
         <h4>engineering team</h4>
-        <p>no seats, so no access to the tickets. every follow-up ran through one person.</p>
+        <p>no seats, so no access to the tickets. light agent seats were an add-on on this plan, and light agents can only leave private notes.</p>
       </div>
     </div>
     <p class="note">Seats set the limit on who could open a ticket. With one seat, I became the only two-way channel between the customer and the people who could fix the bug.</p>
@@ -50,24 +50,24 @@
   <div class="panel ghost">
     <div class="head">
       <div class="t">what i would build instead</div>
-      <div class="tag">proposed, never shipped</div>
+      <div class="tag">proposed, not shipped</div>
     </div>
     <div class="lane">
       <div class="box">
         <h4>engineering team</h4>
-        <p>writes the answer or the next step, no zendesk login needed</p>
+        <p>writes the fix, no zendesk login and no seat of their own</p>
       </div>
-      <div class="mid"><span class="ar">→</span><span>api or mcp<br>request</span></div>
+      <div class="mid"><span class="ar">→</span><span>private note<br>or request</span></div>
       <div class="box on">
-        <h4>relay layer</h4>
-        <p>checks the ticket id, keeps the thread straight, posts the reply</p>
+        <h4>relay</h4>
+        <p>one service identity holds the seat and calls the tickets api</p>
       </div>
-      <div class="mid"><span class="ar">→</span><span>zendesk<br>api call</span></div>
+      <div class="mid"><span class="ar">→</span><span>update ticket<br>with a comment</span></div>
       <div class="box">
         <h4>zendesk ticket</h4>
-        <p>the reply lands on the ticket and reaches the user, no human in the middle</p>
+        <p>public reply lands on the thread and reaches the user</p>
       </div>
     </div>
-    <p class="note">Same relay idea, minus the middleman. Payloads travel as api or mcp requests instead of an agent driving the zendesk interface on my behalf.</p>
+    <p class="note">The api does not remove the seat. It removes the person from the seat, which is the part that was costing 20 hours a week.</p>
   </div>
 </body></html>
