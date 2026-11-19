@@ -6,38 +6,30 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:#fff}
   body{font-family:'Inter Tight',Helvetica,Arial,sans-serif;color:#121212;width:900px;padding:34px;-webkit-font-smoothing:antialiased}
-  .k{font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:#5f5f5f;margin-bottom:8px}
-  .t{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:500}
-  .s{font-size:15px;line-height:1.42;color:#4c4c4c;margin-top:9px;letter-spacing:-.005em}
-  .list{list-style:none;margin-top:11px;display:grid;gap:5px}
-  .list li{font-size:14.5px;line-height:1.35;color:#121212;padding-left:13px;position:relative;letter-spacing:-.005em}
+  .flow{display:grid;grid-template-columns:1fr 66px 1fr 66px 1fr;align-items:stretch;grid-template-rows:1fr}
+  .node{border:1px solid #121212;padding:19px 18px;background:#fff;display:flex;flex-direction:column;height:100%}
+  .t{font-size:23px;line-height:1.2;letter-spacing:-.025em;font-weight:500;margin-bottom:13px}
+  .list{list-style:none;display:grid;gap:7px}
+  .list li{font-size:15px;line-height:1.38;color:#3f3f3f;padding-left:14px;position:relative;letter-spacing:-.005em}
   .list li::before{content:"-";position:absolute;left:0;color:#8a8a8a}
-  .flow{display:grid;grid-template-columns:1fr 78px 1fr 78px 1fr;align-items:stretch;grid-template-rows:1fr}
-  .node{border:1px solid #121212;padding:17px 16px;background:#fff;display:flex;flex-direction:column;height:100%}
-  .arrow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:13px;color:#4c4c4c;text-align:center;line-height:1.25;padding:0 2px}
-  .arrow .ar{font-size:20px;color:#121212}
-  .foot{margin-top:14px;font-size:14px;color:#6a6a6a;letter-spacing:-.005em}
+  .arrow{display:flex;align-items:center;justify-content:center;font-size:22px;color:#121212}
 </style></head>
 <body>
   <div class="flow">
     <div class="node">
-      <div class="k">machine 01</div>
       <div class="t">zendesk</div>
-      <div class="s">the workspace where every inquiry lives.</div>
       <ul class="list">
         <li>knowledge base: faqs, support articles, how-to guides, technical docs</li>
         <li>channels: email and the web form</li>
-        <li>ai agent answers with rag over that knowledge base</li>
+        <li>ai agent answers from the knowledge base</li>
         <li>dashboard for status, notes and attachments</li>
       </ul>
     </div>
 
-    <div class="arrow"><span class="ar">→</span><span>status set to<br>eng review</span></div>
+    <div class="arrow">→</div>
 
     <div class="node">
-      <div class="k">machine 02</div>
       <div class="t">zapier</div>
-      <div class="s">the wire between the two systems.</div>
       <ul class="list">
         <li>watches for tickets with the eng review status</li>
         <li>pulls the ticket data out of zendesk</li>
@@ -45,12 +37,10 @@
       </ul>
     </div>
 
-    <div class="arrow"><span class="ar">→</span><span>new ticket<br>with full context</span></div>
+    <div class="arrow">→</div>
 
     <div class="node">
-      <div class="k">machine 03</div>
       <div class="t">linear</div>
-      <div class="s">the queue the engineers actually read.</div>
       <ul class="list">
         <li>user info and device details</li>
         <li>issue description</li>
