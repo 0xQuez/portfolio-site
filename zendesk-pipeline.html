@@ -64,34 +64,22 @@
   }
   .stat .n{font-size:clamp(1.5rem,4.6vw,2rem);font-weight:500;letter-spacing:-.04em;line-height:1}
   .stat .l{margin-top:.5em;font-size:.82rem;line-height:1.4;color:var(--ink-soft);letter-spacing:-.005em}
-  .count-note{font-size:.82rem;line-height:1.45;color:var(--ink-soft);margin:.2em 0 1.6em;max-width:612px;letter-spacing:-.005em}
   @media (max-width:620px){.stats{grid-template-columns:1fr;gap:16px}}
 
-  .callout{border-left:2px solid var(--ink);padding:.1em 0 .1em 1em;margin:0 0 1.2em;max-width:612px}
   code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;background:#f4f4f3;border:1px solid var(--rule);padding:1px 5px;border-radius:1px}
 
-  .opts{width:100%;border-collapse:collapse;margin:0 0 1.2em;font-size:.9rem}
-  .opts caption{caption-side:top;text-align:left;color:var(--ink);font-size:.95rem;letter-spacing:-.01em;padding:0 0 .8em}
-  .opts th,.opts td{text-align:left;vertical-align:top;padding:.7em .9em .7em 0;line-height:1.45;border-bottom:1px solid var(--rule)}
-  .opts thead th{font-weight:500;color:var(--ink-soft);font-size:.8rem;letter-spacing:.03em;border-bottom:1px solid var(--ink);padding-bottom:.5em}
-  .opts tbody th{font-weight:500;width:30%}
-  .opts td{color:var(--ink-soft);width:35%}
-  @media (max-width:620px){
-    .opts,.opts tbody,.opts tr,.opts th,.opts td{display:block;width:100%}
-    .opts caption{display:block;width:100%;font-size:.98rem;line-height:1.35;padding:0 0 .7em}
-    .opts thead{display:none}
-    .opts tr{padding:.7em 0;border-bottom:1px solid var(--rule)}
-    .opts th,.opts td{border:0;padding:.12em 0}
-    .opts tbody th{width:auto;font-size:.95rem}
-    .opts td{font-size:.88rem}
-  }
-
+  .limit{margin:0 0 .85em;font-size:clamp(1rem,2.6vw,1.06rem);line-height:1.55;letter-spacing:-.008em;max-width:612px;color:var(--ink-soft)}
+  .limit span{display:block;color:var(--ink);font-weight:500;letter-spacing:-.012em;margin-bottom:.1em}
+  .sub-head{margin:1.9em 0 .7em;font-size:1rem;font-weight:500;letter-spacing:-.015em;color:var(--ink)}
+  .alt{list-style:none;padding:0;margin:0 0 1em;display:grid;gap:1em;max-width:612px}
+  .alt li{font-size:clamp(.98rem,2.5vw,1.03rem);line-height:1.58;letter-spacing:-.008em;color:var(--ink-soft);padding-left:1.2em;position:relative}
+  .alt li::before{content:"-";position:absolute;left:0;color:var(--ink)}
+  .alt strong{font-weight:500;color:var(--ink)}
   .src{list-style:none;padding:0;margin:0 0 1em;display:grid;gap:.75em;max-width:612px}
   .src li{font-size:.9rem;line-height:1.4;letter-spacing:-.005em}
   .src a{border-bottom:1px solid var(--rule);transition:border-color .25s var(--ease)}
   .src a:hover{border-bottom-color:var(--ink)}
   .src span{display:block;color:var(--ink-soft);font-size:.85rem;margin-top:.15em}
-  .callout p{margin-bottom:0;color:var(--ink-soft)}
   .status{white-space:nowrap;border:1px solid var(--rule);padding:1px 6px;font-size:.94em;letter-spacing:.005em}
 
   footer{margin-top:clamp(46px,9vh,80px);padding-top:20px;border-top:1px solid var(--rule);
@@ -123,25 +111,23 @@
 
   <figure>
     <img src="/img/tools.png" width="1676" height="588" alt="Three boxes in a row: zendesk holds the knowledge base, the email and web channels and the AI agent. Zapier watches for the eng review status and pulls the ticket data. Linear receives a ticket with the user info, the issue, the steps already attempted and the steps to reproduce.">
-    <figcaption>Each tool does one job. Zendesk holds the conversation, Zapier carries the status, Linear holds the engineering queue.</figcaption>
   </figure>
 
   <div class="prose">
-    <p>The knowledge base started with what we already had: FAQs, technical documentation, support articles, and how-to guides with documented steps for common issues. No answer was added without a source document behind it.</p>
-    <p>Every inquiry got the same first pass. The agent greeted the user, assessed the message, and replied with specific steps for the user's issue. If the issue survived that first reply, the agent asked for what an engineer would eventually need: device details, steps to reproduce, screenshots, videos. All of it went onto the ticket.</p>
-    <p>A ticket changed hands on one condition: the agent had no clear path forward. Guesswork was not allowed, so the status moved to <span class="status">needs human</span> and I joined the conversation.</p>
+    <p>The knowledge base started with what we already had: FAQs, technical documentation, support articles, and how-to guides with documented steps for common issues.</p>
+    <p>The agent greeted the user, assessed the message, and replied with specific steps for the user's issue. If the issue persisted past that first reply, the agent asked for what an engineer would eventually need: device details, steps to reproduce, screenshots, videos. All of it went onto the ticket.</p>
+    <p>If the agent had no clear path forward, the status moved to <span class="status">needs human</span> and looped me into the conversation.</p>
     <p>I reviewed the ticket, asked for anything still missing, and set the status to <span class="status">eng review</span>. Zapier's ticket-updated trigger, filtered on that status, pulled the ticket data and created a Linear issue with everything engineering needed: the user and device info, a description of the issue, the steps already tried, and the steps to reproduce it.</p>
   </div>
 
   <figure>
-    <img src="/img/flow.png" width="1676" height="2000" alt="Six stage flow: a 375go user writes in, the Zendesk AI agent answers from the knowledge base, a resolved issue closes and an unresolved one gets a request for device details and reproduction steps, the status goes to needs human, christian reviews and sets eng review, Zapier creates a Linear ticket, engineers investigate.">
-    <figcaption>The full loop: from a user's first message to an engineer's findings, and back.</figcaption>
+    <img src="/img/flow.png" width="1676" height="1773" alt="Six stage flow: a 375go user writes in, the Zendesk AI agent answers from the knowledge base, a resolved issue closes, an unresolved one gets a request for device details and reproduction steps, the status goes to needs human and I get notified, I review the ticket and set eng review, Zapier creates a Linear ticket, engineers investigate.">
   </figure>
 
   <div class="prose">
     <h2>impact</h2>
     <p>In the first six months, more than 1,000 common issues were resolved by the agent with no human in the loop. Our community described support as diligent and helpful.</p>
-    <p>The pipeline saved me an estimated 20 to 25 hours of work every week. Tickets stopped piling up while I answered them one at a time.</p>
+    <p>The pipeline saved me an estimated 20 to 25 hours of work every week, and enhanced the user experience and community morale.</p>
   </div>
 
   <div class="stats">
@@ -149,55 +135,28 @@
     <div class="stat"><div class="n">20 to 25</div><div class="l">hours a week saved on ticket handling</div></div>
     <div class="stat"><div class="n">250,000+</div><div class="l">375go downloads the support pipeline had to keep up with</div></div>
   </div>
-  <p class="count-note">The 1,000 figure and the hours come from my own ticket history and my own week, not from a Zendesk report. Downloads were the public app total at the time.</p>
 
   <div class="prose">
     <h2>what i learned</h2>
-    <p>The bottleneck was me, not the automation. Two limits made me the only path between the engineers and the users, and only one of them was money.</p>
-    <p>The money limit was one paid agent seat on Suite Team, Zendesk's cheapest plan. Light agent seats, the cheaper seat type, were an add-on on that plan. They cost less than full seats, but they were still a purchase.</p>
-    <p>The product limit is the part I did not understand well enough. A light agent can read a ticket and leave a private note, and nothing more. They cannot post a public reply. So with light seats bought, an engineer could write the fix and still not send it.</p>
-  </div>
+    <p>The fun part about building a system is figuring out how to remove yourself from it, or build as little reliance on your participation as possible. We are our own bottlenecks.</p>
 
-  <figure>
-    <img src="/img/seats.png" width="1676" height="1146" alt="Top panel: end users open tickets in Zendesk, where christian holds the one paid seat, and questions and answers are relayed by hand to an engineering team with no seats. Bottom panel: a proposed relay, where engineering writes the fix with no seat of their own and one service identity calls the tickets api to post the public reply.">
-    <figcaption>What the seat limit forced, and the relay that takes the person out of the seat.</figcaption>
-  </figure>
+    <p class="limit"><span>limit 1) keep costs down</span> budget approval for one seat, and that is it.</p>
+    <p class="limit"><span>limit 2) product</span> the functionalities that would remove the barrier were paywalled.</p>
 
-  <div class="prose">
-    <p>The feature built for this already existed in Zendesk, and we could not use it. Side conversations attach an email, Slack or Teams thread to a ticket, and the people on that thread do not need agent seats. It has been in the product for years, but it needs Suite Professional or above, and we were on Suite Team. That is the first thing I would ask for.</p>
-    <p>If the plan cannot move, light agent seats plus a small relay come next. Engineering works on the ticket, not over email, and the relay turns a private note into the public reply.</p>
-    <p>The API path comes next. Zendesk creates a comment when you update a ticket, and the author defaults to the account that authenticated the call. One service identity holds a seat and calls <code>PUT /api/v2/tickets/{id}</code> with a comment object, <code>public</code> set to true. The thread updates. Two rules: use a dedicated service account instead of my login, or the audit trail reads as me, and stay inside the rate limit, which is 200 requests a minute on Suite Team and 400 on Suite Growth.</p>
-    <p>MCP is the newest path. Zendesk runs an MCP server, and Bridge lets an outside agent act inside Zendesk through scoped tools, with a person confirming each change. It is in early access and the pricing is not settled, so I would test it rather than design against it.</p>
+    <p class="sub-head">what i could've explored</p>
+    <ul class="alt">
+      <li><strong>Swap my seat for one service identity and call the tickets api.</strong> This route is still pretty limited. The api updates the ticket thread with a comment written by the service account, which is not the same as replying to the user as support. It degrades the user experience.</li>
+      <li><strong>Or a computer-use tool call with a skill</strong> that reproduces the manual work of passing messages between engineering and the user, with my account as the vehicle. Not as deterministic, and prone to random bugs, authentication expirations and other stop-the-process triggers.</li>
+    </ul>
   </div>
 
   <div class="prose">
-    <table class="opts">
-      <caption>Four ways to take me out of the middle</caption>
-      <thead>
-        <tr><th scope="col">approach</th><th scope="col">what it needs</th><th scope="col">what it changes</th></tr>
-      </thead>
-      <tbody>
-        <tr><th scope="row">side conversations</th><td>Suite Professional or above</td><td>engineers join by email or Slack, no seat. one agent still posts the reply.</td></tr>
-        <tr><th scope="row">light agent seats, note relay</th><td>add-on on Team, included on Growth</td><td>engineers read and write on the ticket. the reply still comes from one seat.</td></tr>
-        <tr><th scope="row">api relay, service identity</th><td>any suite, one agent seat, a token</td><td>no person in the loop. the seat writes the reply.</td></tr>
-        <tr><th scope="row">mcp server, zendesk bridge</th><td>early access today</td><td>an outside agent acts on scoped tools, with a person confirming.</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="prose">
-    <div class="callout">
-      <p>What I had wrong on the first draft: I called the API path unsure whether it was possible. It is documented and it works. It also cannot free a seat. The honest goal was never zero seats, it is that the seat stops needing a person behind it.</p>
-    </div>
-
     <h2>sources</h2>
     <ul class="src">
       <li><a href="https://support.zendesk.com/hc/en-us/articles/6970583409690-About-AI-agents" target="_blank" rel="noopener">zendesk: about AI agents</a><span>the agent answers from the knowledge base, not from a model's memory</span></li>
-      <li><a href="https://support.zendesk.com/hc/en-us/articles/6510562911770-Managing-light-agent-seats-in-your-Zendesk-account" target="_blank" rel="noopener">zendesk: light agent seats</a><span>plan limits, and the private-note permission</span></li>
       <li><a href="https://support.zendesk.com/hc/en-us/articles/4408844206746-About-side-conversations" target="_blank" rel="noopener">zendesk: about side conversations</a><span>channels, and the Professional plan requirement</span></li>
       <li><a href="https://developer.zendesk.com/api-reference/ticketing/tickets/ticket_comments/" target="_blank" rel="noopener">zendesk api: ticket comments</a><span>comments are created by updating the ticket, author defaults to the authenticated account</span></li>
       <li><a href="https://developer.zendesk.com/api-reference/introduction/rate-limits/" target="_blank" rel="noopener">zendesk api: rate limits</a><span>200 requests per minute on Team, 400 on Growth and Professional</span></li>
-      <li><a href="https://support.zendesk.com/hc/en-us/articles/11400026079130-Connecting-external-AI-agents-to-the-Zendesk-MCP-server-or-Zendesk-AI-agents-EAP" target="_blank" rel="noopener">zendesk: bridge and external agents</a><span>MCP server access for outside agents, early access</span></li>
     </ul>
   </div>
 
