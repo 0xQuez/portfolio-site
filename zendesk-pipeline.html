@@ -154,7 +154,7 @@
   <div class="prose">
     <h2>what i learned</h2>
     <p>The bottleneck was me, not the automation. Two limits made me the only path between the engineers and the users, and only one of them was money.</p>
-    <p>The money limit was one paid agent seat on Suite Team, Zendesk's cheapest plan. Light agent seats, the cheaper tier, were an add-on on that plan. They cost less than full seats, but they were still a purchase.</p>
+    <p>The money limit was one paid agent seat on Suite Team, Zendesk's cheapest plan. Light agent seats, the cheaper seat type, were an add-on on that plan. They cost less than full seats, but they were still a purchase.</p>
     <p>The product limit is the part I did not understand well enough. A light agent can read a ticket and leave a private note, and nothing more. They cannot post a public reply. So with light seats bought, an engineer could write the fix and still not send it.</p>
   </div>
 
@@ -164,7 +164,7 @@
   </figure>
 
   <div class="prose">
-    <p>The feature built for this already existed, and I did not use it. Side conversations attach an email, Slack or Teams thread to a ticket, and the people on that thread do not need agent seats. It has been in the product for years. It needs Suite Professional or above, and we were on Team. That is the first thing I would ask for.</p>
+    <p>The feature built for this already existed in Zendesk, and we could not use it. Side conversations attach an email, Slack or Teams thread to a ticket, and the people on that thread do not need agent seats. It has been in the product for years, but it needs Suite Professional or above, and we were on Suite Team. That is the first thing I would ask for.</p>
     <p>If the plan cannot move, light agent seats plus a small relay come next. Engineering works on the ticket, not over email, and the relay turns a private note into the public reply.</p>
     <p>The API path comes next. Zendesk creates a comment when you update a ticket, and the author defaults to the account that authenticated the call. One service identity holds a seat and calls <code>PUT /api/v2/tickets/{id}</code> with a comment object, <code>public</code> set to true. The thread updates. Two rules: use a dedicated service account instead of my login, or the audit trail reads as me, and stay inside the rate limit, which is 200 requests a minute on Suite Team and 400 on Suite Growth.</p>
     <p>MCP is the newest path. Zendesk runs an MCP server, and Bridge lets an outside agent act inside Zendesk through scoped tools, with a person confirming each change. It is in early access and the pricing is not settled, so I would test it rather than design against it.</p>
