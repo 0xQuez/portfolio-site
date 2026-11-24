@@ -75,11 +75,6 @@
   .alt li{font-size:clamp(.98rem,2.5vw,1.03rem);line-height:1.58;letter-spacing:-.008em;color:var(--ink-soft);padding-left:1.2em;position:relative}
   .alt li::before{content:"-";position:absolute;left:0;color:var(--ink)}
   .alt strong{font-weight:500;color:var(--ink)}
-  .src{list-style:none;padding:0;margin:0 0 1em;display:grid;gap:.75em;max-width:612px}
-  .src li{font-size:.9rem;line-height:1.4;letter-spacing:-.005em}
-  .src a{border-bottom:1px solid var(--rule);transition:border-color .25s var(--ease)}
-  .src a:hover{border-bottom-color:var(--ink)}
-  .src span{display:block;color:var(--ink-soft);font-size:.85rem;margin-top:.15em}
   .status{white-space:nowrap;border:1px solid var(--rule);padding:1px 6px;font-size:.94em;letter-spacing:.005em}
 
   footer{margin-top:clamp(46px,9vh,80px);padding-top:20px;border-top:1px solid var(--rule);
@@ -102,11 +97,10 @@
   <div class="prose">
     <h2>story</h2>
     <p>In October 2025 we publicly launched 375go, our mobile app. It passed 250,000 downloads worldwide, and the majority of users reported a pleasant experience. As the app scaled, so did our need for a smooth customer support experience.</p>
-    <p>The team had no channel to organize, understand and resolve support requests, so I built one before the volume made it urgent. I set up and administered Zendesk, wrote the knowledge base and answered the tickets myself. Then I automated the part that repeated.</p>
+    <p>I set up and administered Zendesk, created a knowledge base, and manually answered tickets to surface common issues and gather user feedback. This helped me think through workflows for gathering data, which, prior to the automation, was the slowest part of the initial investigation process.</p>
 
     <h2>how it works</h2>
-    <p>I built the pipeline around Zendesk's own AI agent, the product that Answer Bot became. It answers with generative replies grounded in our knowledge base, so a reply comes from a document we wrote, not from the model's memory. The retrieval layer is Zendesk's. The knowledge base, the agent setup and the status flow were mine.</p>
-    <p>Three tools carry the work.</p>
+    <p>I built the pipeline using Zendesk's AI Agent offering, which generates replies based on company knowledge and documentation. The pipeline consisted of 3 core functions.</p>
   </div>
 
   <figure>
@@ -150,15 +144,6 @@
     </ul>
   </div>
 
-  <div class="prose">
-    <h2>sources</h2>
-    <ul class="src">
-      <li><a href="https://support.zendesk.com/hc/en-us/articles/6970583409690-About-AI-agents" target="_blank" rel="noopener">zendesk: about AI agents</a><span>the agent answers from the knowledge base, not from a model's memory</span></li>
-      <li><a href="https://support.zendesk.com/hc/en-us/articles/4408844206746-About-side-conversations" target="_blank" rel="noopener">zendesk: about side conversations</a><span>channels, and the Professional plan requirement</span></li>
-      <li><a href="https://developer.zendesk.com/api-reference/ticketing/tickets/ticket_comments/" target="_blank" rel="noopener">zendesk api: ticket comments</a><span>comments are created by updating the ticket, author defaults to the authenticated account</span></li>
-      <li><a href="https://developer.zendesk.com/api-reference/introduction/rate-limits/" target="_blank" rel="noopener">zendesk api: rate limits</a><span>200 requests per minute on Team, 400 on Growth and Professional</span></li>
-    </ul>
-  </div>
 
   <footer>
     <a href="/">all work</a>
